@@ -57,7 +57,7 @@
                                 <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarCliente.jsp"> Cadastrar</a>
                             </li>
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/consultarCliente.jsp"> Consultar</a>
+                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarCliente.jsp"> Consultar</a>
                             </li>
                             <li>
                                 <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarCliente.jsp"> Gerenciar</a>
@@ -167,7 +167,7 @@
 
                                             <td class="actions">
                                                 <a class="btn btn-success btn-xs" href="../view/showCliente.jsp?idCliente=${cliente.clienteId}">Visualizar</a>
-                                                <a class="btn btn-warning btn-xs" href="../view/editaCliente.jsp?idCliente=${cliente.clienteId}">Editar</a>
+                                                <a class="btn btn-warning btn-xs" href="../view/editarCliente.jsp?clienteId=${cliente.clienteId}">Editar</a>
                                                 <a class="btn btn-danger btn-xs"  href="../dropCliente?idCliente=${cliente.clienteId}">Excluir</a>
                                             </td>
                                         </tr>

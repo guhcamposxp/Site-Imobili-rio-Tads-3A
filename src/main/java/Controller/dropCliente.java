@@ -19,10 +19,10 @@ public class dropCliente extends HttpServlet {
             String id = request.getParameter("idCliente");
             ClienteDAO getCliente = new ClienteDAO();
             getCliente.excluirCliente(Integer.parseInt(id));
-            response.sendRedirect("view/listagemCliente.jsp");
+            response.sendRedirect("view/listarCliente.jsp");
         } catch (Exception e) {
             System.out.println("Erro Servlet - Drop Cliente");
-            response.sendRedirect("view/listagemCliente.jsp");
+            response.sendRedirect("view/listarCliente.jsp");
         }
     }
 

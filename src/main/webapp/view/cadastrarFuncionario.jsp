@@ -53,7 +53,7 @@
                                 <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarCliente.jsp"> Cadastrar</a>
                             </li>
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/consultarCliente.jsp"> Consultar</a>
+                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarCliente.jsp"> Consultar</a>
                             </li>
                             <li>
                                 <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarCliente.jsp"> Gerenciar</a>

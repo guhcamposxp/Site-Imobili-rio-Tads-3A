@@ -139,7 +139,7 @@ public class ClienteDAO {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM CLIENTE WHERE CLIENTE_ID = " + clienteId);
             while (rs.next()) {
-                cliente.setClienteId(Integer.parseInt(rs.getString("ID_CLIENTE")));
+                cliente.setClienteId(Integer.parseInt(rs.getString("CLIENTE_ID")));
                 cliente.setClienteNome(rs.getString("CLIENTE_NOME"));
                 cliente.setClienteSobrenome(rs.getString("CLIENTE_SOBRENOME"));
                 cliente.setClienteCpf(rs.getString("CLIENTE_CPF"));

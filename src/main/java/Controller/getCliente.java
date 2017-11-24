@@ -19,6 +19,7 @@ public class getCliente extends HttpServlet {
 
         ClienteDAO getCliente = new ClienteDAO();
         String id = request.getParameter("CLIENTE_ID");
+        String nome = request.getParameter("CLIENTE_NOME");
         if (id == null) {
             List<ClienteData> lista = getCliente.getTodosCliente();
             request.setAttribute("lista", lista);

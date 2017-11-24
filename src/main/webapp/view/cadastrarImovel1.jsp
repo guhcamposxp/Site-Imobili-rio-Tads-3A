@@ -1,21 +1,20 @@
 <%-- 
-    Document   : index
-    Created on : 16/10/2017, 18:18:19
+    Document   : cadastrarImovel
+    Created on : 16/10/2017, 18:44:02
     Author     : felipe.joliveira
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Boas Vindas</title>
-        <link href="${pageContext.request.contextPath}/all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="${pageContext.request.contextPath}/all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="${pageContext.request.contextPath}/css/sb-admin.css" rel="stylesheet" type="text/css"/>
-        <link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet" type="text/css"/>
-        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">	
+        <title>Cadastrar Imóvel</title>
+        <link href="../all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <script src="../all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
+        <link href="../css/sb-admin.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/custom.css" rel="stylesheet" type="text/css"/>
 
 
     </head>
@@ -134,16 +133,144 @@
         </nav>
 
         <div class="content-wrapper">
-            <div class="container-fluid">
 
-                <div class="col-lg-8 boasVindas">
-
-                    <p>Seja bem vindo(a), <strong>Administrador</strong></p>
-
-
+      <div class="container">
+        <div class="card card-register mx-auto mt-5">
+          <div class="card-header cardRegistro">Registar Novo Imóvel</div>
+          <div class="card-body campos">
+            <form id="FormImovel">
+              <div class="form-group col-lg-12 divContato ">
+                <h5>
+                  Proprietário
+                </h5>
+              <hr/>
+                <div class="form-row">
+                  <div class="col-md-6">
+                    <label for="">CPF</label>
+                    <input class="form-control maskCPF campos" id="clienteCpf" type="text" aria-describedby="nameHelp" placeholder="000.000.000-00">
+                  </div>
                 </div>
+              </div>
+
+          <div class="form-group col-lg-12 divContato" >
+            <h5>
+              Endereço
+            </h5>
+          <hr/>
+          <div class="form-row">
+            <div class="col-md-8">
+            <label for="">Rua</label>
+            <input class="form-control campos" id="imovelRua" type="text">
             </div>
+            <div class="col-md-2">
+            <label for="">Número</label>
+            <input class="form-control campos" id="imovelNumero" type="text" aria-describedby="emailHelp">
+            </div>
+            <div class="col-md-3">
+            <label for="">Complemento</label>
+            <input class="form-control campos" id="imovelComplemento" type="email">
+            </div>
+            <div class="col-md-2">
+            <label for="">CEP</label>
+            <input class="form-control maskCEP campos" id="imovelCep" type="text" placeholder="00000-000">
+            </div>
+            <div class="col-md-5">
+            <label for="">Bairro</label>
+            <input class="form-control campos" id="imovelBairro" type="email">
+            </div>
+            <div class="col-md-5">
+            <label for="">Cidade</label>
+            <input class="form-control campos" id="imovelCidade" type="email">
+            </div>
+            <div class="col-md-5">
+            <label for="exampleInputEmail1">Estado</label>
+            <select class="form-control" id="imovelCidade">
+              <option value="null">Selecione</option>
+              <option value="">Acre</option>
+              <option value="">Alagoas</option>
+              <option value="">Amapá</option>
+              <option value="">Amazonas</option>
+              <option value="">Bahia</option>
+              <option value="">Ceará</option>
+              <option value="">Distrito Federal</option>
+              <option value="">Espírito Santo</option>
+              <option value="">Goiás</option>
+              <option value="">Maranhão</option>
+              <option value="">Mato Grosso</option>
+              <option value="">Mato Grosso do Sul</option>
+              <option value="">Minas Gerais</option>
+              <option value="">Pará</option>
+              <option value="">Paraíba</option>
+              <option value="">Paraná</option>
+              <option value="">Pernambuco</option>
+              <option value="">Piauí</option>
+              <option value="">Rio de Janeiro</option>
+              <option value="">Rio Grande do Norte</option>
+              <option value="">Rio Grande do Sul</option>
+              <option value="">Rondônia</option>
+              <option value="">Roraima</option>
+              <option value="">Santa Catarina</option>
+              <option value="">São Paulo</option>
+              <option value="">Sergipe</option>
+              <option value="">Tocantins</option>
+            </select>
+            </div>
+          </div>
         </div>
+
+        <div class="form-group col-lg-12 divContato" >
+          <h5>
+            Dados do Imóvel
+          </h5>
+        <hr/>
+        <div class="form-row">
+          <div class="col-md-5">
+          <label for="exampleInputEmail1">Tipo de transação</label></br>
+          <label class="checkbox-inline campos"><input type="checkbox" value=""> Venda</label>
+          <label class="checkbox-inline fcampos"><input type="checkbox" value=""> Aluguel</label>
+          <label class="checkbox-inline campos"><input type="checkbox" value=""> Venda e Aluguel</label>
+          </div>
+
+          <div class="col-md-3">
+          <label for="exampleInputEmail1">Complemento</label>
+          <input class="form-control campos" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" >
+          </div>
+          <div class="col-md-2">
+          <label for="exampleInputEmail1">CEP</label>
+          <input class="form-control maskCEP campos" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="00000-000">
+          </div>
+          <div class="col-md-5">
+          <label for="exampleInputEmail1">Bairro</label>
+          <input class="form-control campos" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" >
+          </div>
+          <div class="col-md-5">
+          <label for="exampleInputEmail1">Cidade</label>
+          <input class="form-control campos" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" >
+          </div>
+          <div class="col-md-5">
+          <label for="exampleInputEmail1">Estado</label>
+          <select class="form-control" id="sel1">
+            <option value="uf">Selecione</option>
+            <option value="">Acre</option>
+            <option value="">Alagoas</option>
+            <option value="">Amapá</option>
+            <option value="">Amazonas</option>
+
+          </select>
+          </div>
+        </div>
+      </div>
+
+            </form>
+            <a href="#" class="btn btn-success">Registrar</a>
+            <a class="btn btn-warning limpar" href="">Limpar</a>
+            <a href="index.html" class="btn btn-primary">Cancelar</a>
+            <hr/>
+          </div>
+        </div>
+      </div>
+
+    </div>
 
             <footer class="sticky-footer">
                 <div class="container">
@@ -168,28 +295,25 @@
                         </div>
                         <div class="modal-body">Clique em "Sair" abaixo se você deseja realmente sair.</div>
                         <div class="modal-footer">
-                            
-                            <!--<a class="btn btn-primary" href="login.html">Sair</a>-->
-                            <form action="${pageContext.request.contextPath}/logout" method="post">
-                                <input class="btn btn-primary" type="submit" value="Logout" />
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                            </form>
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                            <a class="btn btn-primary" href="login.html">Sair</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <script src="${pageContext.request.contextPath}/all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/all/vendor/popper/popper.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/all/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/all/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
-        <!--<script src="${pageContext.request.contextPath}/all/vendor/chart.js/Chart.min.js" type="text/javascript"></script>-->
-        <script src="${pageContext.request.contextPath}/all/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/js/sb-admin.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/js/sb-admin-datatables.min.js" type="text/javascript"></script>
-        <!--<script src="${pageContext.request.contextPath}/js/sb-admin-charts.min.js" type="text/javascript"></script>-->
-        <script src="${pageContext.request.contextPath}/js/jquery.mask.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/js/masks.js" type="text/javascript"></script>
+            <script src="../all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+            <script src="../all/vendor/popper/popper.min.js" type="text/javascript"></script>
+            <script src="../all/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <script src="../all/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
+            <script src="../all/vendor/chart.js/Chart.min.js" type="text/javascript"></script>
+            <script src="../all/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
+            <script src="../all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
+            <script src="../js/sb-admin.min.js" type="text/javascript"></script>
+            <script src="../js/sb-admin-datatables.min.js" type="text/javascript"></script>
+            <script src="../js/sb-admin-charts.min.js" type="text/javascript"></script>
+            <script src="../js/jquery.mask.js" type="text/javascript"></script>
+            <script src="../js/masks.js" type="text/javascript"></script>
+
     </body>
 </html>

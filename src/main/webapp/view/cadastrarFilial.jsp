@@ -140,134 +140,87 @@
                 <div class="card card-register mx-auto mt-5">
                     <div class="card-header cardRegistro">Registar Novo Cliente</div>
                     <div class="card-body">
-                        <form name="formCliente" id="formularioCadastro" action="${pageContext.request.contextPath}/insertCliente" method="post">
+                        <form name="insertFilial" id="formularioCadastro" action="${pageContext.request.contextPath}/insertFilial" method="post">
                             <div class="col-lg-12">
                                 <div class="row">
-                                    <div class="form-group col-lg-6">
+                                    <div class="form-group col-lg-12">
                                         <h5>
-                                            Dados Básicos
+                                            Dados
                                         </h5>
                                         <hr/>
-                                        <div class="form-row">
-                                            <div class="col-md-6">
-                                                <label for="">Nome</label>
-                                                <input class="form-control" name="clienteNome" id="clienteNome" type="text" aria-describedby="nameHelp">
-                                                
+                                           <div class="col-md-6">
+                                                <label for="">Nome da Filial</label>
+                                                <input class="form-control" name="filialNome" id="filialNome" type="text" aria-describedby="nameHelp">
                                             </div>
+
                                             <div class="col-md-6">
-                                                <label for="">Sobrenome</label>
-                                                <input class="form-control" name="clienteSobrenome" id="clienteSobrenome" type="text" aria-describedby="nameHelp">
+                                                <label for="">CNPJ</label>
+                                                <input class="form-control maskCNPJ" name="filialCNPJ" id="filialCNPJ" type="text" aria-describedby="nameHelp" placeholder="00.000.000/0000-00">
                                             </div>
+
                                             <div class="col-md-6">
-                                                <label for="">CPF</label>
-                                                <input class="form-control maskCPF" name="clienteCpf" id="clienteCpf" type="text" aria-describedby="nameHelp" placeholder="000.000.000-00">
+                                                <label for="">Rua</label>
+                                                <input class="form-control" name="filialRua" id="filialRua" type="text" aria-describedby="nameHelp">
                                             </div>
+
                                             <div class="col-md-6">
-                                                <label for="">RG</label>
-                                                <input class="form-control maskRG" name="clienteRg" id="clienteRg" type="text" aria-describedby="nameHelp" placeholder="00.000.000-0">
+                                                <label for="">Numero</label>
+                                                <input class="form-control" name="filialNumero" id="filialNumero" type="text" aria-describedby="nameHelp">
                                             </div>
+
                                             <div class="col-md-6">
-                                                <label for="">Sexo</label>
-                                                <select class="form-control" name="clienteSexo" id="clienteSexo">
+                                                <label for="">Bairro</label>
+                                                <input class="form-control" name="filialBairro" id="filialBairro" type="text" aria-describedby="nameHelp">
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label for="">Cep</label>
+                                                <input class="form-control maskCEP" name="filialCep" id="filialCep" type="text" aria-describedby="nameHelp" placeholder="00000-000">
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label for="">Cidade</label>
+                                                <input class="form-control" name="filialCidade" id="filialCidade" type="text" aria-describedby="nameHelp">
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label for="">Estado</label>
+                                                <select class="form-control" name="filialEstado" id="filialEstado">
                                                     <option value="null">Selecione</option>
-                                                    <option value="M">Masculino</option>
-                                                    <option value="F">Feminino</option>
+                                                    <option value="AC">Acre</option>
+                                                    <option value="AL">Alagoas</option>
+                                                    <option value="">Amapá</option>
+                                                    <option value="">Amazonas</option>
+                                                    <option value="">Bahia</option>
+                                                    <option value="">Ceará</option>
+                                                    <option value="">Distrito Federal</option>
+                                                    <option value="">Espírito Santo</option>
+                                                    <option value="">Goiás</option>
+                                                    <option value="">Maranhão</option>
+                                                    <option value="">Mato Grosso</option>
+                                                    <option value="">Mato Grosso do Sul</option>
+                                                    <option value="">Minas Gerais</option>
+                                                    <option value="">Pará</option>
+                                                    <option value="">Paraíba</option>
+                                                    <option value="">Paraná</option>
+                                                    <option value="">Pernambuco</option>
+                                                    <option value="">Piauí</option>
+                                                    <option value="">Rio de Janeiro</option>
+                                                    <option value="">Rio Grande do Norte</option>
+                                                    <option value="">Rio Grande do Sul</option>
+                                                    <option value="">Rondônia</option>
+                                                    <option value="">Roraima</option>
+                                                    <option value="">Santa Catarina</option>
+                                                    <option value="">São Paulo</option>
+                                                    <option value="">Sergipe</option>
+                                                    <option value="">Tocantins</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-6">
-                                                <label for="">Data de Nascimento</label>
-                                                <input class="form-control maskDataNascimento" name="clienteNascimento" id="clienteNascimento" type="text" aria-describedby="nameHelp">
-                                            </div>
 
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <h5>
-                                            Contato
-                                        </h5>
-                                        <hr/>
-                                        <div class="form-row">
-                                            <div class="col-md-6">
-                                                <label for=" ">Celular</label>
-                                                <input class="form-control maskTelCel" name="clienteCelular" maxlength="14" id="clienteCel" type="text" placeholder="(00) 90000-0000">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Fixo</label>
-                                                <input class="form-control maskTelFixo" name="clienteTelefone" id="exampleInputEmail1" type="text" placeholder="(00) 0000-0000">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Email</label>
-                                                <input class="form-control" id="clienteEmail" name="clienteEmail" type="email" placeholder="Endereço de email">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="form-group col-lg-12 divContato" >
-                                <h5>
-                                    Endereço
-                                </h5>
-                                <hr/>
-                                <div class="form-row">
-                                    <div class="col-md-8">
-                                        <label for="">Rua</label>
-                                        <input class="form-control" name="clienteRua" id="clienteRua" type="text">
+
                                     </div>
-                                    <div class="col-md-2">
-                                        <label for="">Número</label>
-                                        <input class="form-control" name="clienteNumero" id="clienteNumero" type="text">
                                     </div>
-                                    <div class="col-md-3">
-                                        <label for="">Complemento</label>
-                                        <input class="form-control" name="clienteComplemento" id="clienteComplemento" type="text" >
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="">CEP</label>
-                                        <input class="form-control maskCEP" name="clienteCep" id="clienteCep" type="text" placeholder="00000-000">
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="">Bairro</label>
-                                        <input class="form-control" name="clienteBairro" id="clienteBairro" type="text"  >
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="">Cidade</label>
-                                        <input class="form-control" name="clienteCidade" id="clienteCidade" type="text" >
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="">Estado</label>
-                                        <select class="form-control" name="clienteEstado" id="clienteEstado">
-                                            <option value="null">Selecione</option>
-                                            <option value="AC">Acre</option>
-                                            <option value="AL">Alagoas</option>
-                                            <option value="">Amapá</option>
-                                            <option value="">Amazonas</option>
-                                            <option value="">Bahia</option>
-                                            <option value="">Ceará</option>
-                                            <option value="">Distrito Federal</option>
-                                            <option value="">Espírito Santo</option>
-                                            <option value="">Goiás</option>
-                                            <option value="">Maranhão</option>
-                                            <option value="">Mato Grosso</option>
-                                            <option value="">Mato Grosso do Sul</option>
-                                            <option value="">Minas Gerais</option>
-                                            <option value="">Pará</option>
-                                            <option value="">Paraíba</option>
-                                            <option value="">Paraná</option>
-                                            <option value="">Pernambuco</option>
-                                            <option value="">Piauí</option>
-                                            <option value="">Rio de Janeiro</option>
-                                            <option value="">Rio Grande do Norte</option>
-                                            <option value="">Rio Grande do Sul</option>
-                                            <option value="">Rondônia</option>
-                                            <option value="">Roraima</option>
-                                            <option value="">Santa Catarina</option>
-                                            <option value="">São Paulo</option>
-                                            <option value="">Sergipe</option>
-                                            <option value="">Tocantins</option>
-                                        </select>
-                                    </div>
-                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Cadastrar</button>
                         </form>

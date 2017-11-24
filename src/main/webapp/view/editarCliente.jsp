@@ -1,26 +1,26 @@
 <%-- 
-    Document   : cadastrarCliente
-    Created on : 16/10/2017, 18:48:48
-    Author     : felipe.joliveira
+    Document   : editarCliente
+    Created on : 02/11/2017, 20:37:42
+    Author     : Felipe
 --%>
-
 <%@page import="Data.ClienteData"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="DAO.ClienteDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
+        <jsp:include page="/getCliente" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastrar Cliente</title>
+        <title>Editar Cliente</title>
         <link href="${pageContext.request.contextPath}/all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/css/sb-admin.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet" type="text/css"/>
-        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">	
+        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
     </head>
     <body>
-
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/view/BoasVindas.jsp">Away - Sistema Imobiliário</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -133,14 +133,14 @@
                 </ul>
             </div>
         </nav>
-
+                            
         <div class="content-wrapper">
 
             <div class="container">
                 <div class="card card-register mx-auto mt-5">
-                    <div class="card-header cardRegistro">Registar Novo Cliente</div>
+                    <div class="card-header cardRegistro">Editar Cliente</div>
                     <div class="card-body">
-                        <form name="formCliente" id="formularioCadastro" action="${pageContext.request.contextPath}/insertCliente" method="post">
+                        <form name="formCliente" id="formularioCadastro" class="well form-horizontal" action="${pageContext.request.contextPath}/insertCliente" method="post">
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="form-group col-lg-6">
@@ -151,32 +151,27 @@
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <label for="">Nome</label>
-                                                <input class="form-control" name="clienteNome" id="clienteNome" type="text" aria-describedby="nameHelp">
-                                                
+                                                <input type="text" name="clienteNome" value="${lista.clienteNome}"/>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Sobrenome</label>
-                                                <input class="form-control" name="clienteSobrenome" id="clienteSobrenome" type="text" aria-describedby="nameHelp">
+                                                <input type="text" name="clienteSobrenome" value="${lista.clienteSobrenome}" />
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">CPF</label>
-                                                <input class="form-control maskCPF" name="clienteCpf" id="clienteCpf" type="text" aria-describedby="nameHelp" placeholder="000.000.000-00">
+                                                <input type="text" name="clienteCpf" value="${lista.clienteCpf}" />
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">RG</label>
-                                                <input class="form-control maskRG" name="clienteRg" id="clienteRg" type="text" aria-describedby="nameHelp" placeholder="00.000.000-0">
+                                                <input type="text" name="clienteRg" value="${lista.clienteRg}" />
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Sexo</label>
-                                                <select class="form-control" name="clienteSexo" id="clienteSexo">
-                                                    <option value="null">Selecione</option>
-                                                    <option value="M">Masculino</option>
-                                                    <option value="F">Feminino</option>
-                                                </select>
+                                                <input type="text" name="clienteSexo" value="${lista.clienteSexo}" />
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Data de Nascimento</label>
-                                                <input class="form-control maskDataNascimento" name="clienteNascimento" id="clienteNascimento" type="text" aria-describedby="nameHelp">
+                                                <input type="text" name="clienteNascimento" value="${lista.clienteNascimento}" />
                                             </div>
 
                                         </div>
@@ -189,15 +184,15 @@
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <label for=" ">Celular</label>
-                                                <input class="form-control maskTelCel" name="clienteCelular" maxlength="14" id="clienteCel" type="text" placeholder="(00) 90000-0000">
+                                                <input type="text" name="clienteCelular" value="${lista.clienteCelular}" />
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Fixo</label>
-                                                <input class="form-control maskTelFixo" name="clienteTelefone" id="exampleInputEmail1" type="text" placeholder="(00) 0000-0000">
+                                                <input type="text" name="clienteTelefone" value="${lista.clienteTelefone}" />
                                             </div>
                                             <div class="col-md-12">
                                                 <label>Email</label>
-                                                <input class="form-control" id="clienteEmail" name="clienteEmail" type="email" placeholder="Endereço de email">
+                                                <input type="text" name="clienteEmail" value="${lista.clienteEmail}" />
                                             </div>
                                         </div>
                                     </div>
@@ -212,64 +207,35 @@
                                 <div class="form-row">
                                     <div class="col-md-8">
                                         <label for="">Rua</label>
-                                        <input class="form-control" name="clienteRua" id="clienteRua" type="text">
+                                        <input type="text" name="clienteRua" value="${lista.clienteRua}" />
                                     </div>
                                     <div class="col-md-2">
                                         <label for="">Número</label>
-                                        <input class="form-control" name="clienteNumero" id="clienteNumero" type="text">
+                                        <input type="text" name="clienteNumero" value="${lista.clienteNumero}" />
                                     </div>
                                     <div class="col-md-3">
                                         <label for="">Complemento</label>
-                                        <input class="form-control" name="clienteComplemento" id="clienteComplemento" type="text" >
+                                        <input type="text" name="clienteComplemento" value="${lista.clienteComplemento}" />
                                     </div>
                                     <div class="col-md-2">
                                         <label for="">CEP</label>
-                                        <input class="form-control maskCEP" name="clienteCep" id="clienteCep" type="text" placeholder="00000-000">
+                                        <input type="text" name="clienteCep" value="${lista.clienteCep}" />
                                     </div>
                                     <div class="col-md-5">
                                         <label for="">Bairro</label>
-                                        <input class="form-control" name="clienteBairro" id="clienteBairro" type="text"  >
+                                        <input type="text" name="clienteBairro" value="${lista.clienteBairro}" />
                                     </div>
                                     <div class="col-md-5">
                                         <label for="">Cidade</label>
-                                        <input class="form-control" name="clienteCidade" id="clienteCidade" type="text" >
+                                        <input type="text" name="clienteCidade" value="${lista.clienteCidade}" />
                                     </div>
                                     <div class="col-md-5">
                                         <label for="">Estado</label>
-                                        <select class="form-control" name="clienteEstado" id="clienteEstado">
-                                            <option value="null">Selecione</option>
-                                            <option value="AC">Acre</option>
-                                            <option value="AL">Alagoas</option>
-                                            <option value="">Amapá</option>
-                                            <option value="">Amazonas</option>
-                                            <option value="">Bahia</option>
-                                            <option value="">Ceará</option>
-                                            <option value="">Distrito Federal</option>
-                                            <option value="">Espírito Santo</option>
-                                            <option value="">Goiás</option>
-                                            <option value="">Maranhão</option>
-                                            <option value="">Mato Grosso</option>
-                                            <option value="">Mato Grosso do Sul</option>
-                                            <option value="">Minas Gerais</option>
-                                            <option value="">Pará</option>
-                                            <option value="">Paraíba</option>
-                                            <option value="">Paraná</option>
-                                            <option value="">Pernambuco</option>
-                                            <option value="">Piauí</option>
-                                            <option value="">Rio de Janeiro</option>
-                                            <option value="">Rio Grande do Norte</option>
-                                            <option value="">Rio Grande do Sul</option>
-                                            <option value="">Rondônia</option>
-                                            <option value="">Roraima</option>
-                                            <option value="">Santa Catarina</option>
-                                            <option value="">São Paulo</option>
-                                            <option value="">Sergipe</option>
-                                            <option value="">Tocantins</option>
-                                        </select>
+                                        <input type="text" name="clienteEstado" value="${lista.clienteEstado}" />
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            <button type="submit" class="btn btn-primary">Salvar</button>
                         </form>
                         
                         
@@ -278,49 +244,6 @@
                 </div>
             </div>
 
-        </div>                   
-
-        <footer class="sticky-footer">
-            <div class="container">
-                <div class="text-center">
-                    <small>© Copyright 2017 Away</small>
-                </div>
-            </div>
-        </footer>
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fa fa-angle-up"></i>
-        </a>
-        <!-- Logout Modal-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja sair?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Clique em "Sair" abaixo se você deseja realmente sair.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                        <a class="btn btn-primary" href="login.html">Sair</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script src="${pageContext.request.contextPath}/all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/all/vendor/popper/popper.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/all/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/all/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
-        <!--<script src="${pageContext.request.contextPath}/all/vendor/chart.js/Chart.min.js" type="text/javascript"></script>-->
-        <script src="${pageContext.request.contextPath}/all/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/js/sb-admin.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/js/sb-admin-datatables.min.js" type="text/javascript"></script>
-        <!--<script src="${pageContext.request.contextPath}/js/sb-admin-charts.min.js" type="text/javascript"></script>-->
-        <script src="${pageContext.request.contextPath}/js/jquery.mask.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/js/masks.js" type="text/javascript"></script>
+        </div>     
     </body>
 </html>

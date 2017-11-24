@@ -20,8 +20,8 @@ public class getFilial extends HttpServlet {
         FilialDAO getFilial = new FilialDAO();
         String id = request.getParameter("idFilial");
         if (id == null) {
-            List<FilialData> lista = getFilial.getTodasFiliais();
-            request.setAttribute("lista", lista);
+//            List<FilialData> lista = getFilial.getTodasFiliais();
+//            request.setAttribute("lista", lista);
              
         } else {
             FilialData lista = new FilialData();

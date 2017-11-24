@@ -13,82 +13,69 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "insertFilial", urlPatterns = {"/insertFilial"})
 public class insertFilial extends HttpServlet {
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            String retorno = "";
-            String idFilial = request.getParameter("idFilial");
-            String endRuaFilial = request.getParameter("endRuaFilial");
-            String endNumFilial = request.getParameter("endNumFilial");
-            String endCepFilial = request.getParameter("endCepFilial");
-            String endEstFilial = request.getParameter("endEstFilial");
-            String endCidFilial = request.getParameter("endCidFilial");
-            String endBairroFilial = request.getParameter("endBairroFilial");
-            String endCompFilial = request.getParameter("endCompFilial");
-            String responsavelFilial = request.getParameter("responsavelFilial");
-            String faturamentoFilial = request.getParameter("faturamentoFilial");
-            String cnpjFilial = request.getParameter("cnpjFilial");
-            String nomeFantasiaFilial = request.getParameter("nomeFantasiaFilial");
-
-            boolean valida = validaCampos(endRuaFilial, endNumFilial, endCepFilial, endEstFilial, endCidFilial, endBairroFilial, responsavelFilial, faturamentoFilial, cnpjFilial, nomeFantasiaFilial);
-
-            if (valida) {
-
-                FilialDAO dao = new FilialDAO();
-
-                if (idFilial != null) {
-                    FilialData alteraFilial = new FilialData();
-                    alteraFilial = dao.getFilialByID(Integer.parseInt(idFilial));
-                    alteraFilial.setIdFilial(Integer.parseInt(idFilial));
-                    alteraFilial.setCnpjFilial(cnpjFilial);
-                    alteraFilial.setEndBairroFilial(endBairroFilial);
-                    alteraFilial.setEndCepFilial(endCepFilial);
-                    alteraFilial.setEndCidFilial(endCidFilial);
-                    alteraFilial.setEndCompFilial(endCompFilial);
-                    alteraFilial.setEndEstFilial(endEstFilial);
-                    alteraFilial.setEndNumFilial(endNumFilial);
-                    alteraFilial.setEndRuaFilial(endRuaFilial);
-                    alteraFilial.setFaturamentoFilial(faturamentoFilial);
-                    alteraFilial.setNomeFantasiaFilial(nomeFantasiaFilial);
-                    alteraFilial.setResponsavelFilial(Integer.parseInt(responsavelFilial));
-                    dao.atualizaFilial(alteraFilial);
-                    retorno = "alteracao";
-                } else {
-                    FilialData novaFilial = new FilialData();
-                    novaFilial = dao.getFilialByID(Integer.parseInt(idFilial));
-                    novaFilial.setIdFilial(Integer.parseInt(idFilial));
-                    novaFilial.setCnpjFilial(cnpjFilial);
-                    novaFilial.setEndBairroFilial(endBairroFilial);
-                    novaFilial.setEndCepFilial(endCepFilial);
-                    novaFilial.setEndCidFilial(endCidFilial);
-                    novaFilial.setEndCompFilial(endCompFilial);
-                    novaFilial.setEndEstFilial(endEstFilial);
-                    novaFilial.setEndNumFilial(endNumFilial);
-                    novaFilial.setEndRuaFilial(endRuaFilial);
-                    novaFilial.setFaturamentoFilial(faturamentoFilial);
-                    novaFilial.setNomeFantasiaFilial(nomeFantasiaFilial);
-                    novaFilial.setResponsavelFilial(Integer.parseInt(responsavelFilial));
-                    dao.cadastraFilial(novaFilial);
-                    retorno = "criacao";
-                }
-
+        String retorno = "";
+        String filialId = request.getParameter("filialId");
+        String filialNome = request.getParameter("filialNome");
+        String filialCnpj = request.getParameter("filialCnpj");
+        String filialRua = request.getParameter("filialRua");
+        String filialNumero = request.getParameter("filialNumero");
+        String filialBairro = request.getParameter("filialBairro");
+        String filialCep = request.getParameter("filialCep");
+        String filialCidade = request.getParameter("filialCidade");
+        String filialEstado = request.getParameter("filialEstado");
+        boolean valida = validaCampos(filialNome, filialCnpj, filialRua, filialNumero, filialBairro, filialCep,
+                filialCidade, filialEstado);
+        if (valida) {
+            
+            FilialDAO dao = new FilialDAO();
+            
+            if (filialId != null) {
+//                    FilialData alteraFilial = new FilialData();
+//                    alteraFilial = dao.getFilialByID(Integer.parseInt(filialId));
+//                    alteraFilial.setIdFilial(Integer.parseInt(filialId));
+//                    alteraFilial.setFilialCnpj(filialCnpj);
+//                    alteraFilial.setFilialNome(filialNome);
+//                    alteraFilial.setFilialRua(filialRua);
+//                    alteraFilial.setFilialNumero(filialNumero);
+//                    alteraFilial.setFilialBairro(filialBairro);
+//                    alteraFilial.setFilialCep(filialCep);
+//                    alteraFilial.setFilialCidade(filialCidade);
+//                    alteraFilial.setFilialEstado(filialEstado);
+//                    
+//                    dao.atualizaFilial(alteraFilial);
+//                    retorno = "alteracao";
             } else {
-                retorno = "erro";
+                FilialData novaFilial = new FilialData();
+                novaFilial = dao.getFilialByID(Integer.parseInt(filialId));
+                novaFilial.setIdFilial(Integer.parseInt(filialId));
+                novaFilial.setFilialNome(filialNome);
+                novaFilial.setFilialCnpj(filialCnpj);
+                novaFilial.setFilialRua(filialRua);
+                novaFilial.setFilialNumero(filialNumero);
+                novaFilial.setFilialBairro(filialBairro);
+                novaFilial.setFilialCep(filialCep);
+                novaFilial.setFilialCidade(filialCidade);
+                novaFilial.setFilialEstado(filialEstado);
+                dao.cadastraFilial(novaFilial);
+                retorno = "criacao";
             }
-            request.setAttribute("retorno", retorno);
-            request.getRequestDispatcher("view/cadastrarFilail.jsp").forward(request, response);
-        } catch (SQLException e) {
-            System.out.println("Erro no servlet - ServletException - Classe: insertFilial.java - Erro: " + e);
+            
+        } else {
+            retorno = "erro";
         }
+        request.setAttribute("retorno", retorno);
+        request.getRequestDispatcher("view/cadastrarFilail.jsp").forward(request, response);
     }
 
-    private boolean validaCampos(String endRuaFilial, String endNumFilial, String endCepFilial, String endEstFilial, String endCidFilial,
-            String endBairroFilial, String responsavelFilial, String faturamentoFilial, String cnpjFilial, String nomeFantasiaFilial) {
+    private boolean validaCampos(String filialNome, String filialCnpj, String filialRua, String filialNumero, String filialBairro, String filialCep,
+                    String filialCidade, String filialEstado) {
 
-        if ((endRuaFilial == null) || (endNumFilial == null) || (endCepFilial == null)
-                || (endEstFilial == null) || (endCidFilial == null) || (endBairroFilial == null)
-                || (responsavelFilial == null) || (faturamentoFilial == null) || (cnpjFilial == null)
-                || (nomeFantasiaFilial == null)) {
+        if ((filialNome == null) || (filialCnpj == null) || (filialRua == null)
+                || (filialNumero == null) || (filialBairro == null) || (filialCep == null)
+                || (filialCidade == null) || (filialEstado == null)) {
             return false;
         } else {
             return true;
