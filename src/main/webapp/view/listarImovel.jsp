@@ -1,26 +1,26 @@
-<%-- 
-    Document   : cadastrarCliente
-    Created on : 16/10/2017, 18:48:48
-    Author     : felipe.joliveira
---%>
-
-<%@page import="Data.ClienteData"%>
+<%@page import="Data.ImovelData"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="DAO.ClienteDAO"%>
+<%@page import="DAO.ImovelDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
+
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastrar Cliente</title>
+        <jsp:include page="/getImovel" />
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+
+        <title>Listagem de Clientes</title>
         <link href="${pageContext.request.contextPath}/all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/all/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/css/sb-admin.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">	
     </head>
-    <body>
-
+    <body class="fixed-nav sticky-footer" id="page-top">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/view/BoasVindas.jsp">Away - Sistema Imobiliário</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -132,150 +132,48 @@
         </nav>
 
         <div class="content-wrapper">
+            <div class="container-fluid">
 
-            <div class="container">
-                <div class="card card-register mx-auto mt-5">
-                    <div class="card-header cardRegistro">Registar Novo Cliente</div>
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Imóveis Cadastrados </div>
                     <div class="card-body">
-                        <form name="formCliente" id="formularioCadastro" action="${pageContext.request.contextPath}/insertCliente" method="post">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        <h5>
-                                            Dados Básicos
-                                        </h5>
-                                        <hr/>
-                                        <div class="form-row">
-                                            <div class="col-md-6">
-                                                <label for="">Nome</label>
-                                                <input class="form-control" name="clienteNome" id="clienteNome" type="text" aria-describedby="nameHelp">
-                                                
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="">Sobrenome</label>
-                                                <input class="form-control" name="clienteSobrenome" id="clienteSobrenome" type="text" aria-describedby="nameHelp">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="">CPF</label>
-                                                <input class="form-control maskCPF" name="clienteCpf" id="clienteCpf" type="text" aria-describedby="nameHelp" placeholder="000.000.000-00">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="">RG</label>
-                                                <input class="form-control maskRG" name="clienteRg" id="clienteRg" type="text" aria-describedby="nameHelp" placeholder="00.000.000-0">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="">Sexo</label>
-                                                <select class="form-control" name="clienteSexo" id="clienteSexo">
-                                                    <option value="null">Selecione</option>
-                                                    <option value="M">Masculino</option>
-                                                    <option value="F">Feminino</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="">Data de Nascimento</label>
-                                                <input class="form-control maskDataNascimento" name="clienteNascimento" id="clienteNascimento" type="text" aria-describedby="nameHelp">
-                                            </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Rua</th>
+                                        <th>Bairro</th>
+                                        <th>Cidade</th>
+                                        <th>Tipo Transação</th>
+                                        <th class="actions">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <h5>
-                                            Contato
-                                        </h5>
-                                        <hr/>
-                                        <div class="form-row">
-                                            <div class="col-md-6">
-                                                <label for=" ">Celular</label>
-                                                <input class="form-control maskTelCel" name="clienteCelular" maxlength="14" id="clienteCel" type="text" placeholder="(00) 90000-0000">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Fixo</label>
-                                                <input class="form-control maskTelFixo" name="clienteTelefone" id="exampleInputEmail1" type="text" placeholder="(00) 0000-0000">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Email</label>
-                                                <input class="form-control" id="clienteEmail" name="clienteEmail" type="email" placeholder="Endereço de email">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="form-group col-lg-12 divContato" >
-                                <h5>
-                                    Endereço
-                                </h5>
-                                <hr/>
-                                <div class="form-row">
-                                    <div class="col-md-8">
-                                        <label for="">Rua</label>
-                                        <input class="form-control" name="clienteRua" id="clienteRua" type="text">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="">Número</label>
-                                        <input class="form-control" name="clienteNumero" id="clienteNumero" type="text">
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="">Complemento</label>
-                                        <input class="form-control" name="clienteComplemento" id="clienteComplemento" type="text" >
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="">CEP</label>
-                                        <input class="form-control maskCEP" name="clienteCep" id="clienteCep" type="text" placeholder="00000-000">
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="">Bairro</label>
-                                        <input class="form-control" name="clienteBairro" id="clienteBairro" type="text"  >
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="">Cidade</label>
-                                        <input class="form-control" name="clienteCidade" id="clienteCidade" type="text" >
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="">Estado</label>
-                                        <select class="form-control" name="clienteEstado" id="clienteEstado">
-                                            <option value="null">Selecione</option>
-                                            <option value="AC">Acre</option>
-                                            <option value="AL">Alagoas</option>
-                                            <option value="">Amapá</option>
-                                            <option value="">Amazonas</option>
-                                            <option value="">Bahia</option>
-                                            <option value="">Ceará</option>
-                                            <option value="">Distrito Federal</option>
-                                            <option value="">Espírito Santo</option>
-                                            <option value="">Goiás</option>
-                                            <option value="">Maranhão</option>
-                                            <option value="">Mato Grosso</option>
-                                            <option value="">Mato Grosso do Sul</option>
-                                            <option value="">Minas Gerais</option>
-                                            <option value="">Pará</option>
-                                            <option value="">Paraíba</option>
-                                            <option value="">Paraná</option>
-                                            <option value="">Pernambuco</option>
-                                            <option value="">Piauí</option>
-                                            <option value="">Rio de Janeiro</option>
-                                            <option value="">Rio Grande do Norte</option>
-                                            <option value="">Rio Grande do Sul</option>
-                                            <option value="">Rondônia</option>
-                                            <option value="">Roraima</option>
-                                            <option value="">Santa Catarina</option>
-                                            <option value="">São Paulo</option>
-                                            <option value="">Sergipe</option>
-                                            <option value="">Tocantins</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Cadastrar</button>
-                        </form>
-                        
-                        
-                        <hr/>
+                                    <c:forEach var="imovel" items="${lista}">
+                                        <tr>
+                                            <td>${imovel.imovelId}</td>
+                                            <td>${imovel.imovelRua}</td>
+                                            <td>${imovel.imovelBairro}</td>
+                                            <td>${imovel.imovelCidade}</td>
+                                            <td>${imovel.imovelTipoTransacao}</td>
+                                            <td class="actions">
+                                                <a class="btn btn-success btn-xs" href="../view/showImovel.jsp?imovelId=${imovel.imovelId}">Visualizar</a>
+                                                <a class="btn btn-warning btn-xs" href="../view/editarImovel.jsp?imovelId=${imovel.imovelId}">Editar</a>
+                                                <a class="btn btn-danger btn-xs"  href="../dropCliente?idCliente=${imovel.imovelId}">Excluir</a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-
-        </div>                   
+        </div>
 
         <footer class="sticky-footer">
             <div class="container">
@@ -300,8 +198,12 @@
                     </div>
                     <div class="modal-body">Clique em "Sair" abaixo se você deseja realmente sair.</div>
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                        <a class="btn btn-primary" href="login.html">Sair</a>
+
+                        <!--<a class="btn btn-primary" href="login.html">Sair</a>-->
+                        <form action="${pageContext.request.contextPath}/logout" method="post">
+                            <input class="btn btn-primary" type="submit" value="Logout" />
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -319,5 +221,8 @@
         <!--<script src="${pageContext.request.contextPath}/js/sb-admin-charts.min.js" type="text/javascript"></script>-->
         <script src="${pageContext.request.contextPath}/js/jquery.mask.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/js/masks.js" type="text/javascript"></script>
+
     </body>
+</html>
+
 </html>

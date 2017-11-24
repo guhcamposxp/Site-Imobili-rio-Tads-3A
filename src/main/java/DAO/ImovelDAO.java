@@ -129,6 +129,7 @@ public class ImovelDAO {
                 imovel.setImovelQtdVagasGaragem(rs.getString("IMOVEL_QTDVAGASGARAGEM"));
                 imovel.setImovelQtdDormitorios(rs.getString("IMOVEL_QTDDORMITORIOS"));
                 imovel.setImovelTipo(rs.getString("IMOVEL_TIPO"));
+                imovel.setImovelTipoTransacao(rs.getString("IMOVEL_TIPOTRANSACAO"));
                 imovel.setImovelMetrosQuadrado(rs.getString("IMOVEL_METROSQUADRADO"));
                 imovel.setImovelDescricao(rs.getString("IMOVEL_DESCRICAO"));
                 listaImovel.add(imovel);
@@ -140,45 +141,39 @@ public class ImovelDAO {
         return listaImovel;
     }
 
-//    public ImovelData getImovelById(int idImovel) {
-//        ImovelData imovel = new ImovelData();
-//        try {
-//            Connection connection = new ConnectionFactory().getConnection();
-//            Statement stmt = connection.createStatement();
-//            ResultSet rs = stmt.executeQuery("SELECT * FROM IMOVEL WHERE ID_IMOVEL = " + idImovel);
-//            while (rs.next()) {
-//                imovel.setIdImovel(Integer.parseInt(rs.getString(idImovel)));
-//                imovel.setEndRuaImovel(rs.getString("END_RUA_IMOVEL"));
-//                imovel.setEndNumImovel(rs.getString("END_NUM_IMOVEL"));
-//                imovel.setEndBairroImovel(rs.getString("END_BAIRRO_IMOVEL"));
-//                imovel.setEndCepImovel(rs.getString("END_CEP_IMOVEL"));
-//                imovel.setEndEstImovel(rs.getString("END_EST_IMOVEL"));
-//                imovel.setEndCidImovel(rs.getString("END_CID_IMOVEL"));
-//                imovel.setEndCompImovel(rs.getString("END_COMP_IMOVEL"));
-//                imovel.setAreaUtilImovel(rs.getString("AREA_UTIL_IMOVEL"));
-//                imovel.setQtdQuartoImovel(Integer.parseInt(rs.getString("QTD_QUARTO_IMOVEL")));
-//                imovel.setQtdSuiteImovel(Integer.parseInt(rs.getString("QTD_SUITE_IMOVEL")));
-//                imovel.setQtdCozinhaImovel(Integer.parseInt(rs.getString("QTD_COZINHA_IMOVEL")));
-//                imovel.setQtdSalaComumImovel(Integer.parseInt(rs.getString("QTD_SALA_COMUM_IMOVEL")));
-//                imovel.setQtdSalaJantarImovel(Integer.parseInt(rs.getString("QTD_SALA_JANTAR_IMOVEL")));
-//                imovel.setQtdBanheiroImovel(Integer.parseInt(rs.getString("QTD_BANHEIRO_IMOVEL")));
-//                imovel.setQtdVagasImovel(Integer.parseInt(rs.getString("QTD_VAGAS_IMOVEL")));
-//                imovel.setStatusImovel(rs.getString("STATUS_IMOVEL"));
-//                imovel.setProprietarioImovel(Integer.parseInt(rs.getString("ID_PROPRIETARIO")));
-//                imovel.setDescImovel(rs.getString("DESC_IMOVEL"));
-//                imovel.setValorVendaImovel(rs.getString("VALOR_VENDA_IMOVEL"));
-//                imovel.setValorAluguelmovel(rs.getString("VALOR_ALUGUEL_IMOVEL"));
-//                imovel.setValorDepositoImovel(rs.getString("VALOR_DEPOSITO_IMOVEL"));
-//                imovel.setCorretorResponsavelImovel(Integer.parseInt(rs.getString("ID_FUNCIONARIO")));
-//                imovel.setFilialImovel(Integer.parseInt(rs.getString("ID_FILIAL")));
-//                imovel.setTipoImovel(rs.getString("TIPO_IMOVEL"));
-//            }
-//            connection.close();
-//        } catch (SQLException | ClassNotFoundException e) {
-//            System.out.println("Erro no banco de dados - SQLException - Classe: ImovelDAO.java - getImovelById - Erro: " + e);
-//        }
-//        return imovel;
-//    }
+    public ImovelData getImovelById(int imovelId) {
+        ImovelData imovel = new ImovelData();
+        try {
+            Connection connection = new ConnectionFactory().getConnection();
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM IMOVEL WHERE IMOVEL_ID = " + imovelId);
+            while (rs.next()) {
+                imovel.setImovelId(Integer.parseInt(rs.getString(imovelId)));
+                imovel.setProprietarioCpf(rs.getString("FK_PROPRIETARIO_CPF"));
+                imovel.setImovelRua(rs.getString("IMOVEL_RUA"));
+                imovel.setImovelNumero(rs.getString("IMOVEL_NUMERO"));
+                imovel.setImovelComplemento(rs.getString("IMOVEL_COMPLEMENTO"));
+                imovel.setImovelBairro(rs.getString("IMOVEL_BAIRRO"));
+                imovel.setImovelCep(rs.getString("IMOVEL_CEP"));
+                imovel.setImovelCidade(rs.getString("IMOVEL_CIDADE"));
+                imovel.setImovelEstado(rs.getString("IMOVEL_ESTADO"));
+                imovel.setImovelTipoTransacao(rs.getString("IMOVEL_TIPOTRANSACAO"));
+                imovel.setImovelVlrVenda(rs.getString("IMOVEL_VLRVENDA"));
+                imovel.setImovelVlrAluguel(rs.getString("IMOVEL_VLRALUGUEL"));
+                imovel.setImovelQtdVagasGaragem(rs.getString("IMOVEL_QTDVAGASGARAGEM"));
+                imovel.setImovelQtdDormitorios(rs.getString("IMOVEL_QTDDORMITORIOS"));
+                imovel.setImovelTipo(rs.getString("IMOVEL_TIPO"));
+                imovel.setImovelMetrosQuadrado(rs.getString("IMOVEL_METROSQUADRADO"));
+                imovel.setImovelDescricao(rs.getString("IMOVEL_DESCRICAO"));
+                
+                
+            }
+            connection.close();
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Erro no banco de dados - SQLException - Classe: ImovelDAO.java - getImovelById - Erro: " + e);
+        }
+        return imovel;
+    }
     public boolean excluirImovel(int idImovel) {
         try {
             String sql = "DELETE FROM Imovel WHERE ID_Imovel = " + idImovel;

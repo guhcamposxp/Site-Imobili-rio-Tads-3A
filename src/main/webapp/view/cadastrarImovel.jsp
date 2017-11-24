@@ -34,10 +34,7 @@
                                 <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarImovel.jsp"> Cadastrar</a>
                             </li>
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/consultarImovel.jsp"> Consultar</a>
-                            </li>
-                            <li>
-                                <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarImovel.jsp"> Gerenciar</a>
+                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarImovel.jsp"> Consultar</a>
                             </li>
                         </ul>
                     </li>
@@ -184,7 +181,7 @@
                                         <label>Estado</label>
                                         <select class="form-control" name="imovelEstado" id="imovelCidade">
                                             <option value="null">Selecione</option>
-                                            <option value="">Acre</option>
+                                            <option value="ac">Acre</option>
                                             <option value="">Alagoas</option>
                                             <option value="">Amapá</option>
                                             <option value="">Amazonas</option>

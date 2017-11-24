@@ -3,17 +3,17 @@
     Created on : 02/11/2017, 20:37:42
     Author     : Felipe
 --%>
-<%@page import="Data.ClienteData"%>
+<%@page import="Data.ImovelData"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="DAO.ClienteDAO"%>
+<%@page import="DAO.ImovelDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <jsp:include page="/getCliente" />
+        <jsp:include page="/getImovel" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Editar Cliente</title>
+        <title>Editar Imóvel</title>
         <link href="${pageContext.request.contextPath}/all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/css/sb-admin.css" rel="stylesheet" type="text/css"/>
@@ -135,63 +135,18 @@
 
             <div class="container">
                 <div class="card card-register mx-auto mt-5">
-                    <div class="card-header cardRegistro">Editar Cliente</div>
+                    <div class="card-header cardRegistro">Editar Imóvel</div>
                     <div class="card-body">
-                        <form name="formCliente" id="formularioCadastro" class="well form-horizontal" action="${pageContext.request.contextPath}/insertCliente" method="post">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <div class="form-group col-lg-6">
-                                        <h5>
-                                            Dados Básicos
-                                        </h5>
-                                        <hr/>
-                                        <div class="form-row">
-                                            <div class="col-md-6">
-                                                <label for="">Nome</label>
-                                                <input type="text" name="clienteNome" value="${lista.clienteNome}"/>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="">Sobrenome</label>
-                                                <input type="text" name="clienteSobrenome" value="${lista.clienteSobrenome}" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="">CPF</label>
-                                                <input type="text" name="clienteCpf" value="${lista.clienteCpf}" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="">RG</label>
-                                                <input type="text" name="clienteRg" value="${lista.clienteRg}" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="">Sexo</label>
-                                                <input type="text" name="clienteSexo" value="${lista.clienteSexo}" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="">Data de Nascimento</label>
-                                                <input type="text" name="clienteNascimento" value="${lista.clienteNascimento}" />
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-lg-6">
-                                        <h5>
-                                            Contato
-                                        </h5>
-                                        <hr/>
-                                        <div class="form-row">
-                                            <div class="col-md-6">
-                                                <label for=" ">Celular</label>
-                                                <input type="text" name="clienteCelular" value="${lista.clienteCelular}" />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label>Fixo</label>
-                                                <input type="text" name="clienteTelefone" value="${lista.clienteTelefone}" />
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label>Email</label>
-                                                <input type="text" name="clienteEmail" value="${lista.clienteEmail}" />
-                                            </div>
-                                        </div>
+                        <form name="formImovel" id="formularioCadastro" action="${pageContext.request.contextPath}/insertImovel" method="post">
+                            <div class="form-group col-lg-12 divContato ">
+                                <h5>
+                                    Proprietário
+                                </h5>
+                                <hr/>
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <label for="">CPF</label>
+                                        <input class="form-control campos" name="proprietarioCpf" id="proprietarioCpf" type="text" placeholder="000.000.000-00" value="${lista.proprietarioCpf}">
                                     </div>
                                 </div>
                             </div>
@@ -204,32 +159,77 @@
                                 <div class="form-row">
                                     <div class="col-md-8">
                                         <label for="">Rua</label>
-                                        <input type="text" name="clienteRua" value="${lista.clienteRua}" />
+                                        <input class="form-control campos" name="imovelRua" id="imovelRua" type="text" value="${lista.imovelRua}">
                                     </div>
                                     <div class="col-md-2">
                                         <label for="">Número</label>
-                                        <input type="text" name="clienteNumero" value="${lista.clienteNumero}" />
+                                        <input class="form-control campos" name="imovelNumero" id="imovelNumero" type="text" value="${lista.imovelNumero}">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="">Complemento</label>
-                                        <input type="text" name="clienteComplemento" value="${lista.clienteComplemento}" />
+                                        <input class="form-control campos" name="imovelComplemento" id="imovelComplemento" type="text" value="${lista.imovelComplemento}">
                                     </div>
                                     <div class="col-md-2">
                                         <label for="">CEP</label>
-                                        <input type="text" name="clienteCep" value="${lista.clienteCep}" />
+                                        <input class="form-control maskCEP campos" name="imovelCep" id="imovelCep" type="text" placeholder="00000-000" value="${lista.imovelCep}">
                                     </div>
                                     <div class="col-md-5">
                                         <label for="">Bairro</label>
-                                        <input type="text" name="clienteBairro" value="${lista.clienteBairro}" />
+                                        <input class="form-control campos" name="imovelBairro" id="imovelBairro" type="text" value="${lista.imovelBairro}">
                                     </div>
                                     <div class="col-md-5">
                                         <label for="">Cidade</label>
-                                        <input type="text" name="clienteCidade" value="${lista.clienteCidade}" />
+                                        <input class="form-control campos" name="imovelCidade" id="imovelCidade" type="text" value="${lista.imovelCidade}">
                                     </div>
-                                    
+                                    <div class="col-md-5">
+                                        <label>Estado</label>
+                                        <input class="form-control campos" name="imovelEstado" id="imovelEstado" type="text" value="${lista.imovelEstado}">
+                                    </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Salvar</button>
+
+                            <div class="form-group col-lg-12 divContato" >
+                                <h5>
+                                    Dados do Imóvel
+                                </h5>
+                                <hr/>
+                                <div class="form-row">
+                                    <div class="col-md-5">
+                                        <label for="">Tipo de transação</label></br>
+                                        <input class="form-control campos" name="imovelTipoTransacao" id="imovelTipoTransacao" type="text" value="${lista.imovelTipoTransacao}">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>Qtd. Vagas na Garagem</label>
+                                        <input class="form-control campos" id="imovelVagasGaragem" name="imovelVagasGaragem" type="number" aria-describedby="emailHelp" value="${lista.imovelQtdVagasGaragem}">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>Qtd. Dormitórios</label>
+                                        <input class="form-control maskCEP campos" name="imovelDormitorios" id="imovelDormitorios" type="number" value="${lista.imovelQtdDormitorios}">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Tipo</label>
+                                        <input class="form-control maskCEP campos" name="imovelTipo" id="imovelTipo" type="text" value="${lista.imovelTipo}">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Metros²</label>
+                                        <input class="form-control campos" name="imovelMetros" id="imovelMetros" type="number" value="${lista.imovelMetrosQuadrado}">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Valor Venda</label>
+                                        <input class="form-control campos" name="imovelVlrVenda" id="imovelVlrVenda" type="number" value="${lista.imovelVlrVenda}">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Valor Aluguel</label>
+                                        <input class="form-control campos" name="imovelVlrAluguel" id="imovelVlrAluguel" type="number" value="${lista.imovelVlrAluguel}">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label>Descrição</label>
+                                        <input class="form-control campos" name="imovelDescricao" id="imovelDescricao" value="${lista.imovelDescricao}">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Editar</button>
                         </form>
                         
                         

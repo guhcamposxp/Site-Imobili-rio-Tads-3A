@@ -20,15 +20,15 @@ public class getImovel extends HttpServlet {
             throws ServletException, IOException {
 
         ImovelDAO getImoveis = new ImovelDAO();
-        String id = request.getParameter("idImovel");
+        String id = request.getParameter("imovelId");
         if (id == null) {
             List<ImovelData> lista = getImoveis.getTodosImoveis();
             request.setAttribute("lista", lista);
              
         } else {
             ImovelData lista = new ImovelData();
-//            lista = getImoveis.getImovelById(Integer.parseInt(id));
-//            request.setAttribute("lista", lista);
+            lista = getImoveis.getImovelById(Integer.parseInt(id));
+            request.setAttribute("lista", lista);
             response.sendRedirect("view/showImovel.jsp");
         }
             /*
