@@ -61,7 +61,7 @@ public class FilialDAO {
                     + "FILIAL_BAIRRO = '" + filial.getFilialBairro() + "', \n"
                     + "FILIAL_CNPJ = '" + filial.getFilialCnpj() + "', \n"
                     + "FILIAL_NOME = '" + filial.getFilialNome() + "'  \n"
-                    + "WHERE ID_FILIAL = " + filial.getFilialId() + "";
+                    + "WHERE FILIAL_ID = " + filial.getFilialId() + "";
 
             //Cria conexão com banco de dados
             Connection connection = new ConnectionFactory().getConnection();
@@ -89,7 +89,7 @@ public class FilialDAO {
             ResultSet rs = stmt.executeQuery("SELECT * FROM FILIAL");
             while (rs.next()) {
                 FilialData filial = new FilialData();
-                filial.setFilialId(Integer.parseInt(rs.getString("ID_FILIAL")));
+                filial.setFilialId(Integer.parseInt(rs.getString("FILIAL_ID")));
                 filial.setFilialRua(rs.getString("FILIAL_RUA"));
                 filial.setFilialNum(rs.getString("FILIAL_NUM"));
                 filial.setFilialCep(rs.getString("FILIAL_CEP"));
@@ -113,9 +113,9 @@ public class FilialDAO {
         try {
             Connection connection = new ConnectionFactory().getConnection();
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM FILIAL WHERE ID_FILIAL = " + idFilial);
+            ResultSet rs = stmt.executeQuery("SELECT * FROM FILIAL WHERE FILIAL_ID = " + idFilial);
             while (rs.next()) {
-                filial.setFilialId(Integer.parseInt(rs.getString("ID_FILIAL")));
+                filial.setFilialId(Integer.parseInt(rs.getString("FILIAL_ID")));
                 filial.setFilialRua(rs.getString("FILIAL_RUA"));
                 filial.setFilialNum(rs.getString("FILIAL_NUM"));
                 filial.setFilialCep(rs.getString("FILIAL_CEP"));
@@ -132,9 +132,9 @@ public class FilialDAO {
         }
         return filial;
     }
-    public boolean excluirFilial(int idFilial){
+    public boolean excluirFilial(int filialId){
         try {
-            String sql = "DELETE FROM FILIAL WHERE ID_FILIAL = " + idFilial;
+            String sql = "DELETE FROM FILIAL WHERE FILIAL_ID = " + filialId;
             Connection connection = new ConnectionFactory().getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.executeUpdate(sql);

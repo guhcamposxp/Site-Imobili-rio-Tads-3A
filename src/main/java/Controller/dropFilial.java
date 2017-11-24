@@ -18,10 +18,10 @@ public class dropFilial extends HttpServlet {
             String id = request.getParameter("filialId");
             FilialDAO getFilial = new FilialDAO();
             getFilial.excluirFilial(Integer.parseInt(id));
-            response.sendRedirect("view/listagemFilial.jsp");
+            response.sendRedirect("view/listarFilial.jsp");
         } catch (Exception e) {
             System.out.println("Erro Servlet - Drop Filial");
-            response.sendRedirect("view/listagemFilial.jsp");
+            response.sendRedirect("view/listarFilial.jsp");
         }
 
     }

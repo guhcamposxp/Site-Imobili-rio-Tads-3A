@@ -1,27 +1,27 @@
-
+<%-- 
+    Document   : editarFilial
+    Created on : 02/11/2017, 20:37:42
+    Author     : Felipe
+--%>
 <%@page import="Data.FilialData"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="DAO.FilialDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-
     <head>
         <jsp:include page="/getFilial" />
-        <meta charset="utf-8"/>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
-
-        <title>Listagem de  Filiais</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Editar Filial</title>
         <link href="${pageContext.request.contextPath}/all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="${pageContext.request.contextPath}/all/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/css/sb-admin.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet" type="text/css"/>
-        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">	
+        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
     </head>
-    <body class="fixed-nav sticky-footer" id="page-top">
+    <body>
+        
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/view/BoasVindas.jsp">Away - Sistema Imobiliário</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -132,99 +132,91 @@
             </div>
         </nav>
 
+
         <div class="content-wrapper">
-            <div class="container-fluid">
 
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fa fa-table"></i>  Filial Cadastrados </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>CNPJ</th>
-                                        <th>Estado</th>
-                                        <th>Cidade</th>
-                                        <th>Rua</th>
-                                        <th class="actions">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-
-                                    <c:forEach var="filial" items="${lista}">
-                                        <tr>
-                                            <td>${filial.filialNome}</td>
-                                            <td>${filial.filialCnpj}</td>
-                                            <td>${filial.filialEstado}</td>
-                                            <td>${filial.filialCidade}</td>
-                                            <td>${filial.filialRua}</td>
-
-                                            <td class="actions">
-                                                <a class="btn btn-success btn-xs" href="../view/showFilial.jsp?id Filial=${filial.filialId}">Visualizar</a>
-                                                <a class="btn btn-warning btn-xs" href="../view/editarFilial.jsp?filialId=${filial.filialId}">Editar</a>
-                                                <a class="btn btn-danger btn-xs"  href="../dropFilial?filialId=${filial.filialId}">Excluir</a>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <footer class="sticky-footer">
             <div class="container">
-                <div class="text-center">
-                    <small>© Copyright 2017 Away</small>
-                </div>
-            </div>
-        </footer>
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fa fa-angle-up"></i>
-        </a>
-        <!-- Logout Modal-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja sair?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Clique em "Sair" abaixo se você deseja realmente sair.</div>
-                    <div class="modal-footer">
+                <div class="card card-register mx-auto mt-5">
+                    <div class="card-header cardRegistro">Editar Filial</div>
+                    <div class="card-body">
+                        <form name="formFilial" id="formularioCadastro" class="well form-horizontal" action="${pageContext.request.contextPath}/insertFilial" method="post">
+                            <div class="col-lg-12">
+                                
+                                <div class="form-row">
+                                    <div class="col-md-8">
+                                        <label for="">Nome</label>
+                                        <input class="form-control" name="filialNome" id="filialNome" type="text" value="${lista.filialNome}">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="">CNPJ</label>
+                                        <input class="form-control maskCNPJ" name="filialCnpj" id="filialCnpj" type="text" aria-describedby="nameHelp" placeholder="00.000.000/0000-00" value="${lista.filialCnpj}">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label for="">Rua</label>
+                                        <input class="form-control" name="filialRua" id="filialRua" type="text" value="${lista.filialRua}" >
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="">Número</label>
+                                        <input class="form-control" name="filialNum" id="filialNum" type="text" value="${lista.filialNum}">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="">Cep</label>
+                                        <input class="form-control maskCEP" name="filialCep" id="filialCep" type="text" placeholder="00000-000" value="${lista.filialCep}">
+                                    </div>
+                                    
+                                    <div class="col-md-5">
+                                        <label for="">Bairro</label>
+                                        <input class="form-control" name="filialBairro" id="filialBairro" type="text" value="${lista.filialBairro}">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="">Cidade</label>
+                                        <input class="form-control" name="filialCidade" id="filialCidade" type="text" value="${lista.filialCidade}">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="">Estado</label>
+                                        <select class="form-control" name="filialEstado" id="filialEstado" value="${lista.filialEstado}">
+                                            <option value="null">Selecione</option>
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="">Amapá</option>
+                                            <option value="">Amazonas</option>
+                                            <option value="">Bahia</option>
+                                            <option value="">Ceará</option>
+                                            <option value="">Distrito Federal</option>
+                                            <option value="">Espírito Santo</option>
+                                            <option value="">Goiás</option>
+                                            <option value="">Maranhão</option>
+                                            <option value="">Mato Grosso</option>
+                                            <option value="">Mato Grosso do Sul</option>
+                                            <option value="">Minas Gerais</option>
+                                            <option value="">Pará</option>
+                                            <option value="">Paraíba</option>
+                                            <option value="">Paraná</option>
+                                            <option value="">Pernambuco</option>
+                                            <option value="">Piauí</option>
+                                            <option value="">Rio de Janeiro</option>
+                                            <option value="">Rio Grande do Norte</option>
+                                            <option value="">Rio Grande do Sul</option>
+                                            <option value="">Rondônia</option>
+                                            <option value="">Roraima</option>
+                                            <option value="">Santa Catarina</option>
+                                            <option value="">São Paulo</option>
+                                            <option value="">Sergipe</option>
+                                            <option value="">Tocantins</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
 
-                        <!--<a class="btn btn-primary" href="login.html">Sair</a>-->
-                        <form action="${pageContext.request.contextPath}/logout" method="post">
-                            <input class="btn btn-primary" type="submit" value="Logout" />
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Salvar</button>
                         </form>
+                        
+                        
+                        <hr/>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <script src="${pageContext.request.contextPath}/all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/all/vendor/popper/popper.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/all/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/all/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
-        <!--<script src="${pageContext.request.contextPath}/all/vendor/chart.js/Chart.min.js" type="text/javascript"></script>-->
-        <script src="${pageContext.request.contextPath}/all/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/js/sb-admin.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/js/sb-admin-datatables.min.js" type="text/javascript"></script>
-        <!--<script src="${pageContext.request.contextPath}/js/sb-admin-charts.min.js" type="text/javascript"></script>-->
-        <script src="${pageContext.request.contextPath}/js/jquery.mask.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/js/masks.js" type="text/javascript"></script>
-
+        </div>     
     </body>
-</html>
-
 </html>
