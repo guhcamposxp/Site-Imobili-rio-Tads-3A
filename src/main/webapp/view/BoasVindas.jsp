@@ -10,12 +10,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
-        <link href="../all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <script src="../all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
-        <link href="../css/sb-admin.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/custom.css" rel="stylesheet" type="text/css"/>
+        <title>Boas Vindas</title>
+        <link href="${pageContext.request.contextPath}/all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/css/sb-admin.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">	
 
 
     </head>
@@ -138,7 +138,7 @@
 
                 <div class="col-lg-8 boasVindas">
 
-                    <p>Seja bem vindo, <strong>Administrador</strong></p>
+                    <p>Seja bem vindo(a), <strong>Administrador</strong></p>
 
 
                 </div>
@@ -167,24 +167,28 @@
                         </div>
                         <div class="modal-body">Clique em "Sair" abaixo se você deseja realmente sair.</div>
                         <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                            <a class="btn btn-primary" href="login.html">Sair</a>
+                            
+                            <!--<a class="btn btn-primary" href="login.html">Sair</a>-->
+                            <form action="${pageContext.request.contextPath}/logout" method="post">
+                                <input class="btn btn-primary" type="submit" value="Logout" />
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <script src="../all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
-            <script src="../all/vendor/popper/popper.min.js" type="text/javascript"></script>
-            <script src="../all/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-            <script src="../all/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
-            <script src="../all/vendor/chart.js/Chart.min.js" type="text/javascript"></script>
-            <script src="../all/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
-            <script src="../all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
-            <script src="../js/sb-admin.min.js" type="text/javascript"></script>
-            <script src="../js/sb-admin-datatables.min.js" type="text/javascript"></script>
-            <script src="../js/sb-admin-charts.min.js" type="text/javascript"></script>
-            <script src="../js/jquery.mask.js" type="text/javascript"></script>
-            <script src="../js/masks.js" type="text/javascript"></script>
+            <script src="${pageContext.request.contextPath}/all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/popper/popper.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
+        <!--<script src="${pageContext.request.contextPath}/all/vendor/chart.js/Chart.min.js" type="text/javascript"></script>-->
+        <script src="${pageContext.request.contextPath}/all/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/sb-admin.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/sb-admin-datatables.min.js" type="text/javascript"></script>
+        <!--<script src="${pageContext.request.contextPath}/js/sb-admin-charts.min.js" type="text/javascript"></script>-->
+        <script src="${pageContext.request.contextPath}/js/jquery.mask.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/masks.js" type="text/javascript"></script>
     </body>
 </html>

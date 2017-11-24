@@ -26,22 +26,16 @@
         <label>Sistema Imobiliário</label>
       </div>
       <div class="card-body">
-        <form>
+        <form class="formLogin" action="${pageContext.request.contextPath}/validLogin" method="post">
           <div class="form-group">
-            <label for="exampleInputEmail1">Usuário</label>
-            <input class="form-control" id="inputUser" type="email" aria-describedby="emailHelp">
+            <label>Usuário</label>
+            <input class="form-control" name="usuario" id="inputUser" type="text" required="" autofocus="">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Senha</label>
-            <input class="form-control" id="inputPass" type="password">
+            <label>Senha</label>
+            <input class="form-control" name="senha" id="inputPass" type="password" required="">
           </div>
-          <div class="form-group">
-            <div class="form-check">
-              <label class="form-check-label">
-                <input class="form-check-input" type="checkbox"> Lembrar-me</label>
-            </div>
-          </div>
-          <a class="btn btn-primary btn-block" href="index.html">Logar</a>
+          <input class="btn btn-primary btn-block" type="submit" value="Logar">
         </form>
       </div>
     </div>

@@ -17,10 +17,9 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "validLogin", urlPatterns = {"/validLogin"})
 public class validLogin extends HttpServlet {
 
-    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String retorno = "/view/Inicio.jsp";
+        String retorno = "/view/BoasVindas.jsp";
         String usuario = request.getParameter("usuario");
         String senha = request.getParameter("senha");
 
@@ -32,9 +31,9 @@ public class validLogin extends HttpServlet {
         } else {
 
         }
-        FilialDAO daoFilial = new FilialDAO();
-        FilialData filial = new FilialData();
-        filial = daoFilial.getFilialByID(funcionario.getFilialFuncionario());
+        /*FilialDAO daoFilial = new FilialDAO();
+        FilialData filial = new FilialData();*/
+        //filial = daoFilial.getFilialByID(funcionario.getFilialFuncionario());
 
         Date data = new Date();
         SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
@@ -43,7 +42,7 @@ public class validLogin extends HttpServlet {
         session.setAttribute("dataatual", formatador.format(data));
         session.setAttribute("nomeFuncionario", funcionario.getNomeFuncionario());
         session.setAttribute("cargoFuncionario", funcionario.getCargoFuncionario());
-        session.setAttribute("filialFuncionario", filial.getNomeFantasiaFilial());
+        //session.setAttribute("filialFuncionario", filial.getNomeFantasiaFilial());
         request.getServletContext().getRequestDispatcher(retorno).forward(request, response);
     }
 
