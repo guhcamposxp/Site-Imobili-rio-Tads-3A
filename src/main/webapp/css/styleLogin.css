@@ -1,0 +1,80 @@
+.telaLogin {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+h2{
+  text-align: center;
+}
+
+.divRequisito{
+  max-width: 330px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+
+}
+
+#lbRequisito{
+  font-size: 14px;
+  font-family: "Open Sans","Segoe UI",Arial,sans-serif;
+}
+
+#imgFirefox{
+  transform: translate(18px, 0px);
+
+}
+
+#lbFirefox{
+  font-size: 12px;
+  transform: translate(11px, 0px);
+}
+
+#imgChrome{
+  transform: translate(64px, -4px);
+
+}
+
+#lbChrome{
+  font-size: 12px;
+  transform: translate(34px, 0px);
+}
+
+.formLogin {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  border: 5px solid #9A9A9A;
+}
+.formLogin .tituloSistema,
+.formLogin .checkbox {
+  margin-bottom: 30px;
+}
+.formLogin .checkbox {
+  font-weight: normal;
+}
+.formLogin .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.formLogin .form-control:focus  {
+  z-index: 2;
+}
+.formLogin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.formLogin input[type="password"] {
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.checkbox{
+  transform: translate(21px, -13px);
+}

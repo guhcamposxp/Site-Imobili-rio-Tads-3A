@@ -1,0 +1,16 @@
+legend {
+  text-align: center;
+  border-bottom: 1px solid #D08720 !important;
+  width: 75%;
+}
+
+textarea {
+   resize: none; /* Desabilita o extendimento do textarea */
+} 
+p {
+   color: #D08720;
+}
+
+#sucess{
+    text-align: center;
+}

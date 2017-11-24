@@ -1,0 +1,187 @@
+body {
+  background: #eee !important;
+  font-family: 'Roboto', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 15px;
+}
+
+.menuLateral{
+  width: 200px;
+  height: 226px;
+  transform: translate(0px, 114px);
+  border: 2px solid black;
+  text-align: center;
+  border-left: 0px;
+  margin: 0;
+}
+
+a{
+      text-decoration:none;
+      cursor:pointer;
+}
+
+hr{
+  display: block;
+    -webkit-margin-before: 0.5em;
+    -webkit-margin-after: 0.5em;
+    -webkit-margin-start: auto;
+    -webkit-margin-end: auto;
+    border-style: inset;
+    border-width: 1px;
+    border-color: black;
+}
+
+#titulosCadastroCliente{
+  border: 2px solid black;
+  margin: 0;
+  margin-left: 198px;
+  transform: translate(0px, -215px);
+  text-align: center;
+  padding: 0px;
+}
+
+#tituloTelefone{
+  border: 2px solid black;
+  margin: 0;
+  margin-left: 198px;
+  transform: translate(0px, -122px);
+  text-align: center;
+  padding: 0px;
+}
+
+#lbNascimento{
+  transform: translate(-258px, 0px);
+}
+#calendario{
+  transform: translate(-243px, 0px);
+}
+
+#lbRg{
+  transform: translate(-102px, -51px);
+}
+
+#inRg{
+  transform: translate(-62px, -53px);
+}
+
+#lbCpf{
+  transform: translate(53px, -104px);
+}
+
+#inCpf{
+  transform: translate(95px, -106px);
+}
+
+#lbSexo{
+  transform: translate(95px, -106px);
+}
+
+#selectSexo{
+  transform: translate(95px, -106px);
+}
+
+#lbSexo{
+  transform: translate(219px, -157px);
+}
+
+#selectSexo{
+  transform: translate(246px, -159px);
+}
+
+#lbEmail{
+  transform: translate(112px, -157px);
+}
+
+#inEmail{
+  transform: translate(66px, -129px);
+}
+
+#lbEstadoCivil{
+  transform: translate(-284px, -183px);
+}
+
+#selectEstadoCivil{
+  transform: translate(-276px, -184px);
+}
+
+#lbPaises{
+  transform: translate(-307px, -180px);
+}
+
+#selectPaises{
+  transform: translate(-245px, -181px);
+}
+
+#lbEstados{
+  transform: translate(-89px, -229px);
+}
+
+#selectEstados{
+  transform: translate(-36px, -230px);
+}
+
+#lbCep{
+  transform: translate(-389px, -3px);
+}
+
+#inCep{
+  transform: translate(-349px, -4px);
+}
+
+#lbLogradouro{
+  transform: translate(-203px, -56px);
+}
+
+#inLogradouro{
+  transform: translate(9px, -57px);
+}
+
+#lbNumero{
+  transform: translate(339px, -109px);
+}
+
+#inNumero{
+  transform: translate(337px, -110px);
+}
+
+#lbBairro{
+  transform: translate(-383px, -106px);
+}
+
+#inBairro{
+  transform: translate(-339px, -106px);
+}
+
+#lbComplemento{
+  transform: translate(-194px, -159px);
+}
+
+#inComplemento{
+  transform: translate(-116px, -159px);
+}
+
+#lbTelefone{
+  transform: translate(-153px, 90px);
+}
+
+#inTelefone{
+  transform: translate(-102px, 88px);
+}
+
+#lbCelular{
+  transform: translate(40px, 37px);
+}
+
+#inCelular{
+  transform: translate(81px, 35px);
+}
+
+.todosDados{
+  margin-left: 220px;
+  margin-top: -180px;
+  text-align: center;
+}
+
+.teste{
+  text-align: center;
+}
