@@ -4,17 +4,20 @@
     Author     : felipe.joliveira
 --%>
 
+<%@page import="Data.ClienteData"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="DAO.ClienteDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastrar Cliente</title>
-        <link href="../all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <script src="../all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
-        <link href="../css/sb-admin.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/custom.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/css/sb-admin.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">	
     </head>
     <body>
 
@@ -137,7 +140,7 @@
                 <div class="card card-register mx-auto mt-5">
                     <div class="card-header cardRegistro">Registar Novo Cliente</div>
                     <div class="card-body">
-                        <form>
+                        <form name="formCliente" id="formularioCadastro" action="${pageContext.request.contextPath}/insertCliente" method="post">
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="form-group col-lg-6">
@@ -148,23 +151,24 @@
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <label for="">Nome</label>
-                                                <input class="form-control" id="clienteNome" type="text" aria-describedby="nameHelp">
+                                                <input class="form-control" name="clienteNome" id="clienteNome" type="text" aria-describedby="nameHelp">
+                                                
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Sobrenome</label>
-                                                <input class="form-control" id="clienteSobrenome" type="text" aria-describedby="nameHelp">
+                                                <input class="form-control" name="clienteSobrenome" id="clienteSobrenome" type="text" aria-describedby="nameHelp">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">CPF</label>
-                                                <input class="form-control maskCPF" id="clienteCpf" type="text" aria-describedby="nameHelp" placeholder="000.000.000-00">
+                                                <input class="form-control maskCPF" name="clienteCpf" id="clienteCpf" type="text" aria-describedby="nameHelp" placeholder="000.000.000-00">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">RG</label>
-                                                <input class="form-control maskRG" id="clienteRg" type="text" aria-describedby="nameHelp" placeholder="00.000.000-0">
+                                                <input class="form-control maskRG" name="clienteRg" id="clienteRg" type="text" aria-describedby="nameHelp" placeholder="00.000.000-0">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Sexo</label>
-                                                <select class="form-control" id="clienteSexo">
+                                                <select class="form-control" name="clienteSexo" id="clienteSexo">
                                                     <option value="null">Selecione</option>
                                                     <option value="M">Masculino</option>
                                                     <option value="F">Feminino</option>
@@ -172,7 +176,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Data de Nascimento</label>
-                                                <input class="form-control maskDataNascimento" id="clienteNascimento" type="text" aria-describedby="nameHelp">
+                                                <input class="form-control maskDataNascimento" name="clienteNascimento" id="clienteNascimento" type="text" aria-describedby="nameHelp">
                                             </div>
 
                                         </div>
@@ -185,15 +189,15 @@
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <label for=" ">Celular</label>
-                                                <input class="form-control maskTelCel" maxlength="14" id="clienteCel" type="text" aria-describedby="emailHelp" placeholder="(00) 90000-0000">
+                                                <input class="form-control maskTelCel" name="clienteCelular" maxlength="14" id="clienteCel" type="text" placeholder="(00) 90000-0000">
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="exampleInputEmail1">Fixo</label>
-                                                <input class="form-control maskTelFixo" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="(00) 0000-0000">
+                                                <label>Fixo</label>
+                                                <input class="form-control maskTelFixo" name="clienteTelefone" id="exampleInputEmail1" type="text" placeholder="(00) 0000-0000">
                                             </div>
                                             <div class="col-md-12">
-                                                <label for="exampleInputEmail1">Email</label>
-                                                <input class="form-control" id="clienteEmail" type="email" aria-describedby="emailHelp" placeholder="Endereço de email">
+                                                <label>Email</label>
+                                                <input class="form-control" id="clienteEmail" name="clienteEmail" type="email" placeholder="Endereço de email">
                                             </div>
                                         </div>
                                     </div>
@@ -208,34 +212,34 @@
                                 <div class="form-row">
                                     <div class="col-md-8">
                                         <label for="">Rua</label>
-                                        <input class="form-control" id="clienteRua" type="text">
+                                        <input class="form-control" name="clienteRua" id="clienteRua" type="text">
                                     </div>
                                     <div class="col-md-2">
                                         <label for="">Número</label>
-                                        <input class="form-control" id="clienteNumero" type="text">
+                                        <input class="form-control" name="clienteNumero" id="clienteNumero" type="text">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="">Complemento</label>
-                                        <input class="form-control" id="clienteComplemento" type="email" >
+                                        <input class="form-control" name="clienteComplemento" id="clienteComplemento" type="text" >
                                     </div>
                                     <div class="col-md-2">
                                         <label for="">CEP</label>
-                                        <input class="form-control maskCEP" id="clienteCep" type="email" placeholder="00000-000">
+                                        <input class="form-control maskCEP" name="clienteCep" id="clienteCep" type="text" placeholder="00000-000">
                                     </div>
                                     <div class="col-md-5">
                                         <label for="">Bairro</label>
-                                        <input class="form-control" id="clienteBairro" type="email"  >
+                                        <input class="form-control" name="clienteBairro" id="clienteBairro" type="text"  >
                                     </div>
                                     <div class="col-md-5">
                                         <label for="">Cidade</label>
-                                        <input class="form-control" id="clienteCidade" type="email" >
+                                        <input class="form-control" name="clienteCidade" id="clienteCidade" type="text" >
                                     </div>
                                     <div class="col-md-5">
                                         <label for="">Estado</label>
-                                        <select class="form-control" id="clienteEstado">
+                                        <select class="form-control" name="clienteEstado" id="clienteEstado">
                                             <option value="null">Selecione</option>
-                                            <option value="">Acre</option>
-                                            <option value="">Alagoas</option>
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
                                             <option value="">Amapá</option>
                                             <option value="">Amazonas</option>
                                             <option value="">Bahia</option>
@@ -265,11 +269,10 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
                         </form>
-                        <a href="#" class="btn btn-success">Registrar</a>
-                        <a href="#" class="btn btn-warning">Limpar</a>
-                        <a href="#" class="btn btn-primary">Cancelar</a>
+                        
+                        
                         <hr/>
                     </div>
                 </div>
@@ -307,17 +310,17 @@
             </div>
         </div>
 
-        <script src="../all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
-        <script src="../all/vendor/popper/popper.min.js" type="text/javascript"></script>
-        <script src="../all/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="../all/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
-        <script src="../all/vendor/chart.js/Chart.min.js" type="text/javascript"></script>
-        <script src="../all/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
-        <script src="../all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
-        <script src="../js/sb-admin.min.js" type="text/javascript"></script>
-        <script src="../js/sb-admin-datatables.min.js" type="text/javascript"></script>
-        <script src="../js/sb-admin-charts.min.js" type="text/javascript"></script>
-        <script src="../js/jquery.mask.js" type="text/javascript"></script>
-        <script src="../js/masks.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/popper/popper.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
+        <!--<script src="${pageContext.request.contextPath}/all/vendor/chart.js/Chart.min.js" type="text/javascript"></script>-->
+        <script src="${pageContext.request.contextPath}/all/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/sb-admin.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/sb-admin-datatables.min.js" type="text/javascript"></script>
+        <!--<script src="${pageContext.request.contextPath}/js/sb-admin-charts.min.js" type="text/javascript"></script>-->
+        <script src="${pageContext.request.contextPath}/js/jquery.mask.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/masks.js" type="text/javascript"></script>
     </body>
 </html>

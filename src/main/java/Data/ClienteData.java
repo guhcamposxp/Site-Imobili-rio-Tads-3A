@@ -3,259 +3,151 @@ package Data;
 
 public class ClienteData {
 
-    private int idCliente;
-    private String nomeCliente;
-    private String cpfCliente;
-    private String rgCliente;
-    private String sexoCliente;
-    private String emailCliente;
-    private String nascimentoCliente;
-    private String telFixoCliente;
-    private String telCelCliente;
-    private String endRuaCliente;
-    private String endNumCliente;
-    private String endBairroCliente;
-    private String endCepCliente;
-    private String endEstCliente;
-    private String endCidCliente;
-    private String endCompCliente;
-    private String estCivilCliente;
-
-    /**
-     * @return the idCliente
-     */
-    public int getIdCliente() {
-        return idCliente;
+    private int clienteId;
+    private String clienteNome;
+    private String clienteSobrenome;
+    private String clienteCpf;
+    private String clienteRg;
+    private String clienteRua;
+    private String clienteNumero;
+    private String clienteComplemento;
+    private String clienteBairro;
+    private String clienteCidade;
+    private String clienteCep;
+    private String clienteNascimento;
+    private String clienteEmail;
+    private String clienteSexo;
+    private String clienteCelular;
+    private String clienteTelefone;
+    
+    public int getClienteId() {
+        return clienteId;
     }
 
-    /**
-     * @param idCliente the idCliente to set
-     */
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setClienteId(int clienteId) {
+        this.clienteId = clienteId;
     }
 
-    /**
-     * @return the nomeCliente
-     */
-    public String getNomeCliente() {
-        return nomeCliente;
+    public String getClienteNome() {
+        return clienteNome;
     }
 
-    /**
-     * @param nomeCliente the nomeCliente to set
-     */
-    public void setNomeCliente(String nomeCliente) {
-        this.nomeCliente = nomeCliente;
+    public void setClienteNome(String clienteNome) {
+        this.clienteNome = clienteNome;
     }
 
-    /**
-     * @return the cpfCliente
-     */
-    public String getCpfCliente() {
-        return cpfCliente;
+    public String getClienteSobrenome() {
+        return clienteSobrenome;
     }
 
-    /**
-     * @param cpfCliente the cpfCliente to set
-     */
-    public void setCpfCliente(String cpfCliente) {
-        this.cpfCliente = cpfCliente;
+    public void setClienteSobrenome(String clienteSobrenome) {
+        this.clienteSobrenome = clienteSobrenome;
     }
 
-    /**
-     * @return the rgCliente
-     */
-    public String getRgCliente() {
-        return rgCliente;
+    public String getClienteCpf() {
+        return clienteCpf;
     }
 
-    /**
-     * @param rgCliente the rgCliente to set
-     */
-    public void setRgCliente(String rgCliente) {
-        this.rgCliente = rgCliente;
+    public void setClienteCpf(String clienteCpf) {
+        this.clienteCpf = clienteCpf;
     }
 
-    /**
-     * @return the sexoCliente
-     */
-    public String getSexoCliente() {
-        return sexoCliente;
+    public String getClienteRg() {
+        return clienteRg;
     }
 
-    /**
-     * @param sexoCliente the sexoCliente to set
-     */
-    public void setSexoCliente(String sexoCliente) {
-        this.sexoCliente = sexoCliente;
+    public void setClienteRg(String clienteRg) {
+        this.clienteRg = clienteRg;
     }
 
-    /**
-     * @return the emailCliente
-     */
-    public String getEmailCliente() {
-        return emailCliente;
+    public String getClienteRua() {
+        return clienteRua;
     }
 
-    /**
-     * @param emailCliente the emailCliente to set
-     */
-    public void setEmailCliente(String emailCliente) {
-        this.emailCliente = emailCliente;
+    public void setClienteRua(String clienteRua) {
+        this.clienteRua = clienteRua;
     }
 
-    /**
-     * @return the nascimentoCliente
-     */
-    public String getNascimentoCliente() {
-        return nascimentoCliente;
+    public String getClienteNumero() {
+        return clienteNumero;
     }
 
-    /**
-     * @param nascimentoCliente the nascimentoCliente to set
-     */
-    public void setNascimentoCliente(String nascimentoCliente) {
-        this.nascimentoCliente = nascimentoCliente;
+    public void setClienteNumero(String clienteNumero) {
+        this.clienteNumero = clienteNumero;
     }
 
-    /**
-     * @return the telFixoCliente
-     */
-    public String getTelFixoCliente() {
-        return telFixoCliente;
+    public String getClienteComplemento() {
+        return clienteComplemento;
     }
 
-    /**
-     * @param telFixoCliente the telFixoCliente to set
-     */
-    public void setTelFixoCliente(String telFixoCliente) {
-        this.telFixoCliente = telFixoCliente;
+    public void setClienteComplemento(String clienteComplemento) {
+        this.clienteComplemento = clienteComplemento;
     }
 
-    /**
-     * @return the telCelCliente
-     */
-    public String getTelCelCliente() {
-        return telCelCliente;
+    public String getClienteBairro() {
+        return clienteBairro;
     }
 
-    /**
-     * @param telCelCliente the telCelCliente to set
-     */
-    public void setTelCelCliente(String telCelCliente) {
-        this.telCelCliente = telCelCliente;
+    public void setClienteBairro(String clienteBairro) {
+        this.clienteBairro = clienteBairro;
     }
 
-    /**
-     * @return the endRuaCliente
-     */
-    public String getEndRuaCliente() {
-        return endRuaCliente;
+    public String getClienteCidade() {
+        return clienteCidade;
     }
 
-    /**
-     * @param endRuaCliente the endRuaCliente to set
-     */
-    public void setEndRuaCliente(String endRuaCliente) {
-        this.endRuaCliente = endRuaCliente;
+    public void setClienteCidade(String clienteCidade) {
+        this.clienteCidade = clienteCidade;
     }
 
-    /**
-     * @return the endNumCliente
-     */
-    public String getEndNumCliente() {
-        return endNumCliente;
+    public String getClienteCep() {
+        return clienteCep;
     }
 
-    /**
-     * @param endNumCliente the endNumCliente to set
-     */
-    public void setEndNumCliente(String endNumCliente) {
-        this.endNumCliente = endNumCliente;
+    public void setClienteCep(String clienteCep) {
+        this.clienteCep = clienteCep;
     }
 
-    /**
-     * @return the endBairroCliente
-     */
-    public String getEndBairroCliente() {
-        return endBairroCliente;
+    public String getClienteNascimento() {
+        return clienteNascimento;
     }
 
-    /**
-     * @param endBairroCliente the endBairroCliente to set
-     */
-    public void setEndBairroCliente(String endBairroCliente) {
-        this.endBairroCliente = endBairroCliente;
+    public void setClienteNascimento(String clienteNascimento) {
+        this.clienteNascimento = clienteNascimento;
     }
 
-    /**
-     * @return the endCepCliente
-     */
-    public String getEndCepCliente() {
-        return endCepCliente;
+    public String getClienteEmail() {
+        return clienteEmail;
     }
 
-    /**
-     * @param endCepCliente the endCepCliente to set
-     */
-    public void setEndCepCliente(String endCepCliente) {
-        this.endCepCliente = endCepCliente;
+    public void setClienteEmail(String clienteEmail) {
+        this.clienteEmail = clienteEmail;
     }
 
-    /**
-     * @return the endEstCliente
-     */
-    public String getEndEstCliente() {
-        return endEstCliente;
+    public String getClienteSexo() {
+        return clienteSexo;
     }
 
-    /**
-     * @param endEstCliente the endEstCliente to set
-     */
-    public void setEndEstCliente(String endEstCliente) {
-        this.endEstCliente = endEstCliente;
+    public void setClienteSexo(String clienteSexo) {
+        this.clienteSexo = clienteSexo;
     }
 
-    /**
-     * @return the endCidCliente
-     */
-    public String getEndCidCliente() {
-        return endCidCliente;
+    public String getClienteCelular() {
+        return clienteCelular;
     }
 
-    /**
-     * @param endCidCliente the endCidCliente to set
-     */
-    public void setEndCidCliente(String endCidCliente) {
-        this.endCidCliente = endCidCliente;
+    public void setClienteCelular(String clienteCelular) {
+        this.clienteCelular = clienteCelular;
     }
 
-    /**
-     * @return the endCompCliente
-     */
-    public String getEndCompCliente() {
-        return endCompCliente;
+    public String getClienteTelefone() {
+        return clienteTelefone;
     }
 
-    /**
-     * @param endCompCliente the endCompCliente to set
-     */
-    public void setEndCompCliente(String endCompCliente) {
-        this.endCompCliente = endCompCliente;
-    }
-
-    /**
-     * @return the estCivilCliente
-     */
-    public String getEstCivilCliente() {
-        return estCivilCliente;
-    }
-
-    /**
-     * @param estCivilCliente the estCivilCliente to set
-     */
-    public void setEstCivilCliente(String estCivilCliente) {
-        this.estCivilCliente = estCivilCliente;
+    public void setClienteTelefone(String clienteTelefone) {
+        this.clienteTelefone = clienteTelefone;
     }
 }
+
+    
+

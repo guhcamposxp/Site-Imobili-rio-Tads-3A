@@ -15,44 +15,42 @@ public class ClienteDAO {
         Boolean retorno = false;
         try {
 
-            String sql = "INSERT INTO CLIENTE (NOME_CLIENTE,\n"
-                    + "CPF_CLIENTE,\n"
-                    + "RG_CLIENTE,\n"
-                    + "SEXO_CLIENTE,\n"
-                    + "EMAIL_CLIENTE,\n"
-                    + "NASCIMENTO_CLIENTE,\n"
-                    + "TEL_FIXO_CLIENTE,\n"
-                    + "TEL_CEL_CLIENTE,\n"
-                    + "END_RUA_CLIENTE,\n"
-                    + "END_NUM_CLIENTE,\n"
-                    + "END_BAIRRO_CLIENTE,\n"
-                    + "END_CEP_CLIENTE,\n"
-                    + "END_EST_CLIENTE,\n"
-                    + "END_CID_CLIENTE,\n"
-                    + "END_COMP_CLIENTE,\n"
-                    + "EST_CIVIL_CLIENTE) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO CLIENTE (CLIENTE_NOME,\n"
+                    + "CLIENTE_SOBRENOME,\n"
+                    + "CLIENTE_CPF,\n"
+                    + "CLIENTE_RG,\n"
+                    + "CLIENTE_RUA,\n"
+                    + "CLIENTE_NUMERO,\n"
+                    + "CLIENTE_COMPLEMENTO,\n"
+                    + "CLIENTE_BAIRRO,\n"
+                    + "CLIENTE_CIDADE,\n"
+                    + "CLIENTE_CEP,\n"
+                    + "CLIENTE_NASCIMENTO,\n"
+                    + "CLIENTE_EMAIL,\n"
+                    + "CLIENTE_SEXO,\n"
+                    + "CLIENTE_CELULAR,\n"
+                    + "CLIENTE_TELEFONE) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
             //Cria conexão com banco de dados
             Connection connection = new ConnectionFactory().getConnection();
             //Prepara a query
             PreparedStatement pstmt = connection.prepareStatement(sql);
             //Captura campos e seta na query
-            pstmt.setString(1, cliente.getNomeCliente());
-            pstmt.setString(2, cliente.getCpfCliente());
-            pstmt.setString(3, cliente.getRgCliente());
-            pstmt.setString(4, cliente.getSexoCliente());
-            pstmt.setString(5, cliente.getEmailCliente());
-            pstmt.setString(6, cliente.getNascimentoCliente());
-            pstmt.setString(7, cliente.getTelFixoCliente());
-            pstmt.setString(8, cliente.getTelCelCliente());
-            pstmt.setString(9, cliente.getEndRuaCliente());
-            pstmt.setString(10, cliente.getEndNumCliente());
-            pstmt.setString(11, cliente.getEndBairroCliente());
-            pstmt.setString(12, cliente.getEndCepCliente());
-            pstmt.setString(13, cliente.getEndEstCliente());
-            pstmt.setString(14, cliente.getEndCidCliente());
-            pstmt.setString(15, cliente.getEndCompCliente());
-            pstmt.setString(16, cliente.getEstCivilCliente());
+            pstmt.setString(1, cliente.getClienteNome());
+            pstmt.setString(2, cliente.getClienteSobrenome());
+            pstmt.setString(3, cliente.getClienteCpf());
+            pstmt.setString(4, cliente.getClienteRg());
+            pstmt.setString(5, cliente.getClienteRua());
+            pstmt.setString(6, cliente.getClienteNumero());
+            pstmt.setString(7, cliente.getClienteComplemento());
+            pstmt.setString(8, cliente.getClienteBairro());
+            pstmt.setString(9, cliente.getClienteCidade());
+            pstmt.setString(10, cliente.getClienteCep());
+            pstmt.setString(11, cliente.getClienteNascimento());
+            pstmt.setString(12, cliente.getClienteEmail());
+            pstmt.setString(13, cliente.getClienteSexo());
+            pstmt.setString(14, cliente.getClienteCelular());
+            pstmt.setString(15, cliente.getClienteTelefone());
             pstmt.executeUpdate();
             connection.close();
             retorno = true;
@@ -67,23 +65,22 @@ public class ClienteDAO {
         try {
 
             String sql = "UPDATE CLIENTE SET "
-                    + "NOME_CLIENTE = '" + cliente.getNomeCliente() + "', \n"
-                    + "CPF_CLIENTE = '" + cliente.getCpfCliente() + "', \n"
-                    + "RG_CLIENTE = '" + cliente.getRgCliente() + "', \n"
-                    + "SEXO_CLIENTE = '" + cliente.getSexoCliente() + "', \n"
-                    + "EMAIL_CLIENTE = '" + cliente.getEmailCliente() + "', \n"
-                    + "NASCIMENTO_CLIENTE = '" + cliente.getNascimentoCliente() + "', \n"
-                    + "TEL_FIXO_CLIENTE = '" + cliente.getTelFixoCliente() + "', \n"
-                    + "TEL_CEL_CLIENTE = '" + cliente.getTelCelCliente() + "', \n"
-                    + "END_RUA_CLIENTE = '" + cliente.getEndRuaCliente() + "', \n"
-                    + "END_NUM_CLIENTE = '" + cliente.getEndNumCliente() + "', \n"
-                    + "END_BAIRRO_CLIENTE = '" + cliente.getEndBairroCliente() + "', \n"
-                    + "END_CEP_CLIENTE = '" + cliente.getEndCepCliente() + "', \n"
-                    + "END_EST_CLIENTE = '" + cliente.getEndEstCliente() + "', \n"
-                    + "END_CID_CLIENTE = '" + cliente.getEndCidCliente() + "', \n"
-                    + "END_COMP_CLIENTE = '" + cliente.getEndCompCliente() + "', \n"
-                    + "EST_CIVIL_CLIENTE = '" + cliente.getEstCivilCliente() + "' \n"
-                    + "WHERE ID_CLIENTE = " + cliente.getIdCliente() + "";
+                    + "CLIENTE_NOME = '" + cliente.getClienteNome()+ "', \n"
+                    + "CLIENTE_SOBRENOME = '" + cliente.getClienteSobrenome()+ "', \n"
+                    + "CLIENTE_CPF = '" + cliente.getClienteCpf() + "', \n"
+                    + "CLIENTE_RG = '" + cliente.getClienteRg() + "', \n"
+                    + "CLIENTE_RUA = '" + cliente.getClienteRua() + "', \n"
+                    + "CLIENTE_NUMERO = '" + cliente.getClienteNumero() + "', \n"
+                    + "CLIENTE_COMPLEMENTO = '" + cliente.getClienteComplemento() + "', \n"
+                    + "CLIENTE_BAIRRO = '" + cliente.getClienteBairro() + "', \n"
+                    + "CLIENTE_CIDADE = '" + cliente.getClienteCidade() + "', \n"
+                    + "CLIENTE_CEP = '" + cliente.getClienteCep() + "', \n"
+                    + "ECLIENTE_NASCIMENTO = '" + cliente.getClienteNascimento() + "', \n"
+                    + "CLIENTE_EMAIL = '" + cliente.getClienteEmail() + "', \n"
+                    + "CLIENTE_SEXO = '" + cliente.getClienteSexo() + "', \n"
+                    + "CLIENTE_CELULAR = '" + cliente.getClienteCelular() + "', \n"
+                    + "CLIENTE_TELEFONE = '" + cliente.getClienteTelefone() + "' \n"
+                    + "WHERE CLIENTE_ID = " + cliente.getClienteId()+ "";
 
             //Cria conexão com banco de dados
             Connection connection = new ConnectionFactory().getConnection();
@@ -107,25 +104,24 @@ public class ClienteDAO {
             ResultSet rs = stmt.executeQuery("SELECT * FROM CLIENTE");
             while (rs.next()) {
                 ClienteData cliente = new ClienteData();
-                String idx = rs.getString("ID_CLIENTE");
+                String idx = rs.getString("CLIENTE_ID");
                 int id = Integer.parseInt(idx);
-                cliente.setIdCliente(id);
-                cliente.setNomeCliente(rs.getString("NOME_CLIENTE"));
-                cliente.setCpfCliente(rs.getString("CPF_CLIENTE"));
-                cliente.setRgCliente(rs.getString("RG_CLIENTE"));
-                cliente.setSexoCliente(rs.getString("SEXO_CLIENTE"));
-                cliente.setEmailCliente(rs.getString("EMAIL_CLIENTE"));
-                cliente.setNascimentoCliente(rs.getString("NASCIMENTO_CLIENTE"));
-                cliente.setTelFixoCliente(rs.getString("TEL_FIXO_CLIENTE"));
-                cliente.setTelCelCliente(rs.getString("TEL_CEL_CLIENTE"));
-                cliente.setEndRuaCliente(rs.getString("END_RUA_CLIENTE"));
-                cliente.setEndNumCliente(rs.getString("END_NUM_CLIENTE"));
-                cliente.setEndCompCliente(rs.getString("END_COMP_CLIENTE"));
-                cliente.setEndCepCliente(rs.getString("END_CEP_CLIENTE"));
-                cliente.setEndBairroCliente(rs.getString("END_BAIRRO_CLIENTE"));
-                cliente.setEndCidCliente(rs.getString("END_CID_CLIENTE"));
-                cliente.setEndEstCliente(rs.getString("END_EST_CLIENTE"));
-                cliente.setEstCivilCliente(rs.getString("EST_CIVIL_CLIENTE"));
+                cliente.setClienteId(id);
+                cliente.setClienteNome(rs.getString("CLIENTE_NOME"));
+                cliente.setClienteSobrenome(rs.getString("CLIENTE_SOBRENOME"));
+                cliente.setClienteCpf(rs.getString("CLIENTE_CPF"));
+                cliente.setClienteRg(rs.getString("CLIENTE_RG"));
+                cliente.setClienteRua(rs.getString("CLIENTE_RUA"));
+                cliente.setClienteNumero(rs.getString("CLIENTE_NUMERO"));
+                cliente.setClienteComplemento(rs.getString("CLIENTE_COMPLEMENTO"));
+                cliente.setClienteBairro(rs.getString("CLIENTE_BAIRRO"));
+                cliente.setClienteCidade(rs.getString("CLIENTE_CIDADE"));
+                cliente.setClienteCep(rs.getString("CLIENTE_CEP"));
+                cliente.setClienteNascimento(rs.getString("CLIENTE_NASCIMENTO"));
+                cliente.setClienteEmail(rs.getString("CLIENTE_EMAIL"));
+                cliente.setClienteSexo(rs.getString("CLIENTE_SEXO"));
+                cliente.setClienteCelular(rs.getString("CLIENTE_CELULAR"));
+                cliente.setClienteTelefone(rs.getString("CLIENTE_TELEFONE"));
                 listaCliente.add(cliente);
             }
             connection.close();
@@ -136,30 +132,29 @@ public class ClienteDAO {
         return listaCliente;
     }
 
-    public ClienteData getClienteById(int idCliente) {
+    public ClienteData getClienteById(int clienteId) {
         ClienteData cliente = new ClienteData();
         try {
             Connection connection = new ConnectionFactory().getConnection();
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM CLIENTE WHERE ID_CLIENTE = " + idCliente);
+            ResultSet rs = stmt.executeQuery("SELECT * FROM CLIENTE WHERE CLIENTE_ID = " + clienteId);
             while (rs.next()) {
-                cliente.setIdCliente(Integer.parseInt(rs.getString("ID_CLIENTE")));
-                cliente.setNomeCliente(rs.getString("NOME_CLIENTE"));
-                cliente.setCpfCliente(rs.getString("CPF_CLIENTE"));
-                cliente.setRgCliente(rs.getString("RG_CLIENTE"));
-                cliente.setSexoCliente(rs.getString("SEXO_CLIENTE"));
-                cliente.setEmailCliente(rs.getString("EMAIL_CLIENTE"));
-                cliente.setNascimentoCliente(rs.getString("NASCIMENTO_CLIENTE"));
-                cliente.setTelFixoCliente(rs.getString("TEL_FIXO_CLIENTE"));
-                cliente.setTelCelCliente(rs.getString("TEL_CEL_CLIENTE"));
-                cliente.setEndRuaCliente(rs.getString("END_RUA_CLIENTE"));
-                cliente.setEndNumCliente(rs.getString("END_NUM_CLIENTE"));
-                cliente.setEndCompCliente(rs.getString("END_COMP_CLIENTE"));
-                cliente.setEndCepCliente(rs.getString("END_CEP_CLIENTE"));
-                cliente.setEndBairroCliente(rs.getString("END_BAIRRO_CLIENTE"));
-                cliente.setEndCidCliente(rs.getString("END_CID_CLIENTE"));
-                cliente.setEndEstCliente(rs.getString("END_EST_CLIENTE"));
-                cliente.setEstCivilCliente(rs.getString("EST_CIVIL_CLIENTE"));
+                cliente.setClienteId(Integer.parseInt(rs.getString("ID_CLIENTE")));
+                cliente.setClienteNome(rs.getString("CLIENTE_NOME"));
+                cliente.setClienteSobrenome(rs.getString("CLIENTE_SOBRENOME"));
+                cliente.setClienteCpf(rs.getString("CLIENTE_CPF"));
+                cliente.setClienteRg(rs.getString("CLIENTE_RG"));
+                cliente.setClienteRua(rs.getString("CLIENTE_RUA"));
+                cliente.setClienteNumero(rs.getString("CLIENTE_NUMERO"));
+                cliente.setClienteComplemento(rs.getString("CLIENTE_COMPLEMENTO"));
+                cliente.setClienteBairro(rs.getString("CLIENTE_BAIRRO"));
+                cliente.setClienteCidade(rs.getString("CLIENTE_CIDADE"));
+                cliente.setClienteCep(rs.getString("CLIENTE_CEP"));
+                cliente.setClienteNascimento(rs.getString("CLIENTE_NASCIMENTO"));
+                cliente.setClienteEmail(rs.getString("CLIENTE_EMAIL"));
+                cliente.setClienteSexo(rs.getString("CLIENTE_SEXO"));
+                cliente.setClienteCelular(rs.getString("CLIENTE_CELULAR"));
+                cliente.setClienteTelefone(rs.getString("CLIENTE_TELEFONE"));
 
             }
             connection.close();
@@ -169,7 +164,7 @@ public class ClienteDAO {
         return cliente;
 
     }
-    
+    /*
     public ClienteData getClienteByCpf(String cpfCliente) {
         ClienteData cliente = new ClienteData();
         try {
@@ -202,11 +197,11 @@ public class ClienteDAO {
         }
         return cliente;
 
-    }
+    }*/
 
-    public boolean excluirCliente(int idCliente) {
+    public boolean excluirCliente(int clienteId) {
         try {
-            String sql = "DELETE FROM CLIENTE WHERE ID_CLIENTE = " + idCliente;
+            String sql = "DELETE FROM CLIENTE WHERE CLIENTE_ID = " + clienteId;
             Connection connection = new ConnectionFactory().getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.executeUpdate(sql);

@@ -1,4 +1,4 @@
-package Controller;
+/*package Controller;
 
 import DAO.ClienteDAO;
 import DAO.ContratoDAO;
@@ -76,3 +76,4 @@ public class getContrato extends HttpServlet {
 
     }
 }
+*/

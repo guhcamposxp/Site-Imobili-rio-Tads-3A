@@ -18,72 +18,71 @@ public class insertCliente extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
             String retorno = "";
-            String idCliente = request.getParameter("idCliente");
-            String nomeCliente = request.getParameter("nomeCliente");
-            String cpfCliente = request.getParameter("cpfCliente");
-            String rgCliente = request.getParameter("rgCliente");
-            String sexoCliente = request.getParameter("sexoCliente");
-            String emailCliente = request.getParameter("emailCliente");
-            String nascimentoCliente = request.getParameter("nascimentoCliente");
-            String telFixoCliente = request.getParameter("telFixoCliente");
-            String telCelCliente = request.getParameter("telCelCliente");
-            String endRuaCliente = request.getParameter("endRuaCliente");
-            String endNumCliente = request.getParameter("endNumCliente");
-            String endBairroCliente = request.getParameter("endBairroCliente");
-            String endCepCliente = request.getParameter("endCepCliente");
-            String endEstCliente = request.getParameter("endEstCliente");
-            String endCidCliente = request.getParameter("endCidCliente");
-            String endCompCliente = request.getParameter("endCompCliente");
-            String estCivilCliente = request.getParameter("estCivilCliente");
+            String clienteId = request.getParameter("clienteId");
+            String clienteNome = request.getParameter("clienteNome");
+            String clienteSobrenome = request.getParameter("clienteSobrenome");
+            String clienteCpf = request.getParameter("clienteCpf");
+            String clienteRg = request.getParameter("clienteRg");
+            String clienteRua = request.getParameter("clienteRua");
+            String clienteNumero = request.getParameter("clienteNumero");
+            String clienteComplemento = request.getParameter("clienteComplemento");
+            String clienteBairro = request.getParameter("clienteBairro");
+            String clienteCidade = request.getParameter("clienteCidade");
+            String clienteCep = request.getParameter("clienteCep");
+            String clienteNascimento = request.getParameter("clienteNascimento");
+            String clienteEmail = request.getParameter("clienteEmail");
+            String clienteSexo = request.getParameter("clienteSexo");
+            String clienteCelular = request.getParameter("clienteCelular");
+            String clienteTelefone = request.getParameter("clienteTelefone");
 
-            boolean valida = validaCampos(nomeCliente, cpfCliente, rgCliente, sexoCliente, emailCliente,
-                    nascimentoCliente, telFixoCliente, telCelCliente, endRuaCliente, endNumCliente, endBairroCliente,
-                    endCepCliente, endEstCliente, endCidCliente, endCompCliente, estCivilCliente);
+
+            boolean valida = validaCampos(clienteNome, clienteSobrenome, clienteCpf, clienteRg, clienteRua,
+                    clienteNumero, clienteComplemento, clienteBairro, clienteCidade, clienteCep, clienteNascimento,
+                    clienteEmail, clienteSexo, clienteCelular, clienteTelefone);
 
             if (valida) {
 
                 ClienteDAO dao = new ClienteDAO();
 
-                if (idCliente != null) {
+                if (clienteId != null) {
                     ClienteData alteraCliente = new ClienteData();
-                    alteraCliente = dao.getClienteById(Integer.parseInt(idCliente));
-                    alteraCliente.setIdCliente(Integer.parseInt(idCliente));
-                    alteraCliente.setNomeCliente(nomeCliente);
-                    alteraCliente.setCpfCliente(cpfCliente);
-                    alteraCliente.setRgCliente(rgCliente);
-                    alteraCliente.setSexoCliente(sexoCliente);
-                    alteraCliente.setEmailCliente(emailCliente);
-                    alteraCliente.setNascimentoCliente(nascimentoCliente);
-                    alteraCliente.setTelFixoCliente(telFixoCliente);
-                    alteraCliente.setTelCelCliente(telCelCliente);
-                    alteraCliente.setEndRuaCliente(endRuaCliente);
-                    alteraCliente.setEndNumCliente(endNumCliente);
-                    alteraCliente.setEndBairroCliente(endBairroCliente);
-                    alteraCliente.setEndCepCliente(endCepCliente);
-                    alteraCliente.setEndEstCliente(endEstCliente);
-                    alteraCliente.setEndCidCliente(endCidCliente);
-                    alteraCliente.setEndCompCliente(endCompCliente);
-                    alteraCliente.setEstCivilCliente(estCivilCliente);
+                    alteraCliente = dao.getClienteById(Integer.parseInt(clienteId));
+                    alteraCliente.setClienteId(Integer.parseInt(clienteId));
+                    alteraCliente.setClienteNome(clienteNome);
+                    alteraCliente.setClienteSobrenome(clienteSobrenome);
+                    alteraCliente.setClienteCpf(clienteCpf);
+                    alteraCliente.setClienteRg(clienteRg);
+                    alteraCliente.setClienteRua(clienteRua);
+                    alteraCliente.setClienteNumero(clienteNumero);
+                    alteraCliente.setClienteComplemento(clienteComplemento);
+                    alteraCliente.setClienteBairro(clienteBairro);
+                    alteraCliente.setClienteCidade(clienteCidade);
+                    alteraCliente.setClienteCep(clienteCep);
+                    alteraCliente.setClienteNascimento(clienteNascimento);
+                    alteraCliente.setClienteEmail(clienteEmail);
+                    alteraCliente.setClienteSexo(clienteSexo);
+                    alteraCliente.setClienteCelular(clienteCelular);
+                    alteraCliente.setClienteTelefone(clienteTelefone);
                     dao.atualizaCliente(alteraCliente);
                     retorno = "alteracao";
                 } else {
                     ClienteData novoCliente = new ClienteData();
-                    novoCliente.setNomeCliente(nomeCliente);
-                    novoCliente.setCpfCliente(cpfCliente);
-                    novoCliente.setRgCliente(rgCliente);
-                    novoCliente.setSexoCliente(sexoCliente);
-                    novoCliente.setEmailCliente(emailCliente);
-                    novoCliente.setNascimentoCliente(nascimentoCliente);
-                    novoCliente.setTelFixoCliente(telFixoCliente);
-                    novoCliente.setTelCelCliente(telCelCliente);
-                    novoCliente.setEndRuaCliente(endRuaCliente);
-                    novoCliente.setEndNumCliente(endNumCliente);
-                    novoCliente.setEndBairroCliente(endBairroCliente);
-                    novoCliente.setEndCepCliente(endCepCliente);
-                    novoCliente.setEndEstCliente(endEstCliente);
-                    novoCliente.setEndCidCliente(endCidCliente);
-                    novoCliente.setEndCompCliente(endCompCliente);
-                    novoCliente.setEstCivilCliente(estCivilCliente);
+                    //novoCliente.setClienteId(Integer.parseInt(clienteId));
+                    novoCliente.setClienteNome(clienteNome);
+                    novoCliente.setClienteSobrenome(clienteSobrenome);
+                    novoCliente.setClienteCpf(clienteCpf);
+                    novoCliente.setClienteRg(clienteRg);
+                    novoCliente.setClienteRua(clienteRua);
+                    novoCliente.setClienteNumero(clienteNumero);
+                    novoCliente.setClienteComplemento(clienteComplemento);
+                    novoCliente.setClienteBairro(clienteBairro);
+                    novoCliente.setClienteCidade(clienteCidade);
+                    novoCliente.setClienteCep(clienteCep);
+                    novoCliente.setClienteNascimento(clienteNascimento);
+                    novoCliente.setClienteEmail(clienteEmail);
+                    novoCliente.setClienteSexo(clienteSexo);
+                    novoCliente.setClienteCelular(clienteCelular);
+                    novoCliente.setClienteTelefone(clienteTelefone);
                     dao.cadastraCliente(novoCliente);
                     retorno = "criacao";
                 }
@@ -98,16 +97,15 @@ public class insertCliente extends HttpServlet {
 
     }
 
-    private boolean validaCampos(String nomeCliente, String cpfCliente, String rgCliente, String sexoCliente, String emailCliente,
-            String nascimentoCliente, String telFixoCliente, String telCelCliente, String endRuaCliente, String endNumCliente, String endBairroCliente,
-            String endCepCliente, String endEstCliente, String endCidCliente, String endCompCliente, String estCivilCliente) {
+    private boolean validaCampos(String clienteNome, String clienteSobrenome, String clienteCpf, String clienteRg, String clienteRua,
+                    String clienteNumero, String clienteComplemento, String clienteBairro, String clienteCidade, String clienteCep, String clienteNascimento,
+                    String clienteEmail, String clienteSexo, String clienteCelular, String clienteTelefone) {
 
-        if ((nomeCliente == null) || (cpfCliente == null) || (rgCliente == null)
-                || (sexoCliente == null) || (emailCliente == null) || (nascimentoCliente == null)
-                || (telFixoCliente == null) || (telCelCliente == null) || (endRuaCliente == null)
-                || (endNumCliente == null) || (endBairroCliente == null) || (endCepCliente == null)
-                || (endEstCliente == null) || (endCidCliente == null) || (endCompCliente == null)
-                || (estCivilCliente == null)) {
+        if ((clienteNome == null) || (clienteSobrenome == null) || (clienteCpf == null)
+                || (clienteRg == null) || (clienteRua == null) || (clienteNumero == null)
+                || (clienteComplemento == null) || (clienteBairro == null) || (clienteCidade == null)
+                || (clienteCep == null) || (clienteNascimento == null) || (clienteEmail == null)
+                || (clienteSexo == null) || (clienteCelular == null) || (clienteTelefone == null)) {
 
             return false;
         } else {

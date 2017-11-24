@@ -1,4 +1,4 @@
-package Controller;
+/*package Controller;
 
 import DAO.ClienteDAO;
 import DAO.ImovelDAO;
@@ -98,3 +98,4 @@ public class insertContrato extends HttpServlet {
         }
     }
 }
+*/
