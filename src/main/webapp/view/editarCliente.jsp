@@ -133,12 +133,12 @@
                 </ul>
             </div>
         </nav>
-                            
+
         <div class="content-wrapper">
 
             <div class="container">
                 <div class="card card-register mx-auto mt-5">
-                    <div class="card-header cardRegistro">Editar Cliente</div>
+                    <div class="card-header cardRegistro">Registar Novo Cliente</div>
                     <div class="card-body">
                         <form name="formCliente" id="formularioCadastro" class="well form-horizontal" action="${pageContext.request.contextPath}/insertCliente" method="post">
                             <div class="col-lg-12">
@@ -151,27 +151,28 @@
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <label for="">Nome</label>
-                                                <input type="text" name="clienteNome" value="${lista.clienteNome}"/>
+                                                <input class="form-control" name="clienteNome" id="clienteNome" type="text" value="${lista.clienteNome}">
+
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Sobrenome</label>
-                                                <input type="text" name="clienteSobrenome" value="${lista.clienteSobrenome}" />
+                                                <input class="form-control" name="clienteSobrenome" id="clienteSobrenome" type="text" value="${lista.clienteSobrenome}">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">CPF</label>
-                                                <input type="text" name="clienteCpf" value="${lista.clienteCpf}" />
+                                                <input class="form-control maskCPF" name="clienteCpf" id="clienteCpf" type="text" value="${lista.clienteCpf}" placeholder="000.000.000-00">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">RG</label>
-                                                <input type="text" name="clienteRg" value="${lista.clienteRg}" />
+                                                <input class="form-control maskRG" name="clienteRg" id="clienteRg" type="text" value="${lista.clienteRg}" placeholder="00.000.000-0">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Sexo</label>
-                                                <input type="text" name="clienteSexo" value="${lista.clienteSexo}" />
+                                                <input class="form-control maskRG" name="clienteRg" id="clienteRg" type="text" value="${lista.clienteRg}" placeholder="00.000.000-0">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Data de Nascimento</label>
-                                                <input type="text" name="clienteNascimento" value="${lista.clienteNascimento}" />
+                                                <input class="form-control maskDataNascimento" name="clienteNascimento" id="clienteNascimento" type="text" value="${lista.clienteNascimento}">
                                             </div>
 
                                         </div>
@@ -184,15 +185,15 @@
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <label for=" ">Celular</label>
-                                                <input type="text" name="clienteCelular" value="${lista.clienteCelular}" />
+                                                <input class="form-control maskTelCel" name="clienteCelular" maxlength="14" id="clienteCel" value="${lista.clienteCelular}" type="text" placeholder="(00) 90000-0000">
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Fixo</label>
-                                                <input type="text" name="clienteTelefone" value="${lista.clienteTelefone}" />
+                                                <input class="form-control maskTelFixo" name="clienteTelefone" type="text" value="${lista.clienteTelefone}" placeholder="(00) 0000-0000">
                                             </div>
                                             <div class="col-md-12">
                                                 <label>Email</label>
-                                                <input type="text" name="clienteEmail" value="${lista.clienteEmail}" />
+                                                <input class="form-control" id="clienteEmail" name="clienteEmail" type="email" value="${lista.clienteEmail}" placeholder="Endereço de email">
                                             </div>
                                         </div>
                                     </div>
@@ -207,40 +208,82 @@
                                 <div class="form-row">
                                     <div class="col-md-8">
                                         <label for="">Rua</label>
-                                        <input type="text" name="clienteRua" value="${lista.clienteRua}" />
+                                        <input class="form-control" name="clienteRua" value="${lista.clienteRua}" id="clienteRua" type="text">
                                     </div>
                                     <div class="col-md-2">
                                         <label for="">Número</label>
-                                        <input type="text" name="clienteNumero" value="${lista.clienteNumero}" />
+                                        <input class="form-control" name="clienteNumero" value="${lista.clienteNumero}" id="clienteNumero" type="text">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="">Complemento</label>
-                                        <input type="text" name="clienteComplemento" value="${lista.clienteComplemento}" />
+                                        <input class="form-control" name="clienteComplemento" value="${lista.clienteComplemento}" id="clienteComplemento" type="text" >
                                     </div>
                                     <div class="col-md-2">
                                         <label for="">CEP</label>
-                                        <input type="text" name="clienteCep" value="${lista.clienteCep}" />
+                                        <input class="form-control maskCEP" name="clienteCep" id="clienteCep" value="${lista.clienteCep}" type="text" placeholder="00000-000">
                                     </div>
                                     <div class="col-md-5">
                                         <label for="">Bairro</label>
-                                        <input type="text" name="clienteBairro" value="${lista.clienteBairro}" />
+                                        <input class="form-control" name="clienteBairro" id="clienteBairro" value="${lista.clienteBairro}" type="text"  >
                                     </div>
                                     <div class="col-md-5">
                                         <label for="">Cidade</label>
-                                        <input type="text" name="clienteCidade" value="${lista.clienteCidade}" />
+                                        <input class="form-control" name="clienteCidade" id="clienteCidade" value="${lista.clienteCidade}" type="text" >
                                     </div>
-                                    
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Salvar</button>
                         </form>
-                        
-                        
+
+
                         <hr/>
                     </div>
                 </div>
             </div>
 
         </div>     
+
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>© Copyright 2017 Away</small>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja sair?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Clique em "Sair" abaixo se você deseja realmente sair.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                        <a class="btn btn-primary" href="login.html">Sair</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="${pageContext.request.contextPath}/all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/popper/popper.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
+        <!--<script src="${pageContext.request.contextPath}/all/vendor/chart.js/Chart.min.js" type="text/javascript"></script>-->
+        <script src="${pageContext.request.contextPath}/all/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/sb-admin.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/sb-admin-datatables.min.js" type="text/javascript"></script>
+        <!--<script src="${pageContext.request.contextPath}/js/sb-admin-charts.min.js" type="text/javascript"></script>-->
+        <script src="${pageContext.request.contextPath}/js/jquery.mask.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/masks.js" type="text/javascript"></script>
     </body>
 </html>
