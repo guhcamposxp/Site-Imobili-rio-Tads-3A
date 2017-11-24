@@ -1,0 +1,27 @@
+.card-header{
+  text-align: center;
+  padding: 0 !important;
+}
+
+.boasVindas{
+  text-align: center;
+  margin: auto;
+  font-size: 41px;
+  padding-top: 170px;
+}
+
+.cardRegistro{
+  padding: 5px !important;
+}
+
+.row{
+  margin-left: -32px;
+}
+
+.divContato{
+  margin-left: -1rem;
+}
+
+.btn-warning{
+  color: white;
+}

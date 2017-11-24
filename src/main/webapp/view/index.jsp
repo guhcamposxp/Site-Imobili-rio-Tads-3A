@@ -1,42 +1,65 @@
 <%-- 
-    Document   : index
-    Created on : 22/04/2017, 14:56:36
-    Author     : Felipe
+    Document   : menu
+    Created on : 16/10/2017, 18:19:25
+    Author     : felipe.joliveira
 --%>
 
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/slate/bootstrap.min.css" rel="stylesheet prefetch">
-        <link rel="stylesheet" href="css/styleLogin.css">
-        <title>Tela de login</title>
+        <title>Login</title>
+        <link href="../all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <script src="../all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
+        <link href="../css/sb-admin.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/custom.css" rel="stylesheet" type="text/css"/>
+        
+        
     </head>
-    <body>
-        <div class="telaLogin">
+    <body class="bg-dark">
 
-            <form class="formLogin" action="${pageContext.request.contextPath}/validLogin" method="post">
-                <h2 class="tituloSistema">Sistema Imobiliário</h2>
-                <input type="text" class="form-control" name="usuario" placeholder="Usuário" required="" autofocus="" />
-                <input type="password" class="form-control" name="senha" placeholder="Senha" required=""/>
-                <label class="checkbox">
-                    <input type="checkbox" value="lembrar-me" id="lembrarMe" name="lembrarMe"> Lembrar-me
-                </label>
-                <input class="btn btn-lg btn-primary btn-block" type="submit" >Acessar</input>
-            </form>
-            <div class="divRequisito">
-                
-                <label id="lbRequisito"> Requisito mínimo para visualização: </label>
-                <label id="lbFirefox"> Firefox versão 31 </label>
-                <label id="lbChrome"> Chrome versão 36 </label>
-                <br>
-                      <img src="img/firefox.png" id="imgFirefox" width="80px" height="76px">
-                      <img src="img/chrome.png" id="imgChrome" width="80px" height="76px">
+  <div class="container">
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header">
+        <img src="../img/2.png" width="300px" height="200px" class="img-responsive"/>
+        <label>Sistema Imobiliário</label>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Usuário</label>
+            <input class="form-control" id="inputUser" type="email" aria-describedby="emailHelp">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Senha</label>
+            <input class="form-control" id="inputPass" type="password">
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox"> Lembrar-me</label>
             </div>
-        </div>
+          </div>
+          <a class="btn btn-primary btn-block" href="index.html">Logar</a>
+        </form>
+      </div>
+    </div>
+  </div>
+        
+        
+    
+        <script src="../all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="../all/vendor/popper/popper.min.js" type="text/javascript"></script>
+        <script src="../all/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../all/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
+        <script src="../all/vendor/chart.js/Chart.min.js" type="text/javascript"></script>
+        <script src="../all/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="../all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
+        <script src="../js/sb-admin.min.js" type="text/javascript"></script>
+        <script src="../js/sb-admin-datatables.min.js" type="text/javascript"></script>
+        <script src="../js/sb-admin-charts.min.js" type="text/javascript"></script>
         
     </body>
 </html>
