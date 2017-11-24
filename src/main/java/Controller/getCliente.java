@@ -18,8 +18,8 @@ public class getCliente extends HttpServlet {
             throws ServletException, IOException {
 
         ClienteDAO getCliente = new ClienteDAO();
-        String id = request.getParameter("CLIENTE_ID");
-        String nome = request.getParameter("CLIENTE_NOME");
+        String id = request.getParameter("clienteId");
+        
         if (id == null) {
             List<ClienteData> lista = getCliente.getTodosCliente();
             request.setAttribute("lista", lista);

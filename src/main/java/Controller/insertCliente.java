@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "insertCliente", urlPatterns = {"/insertsCliente"})
+@WebServlet(name = "insertCliente", urlPatterns = {"/insertCliente"})
 public class insertCliente extends HttpServlet {
 
     @Override
