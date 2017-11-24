@@ -14,7 +14,7 @@ public class ConnectionFactory {
             String nomeBD = "mysql";
             String url = "jdbc:mysql://localhost:3306/" + nomeBD + "?zeroDateTimeBehavior=convertToNull";
             String username = "root";
-            String password = "root";
+            String password = "";
             connection = DriverManager.getConnection(url, username, password);
             return connection;
 

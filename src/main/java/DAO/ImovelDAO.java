@@ -16,35 +16,44 @@ public class ImovelDAO {
     public boolean cadastraImovel(ImovelData Imovel) {
         Boolean retorno = false;
         try {
-            String sql = "INSERT INTO IMOVEL (IMOVEL_RUA,\n"
+            String sql = "INSERT INTO IMOVEL (FK_PROPRIETARIO_CPF,\n"
+                    + "IMOVEL_RUA,\n"
                     + "IMOVEL_NUMERO,\n"
-                    + "IMOVEL_BAIRRO,\n"
+                    + "IMOVEL_COMPLEMENTO,\n"
                     + "IMOVEL_CEP,\n"
-                    + "IMOVEL_CIDADE,\n"
-                    + "IMOVEL_ESTADO, \n"
+                    + "IMOVEL_BAIRRO,\n"
+                    + "IMOVEL_CIDADE, \n"
+                    + "IMOVEL_ESTADO,\n"
+                    + "IMOVEL_TIPOTRANSACAO,\n"
+                    + "IMOVEL_VLRVENDA,\n"
+                    + "IMOVEL_VLRALUGUEL,\n"
                     + "IMOVEL_QTDVAGASGARAGEM,\n"
                     + "IMOVEL_QTDDORMITORIOS,\n"
                     + "IMOVEL_TIPO,\n"
                     + "IMOVEL_METROSQUADRADO,\n"
-                    + "IMOVEL_DESCRICAO) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+                    + "IMOVEL_DESCRICAO) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
             //Cria conexão com banco de dados
             Connection connection = new ConnectionFactory().getConnection();
             //Prepara a query
             PreparedStatement pstmt = connection.prepareStatement(sql);
             //Captura campos e seta na query
-            pstmt.setString(1, Imovel.getImovelRua());
-            pstmt.setString(2, Imovel.getImovelNumero());
-            pstmt.setString(3, Imovel.getImovelBairro());
-            pstmt.setString(4, Imovel.getImovelCep());
-            pstmt.setString(5, Imovel.getImovelCidade());
-            pstmt.setString(6, Imovel.getImovelEstado());
-            pstmt.setString(7, Imovel.getImovelQtdVagasGaragem());
-            pstmt.setString(8, Imovel.getImovelQtdDormitorios());
-            pstmt.setString(9, Imovel.getImovelTipo());
-            pstmt.setString(10, Imovel.getImovelMetrosQuadrado());
-            pstmt.setString(11, Imovel.getImovelDescricao());
-            
+            pstmt.setString(1, Imovel.getProprietarioCpf());
+            pstmt.setString(2, Imovel.getImovelRua());
+            pstmt.setString(3, Imovel.getImovelNumero());
+            pstmt.setString(4, Imovel.getImovelComplemento());
+            pstmt.setString(5, Imovel.getImovelCep());
+            pstmt.setString(6, Imovel.getImovelBairro());
+            pstmt.setString(7, Imovel.getImovelCidade());
+            pstmt.setString(8, Imovel.getImovelEstado());
+            pstmt.setString(9, Imovel.getImovelTipoTransacao());
+            pstmt.setString(10,Imovel.getImovelVlrVenda());
+            pstmt.setString(11,Imovel.getImovelVlrAluguel());
+            pstmt.setString(12,Imovel.getImovelQtdVagasGaragem());
+            pstmt.setString(13,Imovel.getImovelQtdDormitorios());
+            pstmt.setString(14,Imovel.getImovelTipo());
+            pstmt.setString(15,Imovel.getImovelMetrosQuadrado());
+            pstmt.setString(16,Imovel.getImovelDescricao());
             //Executa ação
             pstmt.executeUpdate();
             //Fecha o banco
