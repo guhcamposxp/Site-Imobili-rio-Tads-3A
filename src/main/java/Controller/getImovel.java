@@ -19,18 +19,21 @@ public class getImovel extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ImovelDAO getImoveis = new ImovelDAO();
-        String id = request.getParameter("idImovel");
+        ImovelDAO getImovel = new ImovelDAO();
+        String id = request.getParameter("imovelId");
         if (id == null) {
-            List<ImovelData> lista = getImoveis.getTodosImoveis();
+            List<ImovelData> lista = getImovel.getTodosImoveis();
             request.setAttribute("lista", lista);
              
         } else {
             ImovelData lista = new ImovelData();
-//            lista = getImoveis.getImovelById(Integer.parseInt(id));
-//            request.setAttribute("lista", lista);
-            response.sendRedirect("view/showImovel.jsp");
+            lista = getImovel.getImovelById(Integer.parseInt(id));
+            request.setAttribute("lista", lista);
+            response.sendRedirect("view/listarImovel.jsp");
         }
+        
+        
+       
             /*
          List<FilialData> imoveis = getImovel.getTodosImovel();
          request.setAttribute("imoveis", imoveis);   
