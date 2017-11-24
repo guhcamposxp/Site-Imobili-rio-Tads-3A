@@ -147,7 +147,7 @@
                 <div class="form-row">
                   <div class="col-md-6">
                     <label for="">CPF</label>
-                    <input class="form-control maskCPF campos" id="" type="text" aria-describedby="nameHelp" placeholder="000.000.000-00">
+                    <input class="form-control maskCPF campos" id="clienteCpf" type="text" aria-describedby="nameHelp" placeholder="000.000.000-00">
                   </div>
                 </div>
               </div>
@@ -159,33 +159,33 @@
           <hr/>
           <div class="form-row">
             <div class="col-md-8">
-            <label for="exampleInputEmail1">Rua</label>
-            <input class="form-control campos" id="inputRua" type="text" aria-describedby="emailHelp">
+            <label for="">Rua</label>
+            <input class="form-control campos" id="imovelRua" type="text">
             </div>
             <div class="col-md-2">
-            <label for="exampleInputEmail1">Número</label>
-            <input class="form-control campos" id="exampleInputEmail1" type="text" aria-describedby="emailHelp">
+            <label for="">Número</label>
+            <input class="form-control campos" id="imovelNumero" type="text" aria-describedby="emailHelp">
             </div>
             <div class="col-md-3">
-            <label for="exampleInputEmail1">Complemento</label>
-            <input class="form-control campos" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" >
+            <label for="">Complemento</label>
+            <input class="form-control campos" id="imovelComplemento" type="email">
             </div>
             <div class="col-md-2">
-            <label for="exampleInputEmail1">CEP</label>
-            <input class="form-control maskCEP campos" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="00000-000">
+            <label for="">CEP</label>
+            <input class="form-control maskCEP campos" id="imovelCep" type="text" placeholder="00000-000">
             </div>
             <div class="col-md-5">
-            <label for="exampleInputEmail1">Bairro</label>
-            <input class="form-control campos" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" >
+            <label for="">Bairro</label>
+            <input class="form-control campos" id="imovelBairro" type="email">
             </div>
             <div class="col-md-5">
-            <label for="exampleInputEmail1">Cidade</label>
-            <input class="form-control campos" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" >
+            <label for="">Cidade</label>
+            <input class="form-control campos" id="imovelCidade" type="email">
             </div>
             <div class="col-md-5">
             <label for="exampleInputEmail1">Estado</label>
-            <select class="form-control" id="sel1">
-              <option value="uf">Selecione</option>
+            <select class="form-control" id="imovelCidade">
+              <option value="null">Selecione</option>
               <option value="">Acre</option>
               <option value="">Alagoas</option>
               <option value="">Amapá</option>

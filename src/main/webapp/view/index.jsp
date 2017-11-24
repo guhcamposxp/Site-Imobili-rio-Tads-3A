@@ -15,8 +15,7 @@
         <script src="../all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
         <link href="../css/sb-admin.css" rel="stylesheet" type="text/css"/>
         <link href="../css/custom.css" rel="stylesheet" type="text/css"/>
-        
-        
+
     </head>
     <body class="bg-dark">
 
@@ -47,9 +46,7 @@
       </div>
     </div>
   </div>
-        
-        
-    
+
         <script src="../all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
         <script src="../all/vendor/popper/popper.min.js" type="text/javascript"></script>
         <script src="../all/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>

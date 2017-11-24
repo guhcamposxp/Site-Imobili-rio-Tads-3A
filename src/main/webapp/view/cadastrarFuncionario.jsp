@@ -147,32 +147,32 @@
                                         <hr/>
                                         <div class="form-row">
                                             <div class="col-md-6">
-                                                <label for="exampleInputName">Nome</label>
-                                                <input class="form-control" id="" type="text" aria-describedby="nameHelp">
+                                                <label for="">Nome</label>
+                                                <input class="form-control" id="funcNome" type="text">
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="exampleInputLastName">Sobrenome</label>
-                                                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp">
+                                                <label for="">Sobrenome</label>
+                                                <input class="form-control" id="funcSobrenome" type="text">
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="exampleInputLastName">CPF</label>
-                                                <input class="form-control maskCPF" id="" type="text" aria-describedby="nameHelp" placeholder="000.000.000-00">
+                                                <label for="">CPF</label>
+                                                <input class="form-control maskCPF" id="funcCpf" type="text" placeholder="000.000.000-00">
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="exampleInputLastName">RG</label>
-                                                <input class="form-control maskRG" id="" type="text" aria-describedby="nameHelp" placeholder="00.000.000-0">
+                                                <label for="">RG</label>
+                                                <input class="form-control maskRG" id="funcRg" type="text" placeholder="00.000.000-0">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Sexo</label>
-                                                <select class="form-control" id="sel1">
-                                                    <option value="">Selecione</option>
-                                                    <option value="">Masculino</option>
-                                                    <option value="">Feminino</option>
+                                                <select class="form-control" id="funcSexo">
+                                                    <option value="null">Selecione</option>
+                                                    <option value="M">Masculino</option>
+                                                    <option value="F">Feminino</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Data de Nascimento</label>
-                                                <input class="form-control maskDataNascimento" id="" type="text" aria-describedby="nameHelp">
+                                                <input class="form-control maskDataNascimento" id="" type="text">
                                             </div>
 
                                         </div>
@@ -184,16 +184,16 @@
                                         <hr/>
                                         <div class="form-row">
                                             <div class="col-md-6">
-                                                <label for="exampleInputEmail1 ">Função</label>
-                                                <select class="form-control" id="sel1">
+                                                <label for=" ">Função</label>
+                                                <select class="form-control" id="funcFuncao">
                                                     <option value="">Selecione</option>
                                                     <option value="">Corretor</option>
                                                     <option value="">TI</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="exampleInputEmail1">Departamento</label>
-                                                <select class="form-control" id="sel1">
+                                                <label for="">Departamento</label>
+                                                <select class="form-control" id="funcDepartamento">
                                                     <option value="">Selecione</option>
                                                     <option value="">TI</option>
                                                     <option value="">Négocios</option>
@@ -201,11 +201,11 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Usuário</label>
-                                                <input class="form-control" id="" type="text" aria-describedby="nameHelp">
+                                                <input class="form-control" id="funcUser" type="text">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Senha</label>
-                                                <input class="form-control" id="" type="password" aria-describedby="nameHelp">
+                                                <input class="form-control" id="funcPass" type="password">
                                             </div>
 
                                         </div>

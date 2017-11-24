@@ -147,32 +147,32 @@
                                         <hr/>
                                         <div class="form-row">
                                             <div class="col-md-6">
-                                                <label for="exampleInputName">Nome</label>
-                                                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp">
+                                                <label for="">Nome</label>
+                                                <input class="form-control" id="clienteNome" type="text" aria-describedby="nameHelp">
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="exampleInputLastName">Sobrenome</label>
-                                                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp">
+                                                <label for="">Sobrenome</label>
+                                                <input class="form-control" id="clienteSobrenome" type="text" aria-describedby="nameHelp">
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="exampleInputLastName">CPF</label>
-                                                <input class="form-control maskCPF" id="" type="text" aria-describedby="nameHelp" placeholder="000.000.000-00">
+                                                <label for="">CPF</label>
+                                                <input class="form-control maskCPF" id="clienteCpf" type="text" aria-describedby="nameHelp" placeholder="000.000.000-00">
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="exampleInputLastName">RG</label>
-                                                <input class="form-control maskRG" id="" type="text" aria-describedby="nameHelp" placeholder="00.000.000-0">
+                                                <label for="">RG</label>
+                                                <input class="form-control maskRG" id="clienteRg" type="text" aria-describedby="nameHelp" placeholder="00.000.000-0">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Sexo</label>
-                                                <select class="form-control" id="sel1">
-                                                    <option value="">Selecione</option>
-                                                    <option value="">Masculino</option>
-                                                    <option value="">Feminino</option>
+                                                <select class="form-control" id="clienteSexo">
+                                                    <option value="null">Selecione</option>
+                                                    <option value="M">Masculino</option>
+                                                    <option value="F">Feminino</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Data de Nascimento</label>
-                                                <input class="form-control maskDataNascimento" id="" type="text" aria-describedby="nameHelp">
+                                                <input class="form-control maskDataNascimento" id="clienteNascimento" type="text" aria-describedby="nameHelp">
                                             </div>
 
                                         </div>
@@ -184,8 +184,8 @@
                                         <hr/>
                                         <div class="form-row">
                                             <div class="col-md-6">
-                                                <label for="exampleInputEmail1 ">Celular</label>
-                                                <input class="form-control maskTelCel" maxlength="14" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="(00) 90000-0000">
+                                                <label for=" ">Celular</label>
+                                                <input class="form-control maskTelCel" maxlength="14" id="clienteCel" type="text" aria-describedby="emailHelp" placeholder="(00) 90000-0000">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="exampleInputEmail1">Fixo</label>
@@ -193,7 +193,7 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <label for="exampleInputEmail1">Email</label>
-                                                <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Endereço de email">
+                                                <input class="form-control" id="clienteEmail" type="email" aria-describedby="emailHelp" placeholder="Endereço de email">
                                             </div>
                                         </div>
                                     </div>
@@ -207,33 +207,33 @@
                                 <hr/>
                                 <div class="form-row">
                                     <div class="col-md-8">
-                                        <label for="exampleInputEmail1">Rua</label>
-                                        <input class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp">
+                                        <label for="">Rua</label>
+                                        <input class="form-control" id="clienteRua" type="text">
                                     </div>
                                     <div class="col-md-2">
-                                        <label for="exampleInputEmail1">Número</label>
-                                        <input class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp">
+                                        <label for="">Número</label>
+                                        <input class="form-control" id="clienteNumero" type="text">
                                     </div>
                                     <div class="col-md-3">
-                                        <label for="exampleInputEmail1">Complemento</label>
-                                        <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" >
+                                        <label for="">Complemento</label>
+                                        <input class="form-control" id="clienteComplemento" type="email" >
                                     </div>
                                     <div class="col-md-2">
-                                        <label for="exampleInputEmail1">CEP</label>
-                                        <input class="form-control maskCEP" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="00000-000">
+                                        <label for="">CEP</label>
+                                        <input class="form-control maskCEP" id="clienteCep" type="email" placeholder="00000-000">
                                     </div>
                                     <div class="col-md-5">
-                                        <label for="exampleInputEmail1">Bairro</label>
-                                        <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" >
+                                        <label for="">Bairro</label>
+                                        <input class="form-control" id="clienteBairro" type="email"  >
                                     </div>
                                     <div class="col-md-5">
-                                        <label for="exampleInputEmail1">Cidade</label>
-                                        <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" >
+                                        <label for="">Cidade</label>
+                                        <input class="form-control" id="clienteCidade" type="email" >
                                     </div>
                                     <div class="col-md-5">
-                                        <label for="exampleInputEmail1">Estado</label>
-                                        <select class="form-control" id="sel1">
-                                            <option value="">Selecione</option>
+                                        <label for="">Estado</label>
+                                        <select class="form-control" id="clienteEstado">
+                                            <option value="null">Selecione</option>
                                             <option value="">Acre</option>
                                             <option value="">Alagoas</option>
                                             <option value="">Amapá</option>
