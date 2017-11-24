@@ -18,7 +18,7 @@ public class getCliente extends HttpServlet {
             throws ServletException, IOException {
 
         ClienteDAO getCliente = new ClienteDAO();
-        String id = request.getParameter("idCliente");
+        String id = request.getParameter("CLIENTE_ID");
         if (id == null) {
             List<ClienteData> lista = getCliente.getTodosCliente();
             request.setAttribute("lista", lista);
@@ -27,7 +27,7 @@ public class getCliente extends HttpServlet {
             ClienteData lista = new ClienteData();
             lista = getCliente.getClienteById(Integer.parseInt(id));
             request.setAttribute("lista", lista);
-            response.sendRedirect("view/showCliente.jsp");
+            response.sendRedirect("view/listarCliente.jsp");
         }
             /*
          List<FilialData> imoveis = getImovel.getTodosImovel();
