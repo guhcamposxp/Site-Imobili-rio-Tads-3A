@@ -1,18 +1,18 @@
 <%-- 
-    Document   : cadastrarCliente
+    Document   : cadastrarFilial
     Created on : 16/10/2017, 18:48:48
     Author     : felipe.joliveira
 --%>
 
-<%@page import="Data.ClienteData"%>
+<%@page import="Data.FilialData"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="DAO.ClienteDAO"%>
+<%@page import="DAO.FilialDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastrar Cliente</title>
+        <title>Cadastrar Filial</title>
         <link href="${pageContext.request.contextPath}/all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/css/sb-admin.css" rel="stylesheet" type="text/css"/>
@@ -89,10 +89,10 @@
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropFiliais">
                             <li>
-                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastarFilial.jsp"> Cadastrar</a>
+                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarFilial.jsp"> Cadastrar</a>
                             </li>
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/consultarFilial.jsp"> Consultar</a>
+                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarFilial.jsp"> Consultar</a>
                             </li>
                             <li>
                                 <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarFilial.jsp"> Gerenciar</a>
@@ -138,89 +138,78 @@
 
             <div class="container">
                 <div class="card card-register mx-auto mt-5">
-                    <div class="card-header cardRegistro">Registar Novo Cliente</div>
+                    <div class="card-header cardRegistro">Registar Novo Filial</div>
                     <div class="card-body">
-                        <form name="insertFilial" id="formularioCadastro" action="${pageContext.request.contextPath}/insertFilial" method="post">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <div class="form-group col-lg-12">
-                                        <h5>
-                                            Dados
-                                        </h5>
-                                        <hr/>
-                                           <div class="col-md-6">
-                                                <label for="">Nome da Filial</label>
-                                                <input class="form-control" name="filialNome" id="filialNome" type="text" aria-describedby="nameHelp">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label for="">CNPJ</label>
-                                                <input class="form-control maskCNPJ" name="filialCNPJ" id="filialCNPJ" type="text" aria-describedby="nameHelp" placeholder="00.000.000/0000-00">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label for="">Rua</label>
-                                                <input class="form-control" name="filialRua" id="filialRua" type="text" aria-describedby="nameHelp">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label for="">Numero</label>
-                                                <input class="form-control" name="filialNumero" id="filialNumero" type="text" aria-describedby="nameHelp">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label for="">Bairro</label>
-                                                <input class="form-control" name="filialBairro" id="filialBairro" type="text" aria-describedby="nameHelp">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label for="">Cep</label>
-                                                <input class="form-control maskCEP" name="filialCep" id="filialCep" type="text" aria-describedby="nameHelp" placeholder="00000-000">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label for="">Cidade</label>
-                                                <input class="form-control" name="filialCidade" id="filialCidade" type="text" aria-describedby="nameHelp">
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <label for="">Estado</label>
-                                                <select class="form-control" name="filialEstado" id="filialEstado">
-                                                    <option value="null">Selecione</option>
-                                                    <option value="AC">Acre</option>
-                                                    <option value="AL">Alagoas</option>
-                                                    <option value="">Amapá</option>
-                                                    <option value="">Amazonas</option>
-                                                    <option value="">Bahia</option>
-                                                    <option value="">Ceará</option>
-                                                    <option value="">Distrito Federal</option>
-                                                    <option value="">Espírito Santo</option>
-                                                    <option value="">Goiás</option>
-                                                    <option value="">Maranhão</option>
-                                                    <option value="">Mato Grosso</option>
-                                                    <option value="">Mato Grosso do Sul</option>
-                                                    <option value="">Minas Gerais</option>
-                                                    <option value="">Pará</option>
-                                                    <option value="">Paraíba</option>
-                                                    <option value="">Paraná</option>
-                                                    <option value="">Pernambuco</option>
-                                                    <option value="">Piauí</option>
-                                                    <option value="">Rio de Janeiro</option>
-                                                    <option value="">Rio Grande do Norte</option>
-                                                    <option value="">Rio Grande do Sul</option>
-                                                    <option value="">Rondônia</option>
-                                                    <option value="">Roraima</option>
-                                                    <option value="">Santa Catarina</option>
-                                                    <option value="">São Paulo</option>
-                                                    <option value="">Sergipe</option>
-                                                    <option value="">Tocantins</option>
-                                                </select>
-                                            </div>
-
-
-
+                        <form name="formFilial" id="formularioCadastro" action="${pageContext.request.contextPath}/insertFilial" method="post">
+                            <div class="form-group col-lg-12 divContato" >
+                                <h5>
+                                    Endereço
+                                </h5>
+                                <hr/>
+                                <div class="form-row">
+                                    <div class="col-md-8">
+                                        <label for="">Nome</label>
+                                        <input class="form-control" name="filialNome" id="filialNome" type="text" >
                                     </div>
+                                    <div class="col-md-2">
+                                        <label for="">CNPJ</label>
+                                        <input class="form-control maskCNPJ" name="filialCnpj" id="filialCnpj" type="text" aria-describedby="nameHelp" placeholder="00.000.000/0000-00">
                                     </div>
+                                    <div class="col-md-8">
+                                        <label for="">Rua</label>
+                                        <input class="form-control" name="filialRua" id="filialRua" type="text" >
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="">Número</label>
+                                        <input class="form-control" name="filialNum" id="filialNum" type="text" >
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="">Cep</label>
+                                        <input class="form-control maskCEP" name="filialCep" id="filialCep" type="text" placeholder="00000-000">
+                                    </div>
+                                    
+                                    <div class="col-md-5">
+                                        <label for="">Bairro</label>
+                                        <input class="form-control" name="filialBairro" id="filialBairro" type="text" >
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="">Cidade</label>
+                                        <input class="form-control" name="filialCidade" id="filialCidade" type="text" >
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="">Estado</label>
+                                        <select class="form-control" name="filialEstado" id="filialEstado">
+                                            <option value="null">Selecione</option>
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="">Amapá</option>
+                                            <option value="">Amazonas</option>
+                                            <option value="">Bahia</option>
+                                            <option value="">Ceará</option>
+                                            <option value="">Distrito Federal</option>
+                                            <option value="">Espírito Santo</option>
+                                            <option value="">Goiás</option>
+                                            <option value="">Maranhão</option>
+                                            <option value="">Mato Grosso</option>
+                                            <option value="">Mato Grosso do Sul</option>
+                                            <option value="">Minas Gerais</option>
+                                            <option value="">Pará</option>
+                                            <option value="">Paraíba</option>
+                                            <option value="">Paraná</option>
+                                            <option value="">Pernambuco</option>
+                                            <option value="">Piauí</option>
+                                            <option value="">Rio de Janeiro</option>
+                                            <option value="">Rio Grande do Norte</option>
+                                            <option value="">Rio Grande do Sul</option>
+                                            <option value="">Rondônia</option>
+                                            <option value="">Roraima</option>
+                                            <option value="">Santa Catarina</option>
+                                            <option value="">São Paulo</option>
+                                            <option value="">Sergipe</option>
+                                            <option value="">Tocantins</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Cadastrar</button>
                         </form>

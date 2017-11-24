@@ -90,10 +90,10 @@
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropFiliais">
                             <li>
-                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastarFilial.jsp"> Cadastrar</a>
+                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarFilial.jsp"> Cadastrar</a>
                             </li>
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/consultarFilial.jsp"> Consultar</a>
+                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarFilial.jsp"> Consultar</a>
                             </li>
                             <li>
                                 <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarFilial.jsp"> Gerenciar</a>
@@ -155,10 +155,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>    
 
-                                        <c:forEach var="cliente" items="${lista}">
 
+                                    <c:forEach var="cliente" items="${lista}">
+                                        <tr>
                                             <td>${cliente.clienteNome}</td>
                                             <td>${cliente.clienteCpf}</td>
                                             <td>${cliente.clienteEmail}</td>

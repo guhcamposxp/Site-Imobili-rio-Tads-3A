@@ -1,4 +1,3 @@
-
 package Controller;
 
 import DAO.FilialDAO;
@@ -16,13 +15,13 @@ public class dropFilial extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            String id = request.getParameter("idFilial");
+            String id = request.getParameter("filialId");
             FilialDAO getFilial = new FilialDAO();
             getFilial.excluirFilial(Integer.parseInt(id));
-            response.sendRedirect("view/listagemFuncionario.jsp");
+            response.sendRedirect("view/listagemFilial.jsp");
         } catch (Exception e) {
             System.out.println("Erro Servlet - Drop Filial");
-            response.sendRedirect("view/listagemFuncionario.jsp");
+            response.sendRedirect("view/listagemFilial.jsp");
         }
 
     }

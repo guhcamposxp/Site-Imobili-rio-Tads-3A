@@ -1,20 +1,19 @@
-<%-- 
-    Document   : listarImovel
-    Created on : 12/11/2017, 22:28:53
-    Author     : Felipe
---%>
-<%@page import="Data.ImovelData"%>
+
+<%@page import="Data.FilialData"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="DAO.ImovelDAO"%>
+<%@page import="DAO.FilialDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
+
     <head>
-        <jsp:include page="/getImovel" />
+        <jsp:include page="/getFilial" />
         <meta charset="utf-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
 
-        <title>Listagem de Clientes</title>
+        <title>Listagem de  Filiais</title>
         <link href="${pageContext.request.contextPath}/all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/all/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css"/>
@@ -91,10 +90,10 @@
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropFiliais">
                             <li>
-                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastarFilial.jsp"> Cadastrar</a>
+                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarFilial.jsp"> Cadastrar</a>
                             </li>
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/consultarFilial.jsp"> Consultar</a>
+                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarFilial.jsp"> Consultar</a>
                             </li>
                             <li>
                                 <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarFilial.jsp"> Gerenciar</a>
@@ -141,35 +140,35 @@
 
                 <div class="card mb-3">
                     <div class="card-header">
-                        <i class="fa fa-table"></i> Imóveis Cadastrados </div>
+                        <i class="fa fa-table"></i>  Filial Cadastrados </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Rua</th>
-                                        <th>Número</th>
-                                        <th>Bairro</th>
+                                        <th>Nome</th>
+                                        <th>CNPJ</th>
+                                        <th>Estado</th>
                                         <th>Cidade</th>
+                                        <th>Rua</th>
                                         <th class="actions">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>    
 
-                                        <c:forEach var="imovel" items="${lista}">
 
-                                            <td>${imovel.imovelId}</td>
-                                            <td>${imovel.imovelRua}</td>
-                                            <td>${imovel.imovelNumero}</td>
-                                            <td>${imovel.imovelBairro}</td>
-                                            <td>${imovel.imovelCidade}</td>
+                                    <c:forEach var="filial" items="${lista}">
+                                        <tr>
+                                            <td>${filial.filialNome}</td>
+                                            <td>${filial.filialCnpj}</td>
+                                            <td>${filial.filialEstado}</td>
+                                            <td>${filial.filialCidade}</td>
+                                            <td>${filial.filialRua}</td>
 
                                             <td class="actions">
-                                                <a class="btn btn-success btn-xs" href="../view/showCliente.jsp?imovelId=${imovel.imovelId}">Visualizar</a>
-                                                <a class="btn btn-warning btn-xs" href="../view/editarCliente.jsp?imovelId=${imovel.imovelId}">Editar</a>
-                                                <a class="btn btn-danger btn-xs"  href="../dropCliente?imovelId=${imovel.imovelId}">Excluir</a>
+                                                <a class="btn btn-success btn-xs" href="../view/show Filial.jsp?id Filial=${filial.filialId}">Visualizar</a>
+                                                <a class="btn btn-warning btn-xs" href="../view/editar Filial.jsp?filialId=${filial.filialId}">Editar</a>
+                                                <a class="btn btn-danger btn-xs"  href="../drop Filial?id Filial=${filial.filialId}">Excluir</a>
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -229,4 +228,6 @@
         <script src="${pageContext.request.contextPath}/js/masks.js" type="text/javascript"></script>
 
     </body>
+</html>
+
 </html>

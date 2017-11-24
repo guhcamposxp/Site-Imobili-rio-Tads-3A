@@ -16,25 +16,26 @@ public class getFilial extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         FilialDAO getFilial = new FilialDAO();
-        String id = request.getParameter("idFilial");
+        String id = request.getParameter("filialId");
+        
         if (id == null) {
-//            List<FilialData> lista = getFilial.getTodasFiliais();
-//            request.setAttribute("lista", lista);
+            List<FilialData> lista = getFilial.getTodasFiliais();
+            request.setAttribute("lista", lista);
              
         } else {
+            
             FilialData lista = new FilialData();
             lista = getFilial.getFilialByID(Integer.parseInt(id));
             request.setAttribute("lista", lista);
-            response.sendRedirect("view/showFuncionario.jsp");
-        }
-            /*
-         List<FilialData> imoveis = getImovel.getTodosImovel();
+            response.sendRedirect("view/listarFilial.jsp");
+        }            /*
+         List<filialData> imoveis = getImovel.getTodosImovel();
          request.setAttribute("imoveis", imoveis);   
             */
         
 
     }
 
-}
+    }

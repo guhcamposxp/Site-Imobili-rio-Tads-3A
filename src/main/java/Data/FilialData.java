@@ -5,89 +5,142 @@ import java.util.ArrayList;
 
 public class FilialData {
 
-    private int idFilial;
-    private String filialNome;
-    private String filialCnpj;
-    private String filialRua;
-    private String filialNumero;
-    private String filialBairro;
-    private String filialCep;
-    private String filialCidade;
-    private String filialEstado;
-
-    public int getIdFilial() {
-        return idFilial;
+    /**
+     * @return the filialId
+     */
+    public int getFilialId() {
+        return filialId;
     }
 
-    public void setIdFilial(int idFilial) {
-        this.idFilial = idFilial;
+    /**
+     * @param filialId the filialId to set
+     */
+    public void setFilialId(int filialId) {
+        this.filialId = filialId;
     }
 
-    public String getFilialNome() {
-        return filialNome;
-    }
-
-    public void setFilialNome(String filialNome) {
-        this.filialNome = filialNome;
-    }
-
-    public String getFilialCnpj() {
-        return filialCnpj;
-    }
-
-    public void setFilialCnpj(String filialCnpj) {
-        this.filialCnpj = filialCnpj;
-    }
-
+    /**
+     * @return the filialRua
+     */
     public String getFilialRua() {
         return filialRua;
     }
 
+    /**
+     * @param filialRua the filialRua to set
+     */
     public void setFilialRua(String filialRua) {
         this.filialRua = filialRua;
     }
 
-    public String getFilialNumero() {
-        return filialNumero;
+    /**
+     * @return the filialNum
+     */
+    public String getFilialNum() {
+        return filialNum;
     }
 
-    public void setFilialNumero(String filialNumero) {
-        this.filialNumero = filialNumero;
+    /**
+     * @param filialNum the filialNum to set
+     */
+    public void setFilialNum(String filialNum) {
+        this.filialNum = filialNum;
     }
 
-    public String getFilialBairro() {
-        return filialBairro;
-    }
-
-    public void setFilialBairro(String filialBairro) {
-        this.filialBairro = filialBairro;
-    }
-
+    /**
+     * @return the filialCep
+     */
     public String getFilialCep() {
         return filialCep;
     }
 
+    /**
+     * @param filialCep the filialCep to set
+     */
     public void setFilialCep(String filialCep) {
         this.filialCep = filialCep;
     }
 
-    public String getFilialCidade() {
-        return filialCidade;
-    }
-
-    public void setFilialCidade(String filialCidade) {
-        this.filialCidade = filialCidade;
-    }
-
+    /**
+     * @return the filialEstado
+     */
     public String getFilialEstado() {
         return filialEstado;
     }
 
+    /**
+     * @param filialEstado the filialEstado to set
+     */
     public void setFilialEstado(String filialEstado) {
         this.filialEstado = filialEstado;
     }
-    
-   }
 
- 
- 
+    /**
+     * @return the filialCidade
+     */
+    public String getFilialCidade() {
+        return filialCidade;
+    }
+
+    /**
+     * @param filialCidade the filialCidade to set
+     */
+    public void setFilialCidade(String filialCidade) {
+        this.filialCidade = filialCidade;
+    }
+
+    /**
+     * @return the filialBairro
+     */
+    public String getFilialBairro() {
+        return filialBairro;
+    }
+
+    /**
+     * @param filialBairro the filialBairro to set
+     */
+    public void setFilialBairro(String filialBairro) {
+        this.filialBairro = filialBairro;
+    }
+
+    /**
+     * @return the filialCnpj
+     */
+    public String getFilialCnpj() {
+        return filialCnpj;
+    }
+
+    /**
+     * @param filialCnpj the filialCnpj to set
+     */
+    public void setFilialCnpj(String filialCnpj) {
+        this.filialCnpj = filialCnpj;
+    }
+
+    /**
+     * @return the filialNome
+     */
+    public String getFilialNome() {
+        return filialNome;
+    }
+
+    /**
+     * @param filialNome the filialNome to set
+     */
+    public void setFilialNome(String filialNome) {
+        this.filialNome = filialNome;
+    }
+
+    private int filialId;
+    private String filialRua;
+    private String filialNum;
+    private String filialCep;
+    private String filialEstado;
+    private String filialCidade;
+    private String filialBairro;
+    private String filialCnpj;
+    private String filialNome;
+    
+    
+
+}

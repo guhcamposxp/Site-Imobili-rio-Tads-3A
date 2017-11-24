@@ -23,9 +23,9 @@ public class getCliente extends HttpServlet {
         if (id == null) {
             List<ClienteData> lista = getCliente.getTodosCliente();
             request.setAttribute("lista", lista);
-            
              
         } else {
+            
             ClienteData lista = new ClienteData();
             lista = getCliente.getClienteById(Integer.parseInt(id));
             request.setAttribute("lista", lista);
