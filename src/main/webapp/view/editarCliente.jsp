@@ -229,10 +229,7 @@
                                         <label for="">Cidade</label>
                                         <input type="text" name="clienteCidade" value="${lista.clienteCidade}" />
                                     </div>
-                                    <div class="col-md-5">
-                                        <label for="">Estado</label>
-                                        <input type="text" name="clienteEstado" value="${lista.clienteEstado}" />
-                                    </div>
+                                    
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">Salvar</button>
