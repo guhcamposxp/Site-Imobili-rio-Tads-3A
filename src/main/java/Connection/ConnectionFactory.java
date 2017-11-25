@@ -12,7 +12,7 @@ public class ConnectionFactory {
             String driverName = "com.mysql.jdbc.Driver";
             Class.forName(driverName);
             String nomeBD = "mysql";
-            String url = "jdbc:mysql://localhost:3306/" + nomeBD + "?zeroDateTimeBehavior=convertToNull";
+            String url = "jdbc:mysql://localhost:3305/" + nomeBD + "?zeroDateTimeBehavior=convertToNull";
             String username = "root";
             String password = "";
             connection = DriverManager.getConnection(url, username, password);
