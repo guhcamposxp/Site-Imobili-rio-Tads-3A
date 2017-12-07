@@ -1,5 +1,7 @@
 package Data;
 
+import java.util.Date;
+
 public class ContratoData {
 
     /**
@@ -24,6 +26,16 @@ public class ContratoData {
     private int idCorretor;
     private String dataContrato;
     private String valorContrato;
+    private String tipoTransacao;
+
+    public String getTipoTransacao() {
+        return tipoTransacao;
+    }
+
+    public void setTipoTransacao(String tipoTransacao) {
+        this.tipoTransacao = tipoTransacao;
+    }
+
 
     /**
      * @return the idContrato

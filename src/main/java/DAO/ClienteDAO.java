@@ -164,31 +164,30 @@ public class ClienteDAO {
         return cliente;
 
     }
-    /*
+
     public ClienteData getClienteByCpf(String cpfCliente) {
         ClienteData cliente = new ClienteData();
         try {
             Connection connection = new ConnectionFactory().getConnection();
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM CLIENTE WHERE CPF_CLIENTE = " + cpfCliente);
+            ResultSet rs = stmt.executeQuery("SELECT * FROM CLIENTE WHERE CLIENTE_CPF = " + cpfCliente);
             while (rs.next()) {
-                cliente.setIdCliente(Integer.parseInt(rs.getString("ID_CLIENTE")));
-                cliente.setNomeCliente(rs.getString("NOME_CLIENTE"));
-                cliente.setCpfCliente(rs.getString("CPF_CLIENTE"));
-                cliente.setRgCliente(rs.getString("RG_CLIENTE"));
-                cliente.setSexoCliente(rs.getString("SEXO_CLIENTE"));
-                cliente.setEmailCliente(rs.getString("EMAIL_CLIENTE"));
-                cliente.setNascimentoCliente(rs.getString("NASCIMENTO_CLIENTE"));
-                cliente.setTelFixoCliente(rs.getString("TEL_FIXO_CLIENTE"));
-                cliente.setTelCelCliente(rs.getString("TEL_CEL_CLIENTE"));
-                cliente.setEndRuaCliente(rs.getString("END_RUA_CLIENTE"));
-                cliente.setEndNumCliente(rs.getString("END_NUM_CLIENTE"));
-                cliente.setEndCompCliente(rs.getString("END_COMP_CLIENTE"));
-                cliente.setEndCepCliente(rs.getString("END_CEP_CLIENTE"));
-                cliente.setEndBairroCliente(rs.getString("END_BAIRRO_CLIENTE"));
-                cliente.setEndCidCliente(rs.getString("END_CID_CLIENTE"));
-                cliente.setEndEstCliente(rs.getString("END_EST_CLIENTE"));
-                cliente.setEstCivilCliente(rs.getString("EST_CIVIL_CLIENTE"));
+                cliente.setClienteId(Integer.parseInt(rs.getString("CLIENTE_ID")));
+                cliente.setClienteNome(rs.getString("CLIENTE_NOME"));
+                cliente.setClienteSobrenome(rs.getString("CLIENTE_SOBRENOME"));
+                cliente.setClienteCpf(rs.getString("CLIENTE_CPF"));
+                cliente.setClienteRg(rs.getString("CLIENTE_RG"));
+                cliente.setClienteRua(rs.getString("CLIENTE_RUA"));
+                cliente.setClienteNumero(rs.getString("CLIENTE_NUMERO"));
+                cliente.setClienteComplemento(rs.getString("CLIENTE_COMPLEMENTO"));
+                cliente.setClienteBairro(rs.getString("CLIENTE_BAIRRO "));
+                cliente.setClienteCidade(rs.getString("CLIENTE_CIDADE"));
+                cliente.setClienteCep(rs.getString("CLIENTE_CEP"));
+                cliente.setClienteNascimento(rs.getString("CLIENTE_NASCIMENTO"));
+                cliente.setClienteEmail(rs.getString("CLIENTE_EMAIL"));
+                cliente.setClienteSexo(rs.getString("CLIENTE_SEXO"));
+                cliente.setClienteCelular(rs.getString("CLIENTE_CELULAR"));
+                cliente.setClienteTelefone(rs.getString("CLIENTE_TELEFONE"));
 
             }
             connection.close();
@@ -197,7 +196,7 @@ public class ClienteDAO {
         }
         return cliente;
 
-    }*/
+    }
 
     public boolean excluirCliente(int clienteId) {
         try {

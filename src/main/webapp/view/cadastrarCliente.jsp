@@ -10,7 +10,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <c:if test="${sessionScope.cargoFuncionario == 'Diretor' || sessionScope.cargoFuncionario == 'BackOffice'}" >
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastrar Cliente</title>
@@ -29,47 +28,39 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-                    <c:if test="${sessionScope.cargoFuncionario == 'Diretor' || sessionScope.cargoFuncionario == 'BackOffice' || sessionScope.cargoFuncionario == 'Corretor'}" >
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#opcoesImoveis" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-home" aria-hidden="true"></i>
                             <span class="nav-link-text">Imóveis</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="opcoesImoveis">
-                            <c:if test="${sessionScope.cargoFuncionario == 'Diretor' && sessionScope.cargoFuncionario == 'BackOffice'}">
                             <li>
                                 <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarImovel.jsp"> Cadastrar</a>
                             </li>
-                            </c:if>
-                            
                             <li>
                                 <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarImovel.jsp"> Consultar</a>
                             </li>
-                            
                         </ul>
                     </li>
-                    </c:if>
-                    
-                    <c:if test="${sessionScope.cargoFuncionario == 'Diretor' || sessionScope.cargoFuncionario == 'BackOffice' || sessionScope.cargoFuncionario == 'Corretor'}" >
+
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropClientes" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-user" aria-hidden="true"></i>
                             <span class="nav-link-text">Clientes</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropClientes">
-                            <c:if test="${sessionScope.cargoFuncionario == 'Diretor' || sessionScope.cargoFuncionario == 'BackOffice'}" >
                             <li>
                                 <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarCliente.jsp"> Cadastrar</a>
                             </li>
-                            </c:if>
                             <li>
                                 <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarCliente.jsp"> Consultar</a>
                             </li>
+                            <li>
+                                <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarCliente.jsp"> Gerenciar</a>
+                            </li>
                         </ul>
                     </li>
-                    </c:if>
-                    
-                    <c:if test="${sessionScope.cargoFuncionario == 'Diretor' || sessionScope.cargoFuncionario == 'TI'}" >
+
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropFuncionario" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-users" aria-hidden="true"></i>
@@ -82,11 +73,12 @@
                             <li>
                                 <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/consultarFuncionario.jsp"> Consultar</a>
                             </li>
+                            <li>
+                                <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarImovel.jsp"> Gerenciar</a>
+                            </li>
                         </ul>
-                    </li
-                    </c:if>
+                    </li>
 
-                    <c:if test="${sessionScope.cargoFuncionario == 'Diretor' || sessionScope.cargoFuncionario == 'TI'}" >
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropFiliais" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-building" aria-hidden="true"></i>
@@ -99,11 +91,12 @@
                             <li>
                                 <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarFilial.jsp"> Consultar</a>
                             </li>
+                            <li>
+                                <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarFilial.jsp"> Gerenciar</a>
+                            </li>
                         </ul>
                     </li>
-                    </c:if>
-                    
-                    <c:if test="${sessionScope.cargoFuncionario == 'Diretor' || sessionScope.cargoFuncionario == 'Corretor'}" >
+
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropContratos" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-files-o" aria-hidden="true"></i>
@@ -118,7 +111,7 @@
                             </li>
                         </ul>
                     </li>
-                    </c:if>
+
 
 
                 </ul>
@@ -327,5 +320,4 @@
         <script src="${pageContext.request.contextPath}/js/jquery.mask.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/js/masks.js" type="text/javascript"></script>
     </body>
-    </c:if> 
 </html>

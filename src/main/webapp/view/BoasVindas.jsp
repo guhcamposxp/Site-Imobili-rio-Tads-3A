@@ -38,7 +38,7 @@
                             <span class="nav-link-text">Imóveis</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="opcoesImoveis">
-                            <c:if test="${sessionScope.cargoFuncionario == 'Diretor' && sessionScope.cargoFuncionario == 'BackOffice'}">
+                            <c:if test="${sessionScope.cargoFuncionario == 'Diretor' || sessionScope.cargoFuncionario == 'BackOffice'}">
                             <li>
                                 <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarImovel.jsp"> Cadastrar</a>
                             </li>
