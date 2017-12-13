@@ -148,9 +148,24 @@
             <div class="container">
                 <div class="card card-register mx-auto mt-5">
                     <div class="card-header cardRegistro">Editar Filial</div>
+                    <c:if test = "${retorno == 'alteracao'}">
+                        <div id="sucess" class="alert alert-success">
+                            A Filial foi editada com sucesso!
+                        </div> 
+                        <script>
+                            var div = document.getElementById("#sucess");
+                            var x = '${retorno}';
+                            function explode() {
+                                $("#sucess").hide();
+
+                            }
+                            setTimeout(explode, 5000);
+                            x = "";
+                        </script>
+                    </c:if>
                     <div class="card-body">
                         <form name="formFilial" id="formularioCadastro" class="well form-horizontal" action="${pageContext.request.contextPath}/insertFilial" method="post">
-                            <div class="col-lg-12">
+                            <div class="form-group col-lg-12 divContato">
 
                                 <div class="form-row">
                                     <div class="col-md-8">
@@ -184,41 +199,13 @@
                                     </div>
                                     <div class="col-md-5">
                                         <label for="">Estado</label>
-                                        <select class="form-control" name="filialEstado" id="filialEstado" value="${lista.filialEstado}">
-                                            <option value="null">Selecione</option>
-                                            <option value="AC">Acre</option>
-                                            <option value="AL">Alagoas</option>
-                                            <option value="">Amapá</option>
-                                            <option value="">Amazonas</option>
-                                            <option value="">Bahia</option>
-                                            <option value="">Ceará</option>
-                                            <option value="">Distrito Federal</option>
-                                            <option value="">Espírito Santo</option>
-                                            <option value="">Goiás</option>
-                                            <option value="">Maranhão</option>
-                                            <option value="">Mato Grosso</option>
-                                            <option value="">Mato Grosso do Sul</option>
-                                            <option value="">Minas Gerais</option>
-                                            <option value="">Pará</option>
-                                            <option value="">Paraíba</option>
-                                            <option value="">Paraná</option>
-                                            <option value="">Pernambuco</option>
-                                            <option value="">Piauí</option>
-                                            <option value="">Rio de Janeiro</option>
-                                            <option value="">Rio Grande do Norte</option>
-                                            <option value="">Rio Grande do Sul</option>
-                                            <option value="">Rondônia</option>
-                                            <option value="">Roraima</option>
-                                            <option value="">Santa Catarina</option>
-                                            <option value="">São Paulo</option>
-                                            <option value="">Sergipe</option>
-                                            <option value="">Tocantins</option>
-                                        </select>
+                                        <input class="form-control" name="filialEstado" id="filialEstado" type="text" value="${lista.filialEstado}">
                                     </div>
                                 </div>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Salvar</button>
+                            
                         </form>
 
 

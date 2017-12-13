@@ -173,7 +173,7 @@
                                             <td>${filial.filialRua}</td>
 
                                             <td class="actions">
-                                                <a class="btn btn-success btn-xs" href="../view/showFilial.jsp?id Filial=${filial.filialId}">Visualizar</a>
+                                                <a class="btn btn-success btn-xs" href="../view/readOnlyFilial.jsp?filialId=${filial.filialId}">Visualizar</a>
                                                 <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.cargoFuncionario == 'BackOffice'}">
                                                 <a class="btn btn-warning btn-xs" href="../view/editarFilial.jsp?filialId=${filial.filialId}">Editar</a>
                                                 <a class="btn btn-danger btn-xs"  href="../dropFilial?filialId=${filial.filialId}">Excluir</a>

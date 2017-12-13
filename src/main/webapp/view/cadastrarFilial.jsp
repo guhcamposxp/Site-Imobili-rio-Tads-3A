@@ -146,7 +146,22 @@
 
             <div class="container">
                 <div class="card card-register mx-auto mt-5">
-                    <div class="card-header cardRegistro">Registar Novo Filial</div>
+                    <div class="card-header cardRegistro">Registar Nova Filial</div>
+                    <c:if test = "${retorno == 'criacao'}">
+                        <div id="sucess" class="alert alert-success">
+                            A Filial foi cadastrada com sucesso!
+                        </div> 
+                        <script>
+                            var div = document.getElementById("#sucess");
+                            var x = '${retorno}';
+                            function explode() {
+                                $("#sucess").hide();
+
+                            }
+                            setTimeout(explode, 5000);
+                            x = "";
+                        </script>
+                    </c:if>
                     <div class="card-body">
                         <form name="formFilial" id="formularioCadastro" action="${pageContext.request.contextPath}/insertFilial" method="post">
                             <div class="form-group col-lg-12 divContato" >

@@ -146,7 +146,7 @@
 
             <div class="container">
                 <div class="card card-register mx-auto mt-5">
-                    <div class="card-header cardRegistro">Editar Imóvel</div>
+                    <div class="card-header cardRegistro">Visualizar Imóvel</div>
                     
                     <div class="card-body campos">
                         <form name="formImovel" id="formularioCadastro" action="" method="">

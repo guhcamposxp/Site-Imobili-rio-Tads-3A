@@ -196,7 +196,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Sexo</label>
-                                                <input class="form-control maskRG" name="clienteSexo" id="clienteSexo" type="text" value="${lista.clienteSexo}">
+                                                <input class="form-control" name="clienteSexo" id="clienteSexo" type="text" value="${lista.clienteSexo}">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Data de Nascimento</label>

@@ -210,8 +210,8 @@
                                                 <label for="">Sexo</label>
                                                 <select class="form-control" name="clienteSexo" id="clienteSexo">
                                                     <option value="null">Selecione</option>
-                                                    <option value="M">Masculino</option>
-                                                    <option value="F">Feminino</option>
+                                                    <option value="Masculino">Masculino</option>
+                                                    <option value="Feminino">Feminino</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-6">

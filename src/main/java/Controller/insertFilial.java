@@ -48,6 +48,7 @@ public class insertFilial extends HttpServlet {
                     novoFilial.setFilialNome(filialNome);
                     
                     dao.cadastraFilial(novoFilial);
+                    retorno = "criacao";
                 } else {
                     FilialData alteraFilial = new FilialData();
                     alteraFilial = dao.getFilialByID(Integer.parseInt(filialId));
