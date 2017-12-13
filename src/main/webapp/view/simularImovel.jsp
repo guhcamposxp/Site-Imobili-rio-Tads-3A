@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <jsp:include page="/getImovel" />
+        <jsp:include page="/getImovel"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Editar Imóvel</title>
         <link href="${pageContext.request.contextPath}/all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -147,7 +147,7 @@
                 <div class="card card-register mx-auto mt-5">
                     <div class="card-header cardRegistro">Simulação de Negócio</div>
                     <div class="card-body">
-                        <form name="formImovel" id="formularioCadastro" action="${pageContext.request.contextPath}/insertImovel" method="post">
+                        <form name="formImovel" id="formularioCadastro" action="${pageContext.request.contextPath}/insertContrato" method="post">
                             <div class="form-row form-group col-lg-12 divContato ">
                                 <div class="form-group col-lg-6 divContato ">
                                 <h5>
@@ -156,8 +156,8 @@
                                 <hr/>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <label for="">CPF</label>
-                                        <input class="form-control campos" name="proprietarioId" id="proprietarioId" type="text" placeholder="000.000.000-00" value="${lista.proprietarioCpf}">
+                                        <label for="">ID</label>
+                                        <input class="form-control campos" name="proprietarioId" id="proprietarioId" type="text">
                                     </div>
                                 </div>
                             </div>
@@ -168,8 +168,21 @@
                                 <hr/>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <label for="">CPF</label>
-                                        <input class="form-control campos" name="interessadoId" id="interessadoId" type="text" placeholder="000.000.000-00">
+                                        <label for="">ID</label>
+                                        <input class="form-control campos" name="interessadoId" id="interessadoId" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                                
+                                <div class="form-group col-lg-6 divContato ">
+                                <h5>
+                                     Corretor Responsável
+                                </h5>
+                                <hr/>
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <label for="">ID</label>
+                                        <input class="form-control campos" name="funcionarioId" id="funcionarioId" type="text">
                                     </div>
                                 </div>
                             </div>

@@ -155,7 +155,7 @@ public class ClienteDAO {
                 cliente.setClienteSexo(rs.getString("CLIENTE_SEXO"));
                 cliente.setClienteCelular(rs.getString("CLIENTE_CELULAR"));
                 cliente.setClienteTelefone(rs.getString("CLIENTE_TELEFONE"));
-
+                return cliente;
             }
             connection.close();
         } catch (SQLException | ClassNotFoundException e) {
