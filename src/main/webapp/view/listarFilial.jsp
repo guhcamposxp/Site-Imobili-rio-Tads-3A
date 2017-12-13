@@ -29,75 +29,85 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                    <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice' || sessionScope.permissaoFuncionario == 'Corretor'}" >
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#opcoesImoveis" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-home" aria-hidden="true"></i>
                             <span class="nav-link-text">Imóveis</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="opcoesImoveis">
+                            <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                             <li>
-                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarImovel.jsp"> Cadastrar</a>
+                                <a aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarImovel.jsp"> ↳ Cadastrar</a>
                             </li>
+                            </c:if>
+                            
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarImovel.jsp"> Consultar</a>
+                                <a aria-hidden="true" href="${pageContext.request.contextPath}/view/listarImovel.jsp"> ↳ Consultar</a>
                             </li>
+                            
                         </ul>
                     </li>
-
+                    </c:if>
+                    
+                    <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice' || sessionScope.permissaoFuncionario == 'Corretor'}">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropClientes" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-user" aria-hidden="true"></i>
                             <span class="nav-link-text">Clientes</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropClientes">
+                            <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                             <li>
-                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarCliente.jsp"> Cadastrar</a>
+                                <a aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarCliente.jsp"> ↳ Cadastrar</a>
                             </li>
+                            </c:if>
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarCliente.jsp"> Consultar</a>
-                            </li>
-                            <li>
-                                <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarCliente.jsp"> Gerenciar</a>
+                                <a aria-hidden="true" href="${pageContext.request.contextPath}/view/listarCliente.jsp"> ↳ Consultar</a>
                             </li>
                         </ul>
                     </li>
-
+                    </c:if>
+                    
+                    <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropFuncionario" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-users" aria-hidden="true"></i>
                             <span class="nav-link-text">Funcionários</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropFuncionario">
+                            <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                             <li>
-                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarFuncionario.jsp"> Cadastrar</a>
+                                <a aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarFuncionario.jsp"> ↳ Cadastrar</a>
                             </li>
+                            </c:if>
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/consultarFuncionario.jsp"> Consultar</a>
-                            </li>
-                            <li>
-                                <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarImovel.jsp"> Gerenciar</a>
+                                <a aria-hidden="true" href="${pageContext.request.contextPath}/view/listarFuncionario.jsp"> ↳ Consultar</a>
                             </li>
                         </ul>
                     </li>
+                    </c:if>
 
+                    <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropFiliais" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-building" aria-hidden="true"></i>
                             <span class="nav-link-text">Filiais</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropFiliais">
+                            <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                             <li>
-                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarFilial.jsp"> Cadastrar</a>
+                                <a aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarFilial.jsp"> ↳ Cadastrar</a>
                             </li>
+                            </c:if>
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarFilial.jsp"> Consultar</a>
-                            </li>
-                            <li>
-                                <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarFilial.jsp"> Gerenciar</a>
+                                <a aria-hidden="true" href="${pageContext.request.contextPath}/view/listarFilial.jsp"> ↳ Consultar</a>
                             </li>
                         </ul>
                     </li>
-
+                    </c:if>
+                    
+                    <!--
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropContratos" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-files-o" aria-hidden="true"></i>
@@ -105,14 +115,14 @@
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropContratos">
                             <li>
-                                <a class="fa fa-usd" aria-hidden="false" href=""> Contrato de Venda</a>
+                                <a aria-hidden="false" href=""> ↳ Contrato de Venda</a>
                             </li>
                             <li>
-                                <a class="fa fa-file-o" aria-hidden="true" href=""> Contrato de Aluguel</a>
+                                <a aria-hidden="true" href=""> ↳ Contrato de Aluguel</a>
                             </li>
                         </ul>
-                    </li>
-
+                    </li> !-->
+                    
 
 
                 </ul>
@@ -164,8 +174,10 @@
 
                                             <td class="actions">
                                                 <a class="btn btn-success btn-xs" href="../view/showFilial.jsp?id Filial=${filial.filialId}">Visualizar</a>
+                                                <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.cargoFuncionario == 'BackOffice'}">
                                                 <a class="btn btn-warning btn-xs" href="../view/editarFilial.jsp?filialId=${filial.filialId}">Editar</a>
                                                 <a class="btn btn-danger btn-xs"  href="../dropFilial?filialId=${filial.filialId}">Excluir</a>
+                                                </c:if>
                                             </td>
                                         </tr>
                                     </c:forEach>

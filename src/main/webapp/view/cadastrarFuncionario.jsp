@@ -1,20 +1,24 @@
-<%-- 
-    Document   : cadastrarFuncionario
-    Created on : 16/10/2017, 18:55:48
-    Author     : felipe.joliveira
---%>
 
+<%@page import="Data.FilialData"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="DAO.FilialDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastrar Funcionario</title>
-        <link href="../all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <script src="../all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
-        <link href="../css/sb-admin.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/custom.css" rel="stylesheet" type="text/css"/>
+        <jsp:include page="/getFilial" />
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+
+        <title>Cadastro de Funcionario</title>
+        <link href="${pageContext.request.contextPath}/all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/all/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/css/sb-admin.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet" type="text/css"/>
+        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">	
     </head>
     <body>
 
@@ -25,75 +29,85 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                    <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice' || sessionScope.permissaoFuncionario == 'Corretor'}" >
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#opcoesImoveis" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-home" aria-hidden="true"></i>
                             <span class="nav-link-text">Imóveis</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="opcoesImoveis">
+                            <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                             <li>
-                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarImovel.jsp"> Cadastrar</a>
+                                <a aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarImovel.jsp"> ↳ Cadastrar</a>
                             </li>
+                            </c:if>
+                            
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarImovel.jsp"> Consultar</a>
+                                <a aria-hidden="true" href="${pageContext.request.contextPath}/view/listarImovel.jsp"> ↳ Consultar</a>
                             </li>
+                            
                         </ul>
                     </li>
-
+                    </c:if>
+                    
+                    <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice' || sessionScope.permissaoFuncionario == 'Corretor'}">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropClientes" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-user" aria-hidden="true"></i>
                             <span class="nav-link-text">Clientes</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropClientes">
+                            <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                             <li>
-                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarCliente.jsp"> Cadastrar</a>
+                                <a aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarCliente.jsp"> ↳ Cadastrar</a>
                             </li>
+                            </c:if>
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarCliente.jsp"> Consultar</a>
-                            </li>
-                            <li>
-                                <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarCliente.jsp"> Gerenciar</a>
+                                <a aria-hidden="true" href="${pageContext.request.contextPath}/view/listarCliente.jsp"> ↳ Consultar</a>
                             </li>
                         </ul>
                     </li>
-
+                    </c:if>
+                    
+                    <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropFuncionario" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-users" aria-hidden="true"></i>
                             <span class="nav-link-text">Funcionários</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropFuncionario">
+                            <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                             <li>
-                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarFuncionario.jsp"> Cadastrar</a>
+                                <a aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarFuncionario.jsp"> ↳ Cadastrar</a>
                             </li>
+                            </c:if>
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/consultarFuncionario.jsp"> Consultar</a>
-                            </li>
-                            <li>
-                                <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarImovel.jsp"> Gerenciar</a>
+                                <a aria-hidden="true" href="${pageContext.request.contextPath}/view/listarFuncionario.jsp"> ↳ Consultar</a>
                             </li>
                         </ul>
                     </li>
+                    </c:if>
 
+                    <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropFiliais" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-building" aria-hidden="true"></i>
                             <span class="nav-link-text">Filiais</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropFiliais">
+                            <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                             <li>
-                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarFilial.jsp"> Cadastrar</a>
+                                <a aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarFilial.jsp"> ↳ Cadastrar</a>
                             </li>
+                            </c:if>
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarFilial.jsp"> Consultar</a>
-                            </li>
-                            <li>
-                                <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarFilial.jsp"> Gerenciar</a>
+                                <a aria-hidden="true" href="${pageContext.request.contextPath}/view/listarFilial.jsp"> ↳ Consultar</a>
                             </li>
                         </ul>
                     </li>
-
+                    </c:if>
+                    
+                    <!--
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropContratos" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-files-o" aria-hidden="true"></i>
@@ -101,14 +115,14 @@
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropContratos">
                             <li>
-                                <a class="fa fa-usd" aria-hidden="false" href=""> Contrato de Venda</a>
+                                <a aria-hidden="false" href=""> ↳ Contrato de Venda</a>
                             </li>
                             <li>
-                                <a class="fa fa-file-o" aria-hidden="true" href=""> Contrato de Aluguel</a>
+                                <a aria-hidden="true" href=""> ↳ Contrato de Aluguel</a>
                             </li>
                         </ul>
-                    </li>
-
+                    </li> !-->
+                    
 
 
                 </ul>
@@ -134,7 +148,7 @@
                 <div class="card card-register mx-auto mt-5">
                     <div class="card-header cardRegistro">Registar Novo Funcionário</div>
                     <div class="card-body">
-                        <form>
+                        <form name="formFuncionario" id="formularioCadastro" action="${pageContext.request.contextPath}/insertFuncionario" method="post">
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="form-group col-lg-6">
@@ -145,31 +159,31 @@
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <label for="">Nome</label>
-                                                <input class="form-control" id="funcNome" type="text">
+                                                <input class="form-control" name="funcionarioNome" id="funcionarioNome" type="text" aria-describedby="nameHelp" >
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Sobrenome</label>
-                                                <input class="form-control" id="funcSobrenome" type="text">
+                                                <input class="form-control" name="funcionarioSobrenome" id="funcionarioSobrenome" type="text" aria-describedby="nameHelp" >
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">CPF</label>
-                                                <input class="form-control maskCPF" id="funcCpf" type="text" placeholder="000.000.000-00">
+                                                <input class="form-control maskCPF" name="funcionarioCpf" id="funcionarioCPf" type="text" aria-describedby="nameHelp" placeholder="000.000.000-00" >
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">RG</label>
-                                                <input class="form-control maskRG" id="funcRg" type="text" placeholder="00.000.000-0">
+                                                <input class="form-control maskRG" name="funcionarioRg" id="funcionarioRG" type="text" aria-describedby="nameHelp" placeholder="00.000.000-0" >
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Sexo</label>
-                                                <select class="form-control" id="funcSexo">
-                                                    <option value="null">Selecione</option>
+                                                <select class="form-control" name="funcionarioSexo" id="funcionarioSexo">
+                                                 <option value="null">Selecione</option>
                                                     <option value="M">Masculino</option>
                                                     <option value="F">Feminino</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Data de Nascimento</label>
-                                                <input class="form-control maskDataNascimento" id="" type="text">
+                                                <input class="form-control maskDataNascimento" name="funcionarioNascimento" id="funcionarioNascimento" type="text" aria-describedby="nameHelp">
                                             </div>
 
                                         </div>
@@ -181,39 +195,52 @@
                                         <hr/>
                                         <div class="form-row">
                                             <div class="col-md-6">
-                                                <label for=" ">Função</label>
-                                                <select class="form-control" id="funcFuncao">
-                                                    <option value="">Selecione</option>
-                                                    <option value="">Corretor</option>
-                                                    <option value="">TI</option>
+                                                <label for=" ">Cargo</label>
+                                                <select class="form-control" name="funcionarioCargo" id="funcionarioCargo">
+                                                <option>Selecione</option>
+                                                    <option value="Diretor">Diretor</option>
+                                                    <option value="Gerente">Diretor</option>
+                                                    <option value="TI">TI</option>
+                                                    <option value="Corretor">TI</option>
+                                                    <option value="Backoffice">TI</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="">Departamento</label>
-                                                <select class="form-control" id="funcDepartamento">
-                                                    <option value="">Selecione</option>
-                                                    <option value="">TI</option>
-                                                    <option value="">Négocios</option>
+                                                <label for=" ">Filial</label>
+                                                <select class="form-control" name="funcionarioFilial" id="funcionarioFilial">
+                                                    <option value="null"/>
+                                                    <c:forEach var="filial" items="${lista}">
+                                                        <option value="${filial.filialId}">${filial.filialNome}</option>
+                                                    </c:forEach>
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="">Usuário</label>
-                                                <input class="form-control" id="funcUser" type="text">
+                                                <label for="">Email</label>
+                                                <input class="form-control" name="funcionarioEmail" id="funcionarioEmail" type="text" >
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Senha</label>
-                                                <input class="form-control" id="funcPass" type="password">
+                                                <input class="form-control" name="funcionarioSenha" id="funcionarioSenha" type="password">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Permissão</label>
+                                                <select class="form-control" name="funcionarioPermissao" id="funcionarioPermissao">
+                                                <option>Selecione</option>
+                                                    <option value="Admin">Admin</option>
+                                                    <option value="TI">TI</option>
+                                                    <option value="Corretor">Corretor</option>
+                                                    <option value="Backoffice">Backoffice</option>
+                                                </select>
                                             </div>
 
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                        </form>
-                        <a href="#" class="btn btn-success">Registrar</a>
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
                         <a class="btn btn-warning limpar" href="">Limpar</a>
                         <a href="#" class="btn btn-primary">Cancelar</a>
+                        </form>
                         <hr/>
                     </div>
                 </div>
@@ -251,17 +278,17 @@
             </div>
         </div>
 
-        <script src="../all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
-        <script src="../all/vendor/popper/popper.min.js" type="text/javascript"></script>
-        <script src="../all/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="../all/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
-        <script src="../all/vendor/chart.js/Chart.min.js" type="text/javascript"></script>
-        <script src="../all/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
-        <script src="../all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
-        <script src="../js/sb-admin.min.js" type="text/javascript"></script>
-        <script src="../js/sb-admin-datatables.min.js" type="text/javascript"></script>
-        <script src="../js/sb-admin-charts.min.js" type="text/javascript"></script>
-        <script src="../js/jquery.mask.js" type="text/javascript"></script>
-        <script src="../js/masks.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/popper/popper.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
+        <!--<script src="${pageContext.request.contextPath}/all/vendor/chart.js/Chart.min.js" type="text/javascript"></script>-->
+        <script src="${pageContext.request.contextPath}/all/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/sb-admin.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/sb-admin-datatables.min.js" type="text/javascript"></script>
+        <!--<script src="${pageContext.request.contextPath}/js/sb-admin-charts.min.js" type="text/javascript"></script>-->
+        <script src="${pageContext.request.contextPath}/js/jquery.mask.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/js/masks.js" type="text/javascript"></script>
     </body>
 </html>

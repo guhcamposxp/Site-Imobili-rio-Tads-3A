@@ -75,7 +75,7 @@ public class ClienteDAO {
                     + "CLIENTE_BAIRRO = '" + cliente.getClienteBairro() + "', \n"
                     + "CLIENTE_CIDADE = '" + cliente.getClienteCidade() + "', \n"
                     + "CLIENTE_CEP = '" + cliente.getClienteCep() + "', \n"
-                    + "ECLIENTE_NASCIMENTO = '" + cliente.getClienteNascimento() + "', \n"
+                    + "CLIENTE_NASCIMENTO = '" + cliente.getClienteNascimento() + "', \n"
                     + "CLIENTE_EMAIL = '" + cliente.getClienteEmail() + "', \n"
                     + "CLIENTE_SEXO = '" + cliente.getClienteSexo() + "', \n"
                     + "CLIENTE_CELULAR = '" + cliente.getClienteCelular() + "', \n"
@@ -180,7 +180,7 @@ public class ClienteDAO {
                 cliente.setClienteRua(rs.getString("CLIENTE_RUA"));
                 cliente.setClienteNumero(rs.getString("CLIENTE_NUMERO"));
                 cliente.setClienteComplemento(rs.getString("CLIENTE_COMPLEMENTO"));
-                cliente.setClienteBairro(rs.getString("CLIENTE_BAIRRO "));
+                cliente.setClienteBairro(rs.getString("CLIENTE_BAIRRO"));
                 cliente.setClienteCidade(rs.getString("CLIENTE_CIDADE"));
                 cliente.setClienteCep(rs.getString("CLIENTE_CEP"));
                 cliente.setClienteNascimento(rs.getString("CLIENTE_NASCIMENTO"));

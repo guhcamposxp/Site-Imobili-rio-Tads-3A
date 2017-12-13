@@ -13,58 +13,43 @@ public class FuncionarioDAO {
 
     public boolean cadastraFuncionario(FuncionarioData Funcionario) {
         Boolean retorno = false;
+        String saida= "nao foi";
         try {
-
-            String sql = "INSERT INTO Funcionario FUNCIONARIO \n"
-                    + "(NOME_FUNCIONARIO,\n"
-                    + "CPF_FUNCIONARIO,\n"
-                    + "RG_FUNCIONARIO,\n"
-                    + "SEXO_FUNCIONARIO,\n"
-                    + "EMAIL_FUNCIONARIO,\n"
-                    + "SENHA_FUNCIONARIO,\n"
-                    + "NASCIMENTO_FUNCIONARIO,\n"
-                    + "TEL_FIXO_FUNCIONARIO,\n"
-                    + "TEL_CEL_FUNCIONARIO,\n"
-                    + "END_RUA_FUNCIONARIO,\n"
-                    + "END_NUM_FUNCIONARIO,\n"
-                    + "END_BAIRRO_FUNCIONARIO,\n"
-                    + "END_CEP_FUNCIONARIO,\n"
-                    + "END_EST_FUNCIONARIO,\n"
-                    + "END_CID_FUNCIONARIO,\n"
-                    + "END_COMP_FUNCIONARIO,\n"
-                    + "EST_CIVIL_FUNCIONARIO, \n"
-                    + "ID_FILIAL, \n"
-                    + "CARGO_FUNCIONARIO) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO FUNCIONARIO (FUNCIONARIO_NOME,\n"
+                    + "FUNCIONARIO_SOBRENOME,\n"
+                    + "FUNCIONARIO_CPF,\n"
+                    + "FUNCIONARIO_RG,\n"
+                    + "FUNCIONARIO_SEXO,\n"
+                    + "FUNCIONARIO_EMAIL,\n"
+                    + "FUNCIONARIO_NASCIMENTO,\n"
+                    + "FUNCIONARIO_FILIAL,\n"
+                    + "FUNCIONARIO_SENHA,\n"
+                    + "FUNCIONARIO_PERMISSAO,\n"
+                    + "FUNCIONARIO_CARGO)  VALUES (?,?,?,?,?,?,?,?,?,?)";
 
             //Cria conexão com banco de dados
             Connection connection = new ConnectionFactory().getConnection();
             //Prepara a query
             PreparedStatement pstmt = connection.prepareStatement(sql);
             //Captura campos e seta na query
-            pstmt.setString(1, Funcionario.getNomeFuncionario());
-            pstmt.setString(2, Funcionario.getCpfFuncionario());
-            pstmt.setString(3, Funcionario.getRgFuncionario());
-            pstmt.setString(4, Funcionario.getSexoFuncionario());
-            pstmt.setString(5, Funcionario.getEmailFuncionario());
-            pstmt.setString(6, Funcionario.getSenhaFuncionario());
-            pstmt.setString(7, Funcionario.getNascimentoFuncionario());
-            pstmt.setString(8, Funcionario.getTelFixoFuncionario());
-            pstmt.setString(9, Funcionario.getTelCelFuncionario());
-            pstmt.setString(10, Funcionario.getEndRuaFuncionario());
-            pstmt.setString(11, Funcionario.getEndNumFuncionario());
-            pstmt.setString(12, Funcionario.getEndBairroFuncionario());
-            pstmt.setString(13, Funcionario.getEndCepFuncionario());
-            pstmt.setString(14, Funcionario.getEndEstFuncionario());
-            pstmt.setString(15, Funcionario.getEndCidFuncionario());
-            pstmt.setString(16, Funcionario.getEndCompFuncionario());
-            pstmt.setString(17, Funcionario.getEstCivilFuncionario());
-            pstmt.setInt(18, Funcionario.getFilialFuncionario());
-            pstmt.setString(19, Funcionario.getCargoFuncionario());
+            pstmt.setString(1, Funcionario.getFuncionarioNome());
+            pstmt.setString(2, Funcionario.getFuncionarioSobrenome());
+            pstmt.setString(3, Funcionario.getFuncionarioCpf());
+            pstmt.setString(4, Funcionario.getFuncionarioRg());
+            pstmt.setString(5, Funcionario.getFuncionarioSexo());
+            pstmt.setString(6, Funcionario.getFuncionarioEmail());
+            pstmt.setString(7, Funcionario.getFuncionarioNascimento());
+            pstmt.setString(8, Funcionario.getFuncionarioFilial());
+            pstmt.setString(9, Funcionario.getFuncionarioSenha());
+            pstmt.setString(10, Funcionario.getFuncionarioPermissao());
+            pstmt.setString(11, Funcionario.getFuncionarioCargo());
             pstmt.executeUpdate();
+            saida = "foi sim";
             connection.close();
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Erro no banco de dados - SQLException - Classe: FuncionarioDAO.java - cadastraFuncionario - Erro: " + e);
         }
+        System.out.println(saida);
         return retorno;
     }
 
@@ -72,72 +57,56 @@ public class FuncionarioDAO {
         Boolean retorno = false;
         try {
 
-            String sql = "UPDATE Funcionario SET "
-                    + "NOME_Funcionario = '" + Funcionario.getNomeFuncionario() + "', \n"
-                    + "CPF_Funcionario = '" + Funcionario.getCpfFuncionario() + "', \n"
-                    + "RG_Funcionario = '" + Funcionario.getRgFuncionario() + "', \n"
-                    + "SEXO_Funcionario = '" + Funcionario.getSexoFuncionario() + "', \n"
-                    + "EMAIL_Funcionario = '" + Funcionario.getEmailFuncionario() + "', \n"
-                    + "NASCIMENTO_Funcionario = '" + Funcionario.getNascimentoFuncionario() + "', \n"
-                    + "TEL_FIXO_Funcionario = '" + Funcionario.getTelFixoFuncionario() + "', \n"
-                    + "TEL_CEL_Funcionario = '" + Funcionario.getTelCelFuncionario() + "', \n"
-                    + "END_RUA_Funcionario = '" + Funcionario.getEndRuaFuncionario() + "', \n"
-                    + "END_NUM_Funcionario = '" + Funcionario.getEndNumFuncionario() + "', \n"
-                    + "END_BAIRRO_Funcionario = '" + Funcionario.getEndBairroFuncionario() + "', \n"
-                    + "END_CEP_Funcionario = '" + Funcionario.getEndCepFuncionario() + "', \n"
-                    + "END_EST_Funcionario = '" + Funcionario.getEndEstFuncionario() + "', \n"
-                    + "END_CID_Funcionario = '" + Funcionario.getEndCidFuncionario() + "', \n"
-                    + "END_COMP_Funcionario = '" + Funcionario.getEndCompFuncionario() + "', \n"
-                    + "EST_CIVIL_Funcionario = '" + Funcionario.getEstCivilFuncionario() + "' \n"
-                    + "SENHA_Funcionario = " + Funcionario.getSenhaFuncionario() + "' \n"
-                    + "CARGO_Funcionario = '" + Funcionario.getCargoFuncionario() + "' \n"
-                    + "ID_FILIAL = '" + Funcionario.getFilialFuncionario() + "' \n"
-                    + "WHERE ID_FUNCIONARIO = " + Funcionario.getIdFuncionario() + "";
+            String sql = "UPDATE `FUNCIONARIO` SET \n"
+                    + "`FUNCIONARIO_NOME` = '" + Funcionario.getFuncionarioNome()+ "', \n"
+                    + "`FUNCIONARIO_SOBRENOME` = '" + Funcionario.getFuncionarioSobrenome()+ "', \n"
+                    + "`FUNCIONARIO_CPF` = '" + Funcionario.getFuncionarioCpf()+ "', \n"
+                    + "`FUNCIONARIO_RG` = '" + Funcionario.getFuncionarioRg()+ "', \n"
+                    + "`FUNCIONARIO_SEXO` = '" + Funcionario.getFuncionarioSexo()+ "', \n"
+                    + "`FUNCIONARIO_EMAIL` = '" + Funcionario.getFuncionarioEmail()+ "', \n"
+                    + "`FUNCIONARIO_NASCIMENTO` = '" + Funcionario.getFuncionarioNascimento()+ "', \n"
+                    + "`FUNCIONARIO_FILIAL` = '" + Funcionario.getFuncionarioFilial()+ "', \n"
+                    + "`FUNCIONARIO_SENHA` = '" + Funcionario.getFuncionarioSenha()+ "', \n"
+                    + "`FUNCIONARIO_PERMISSAO` = '" + Funcionario.getFuncionarioPermissao()+ "', \n"
+                    + "`FUNCIONARIO_CARGO` = '" + Funcionario.getFuncionarioCargo()+ "'\n"
+                    + "WHERE FUNCIONARIO_ID = " + Funcionario.getFuncionarioId()+ "";
 
             //Cria conexão com banco de dados
             Connection connection = new ConnectionFactory().getConnection();
             //Prepara a query
             PreparedStatement pstmt = connection.prepareStatement(sql);
             //Captura campos e seta na query
-            System.out.println(sql);
             pstmt.execute(sql);
             connection.close();
+            retorno = true;
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Erro no banco de dados - SQLException - Classe: FuncionarioDAO.java - atualizaFuncionario - Erro: " + e);
         }
         return retorno;
     }
 
-    public ArrayList<FuncionarioData> getTodosFuncionario() {
+      public ArrayList<FuncionarioData> getTodosFuncionario() {
         ArrayList<FuncionarioData> listaFuncionario = new ArrayList<>();
         try {
             Connection connection = new ConnectionFactory().getConnection();
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Funcionario");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM FUNCIONARIO");
             while (rs.next()) {
                 FuncionarioData Funcionario = new FuncionarioData();
-                String idx = rs.getString("ID_Funcionario");
+                String idx = rs.getString("FUNCIONARIO_ID");
                 int id = Integer.parseInt(idx);
-                Funcionario.setIdFuncionario(id);
-                Funcionario.setNomeFuncionario(rs.getString("NOME_Funcionario"));
-                Funcionario.setCpfFuncionario(rs.getString("CPF_Funcionario"));
-                Funcionario.setRgFuncionario(rs.getString("RG_Funcionario"));
-                Funcionario.setSexoFuncionario(rs.getString("SEXO_Funcionario"));
-                Funcionario.setEmailFuncionario(rs.getString("EMAIL_Funcionario"));
-                Funcionario.setNascimentoFuncionario(rs.getString("NASCIMENTO_Funcionario"));
-                Funcionario.setTelFixoFuncionario(rs.getString("TEL_FIXO_Funcionario"));
-                Funcionario.setTelCelFuncionario(rs.getString("TEL_CEL_Funcionario"));
-                Funcionario.setEndRuaFuncionario(rs.getString("END_RUA_Funcionario"));
-                Funcionario.setEndNumFuncionario(rs.getString("END_NUM_Funcionario"));
-                Funcionario.setEndCompFuncionario(rs.getString("END_COMP_Funcionario"));
-                Funcionario.setEndCepFuncionario(rs.getString("END_CEP_Funcionario"));
-                Funcionario.setEndBairroFuncionario(rs.getString("END_BAIRRO_Funcionario"));
-                Funcionario.setEndCidFuncionario(rs.getString("END_CID_Funcionario"));
-                Funcionario.setEndEstFuncionario(rs.getString("END_EST_Funcionario"));
-                Funcionario.setEstCivilFuncionario(rs.getString("EST_CIVIL_Funcionario"));
-                Funcionario.setSenhaFuncionario(rs.getString("SENHA_FUNCIONARIO"));
-                Funcionario.setCargoFuncionario(rs.getString("CARGO_FUNCIONARIO"));
-                Funcionario.setFilialFuncionario(Integer.parseInt(rs.getString("ID_FILIAL")));
+                Funcionario.setFuncionarioId(id);
+                Funcionario.setFuncionarioNome(rs.getString("FUNCIONARIO_NOME"));
+                Funcionario.setFuncionarioSobrenome(rs.getString("FUNCIONARIO_SOBRENOME"));
+                Funcionario.setFuncionarioCpf(rs.getString("FUNCIONARIO_CPF"));
+                Funcionario.setFuncionarioRg(rs.getString("FUNCIONARIO_RG"));
+                Funcionario.setFuncionarioSexo(rs.getString("FUNCIONARIO_SEXO"));
+                Funcionario.setFuncionarioNascimento(rs.getString("FUNCIONARIO_NASCIMENTO"));
+                Funcionario.setFuncionarioEmail(rs.getString("FUNCIONARIO_EMAIL"));
+                Funcionario.setFuncionarioSenha(rs.getString("FUNCIONARIO_SENHA"));
+                Funcionario.setFuncionarioPermissao(rs.getString("FUNCIONARIO_PERMISSAO"));
+                Funcionario.setFuncionarioFilial(rs.getString("FUNCIONARIO_FILIAL"));
+                Funcionario.setFuncionarioCargo(rs.getString("FUNCIONARIO_CARGO"));
                 listaFuncionario.add(Funcionario);
             }
             connection.close();
@@ -147,36 +116,29 @@ public class FuncionarioDAO {
         return listaFuncionario;
     }
 
-    public FuncionarioData getFuncionarioById(int idFuncionario) {
+    public FuncionarioData getFuncionarioById(int funcionarioId) {
         FuncionarioData Funcionario = new FuncionarioData();
         try {
             Connection connection = new ConnectionFactory().getConnection();
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Funcionario WHERE ID_Funcionario = " + idFuncionario);
+            ResultSet rs = stmt.executeQuery("SELECT * FROM FUNCIONARIO WHERE FUNCIONARIO_ID = " + funcionarioId);
             while (rs.next()) {
-                String idx = rs.getString("ID_Funcionario");
+                String idx = rs.getString("FUNCIONARIO_ID");
                 int id = Integer.parseInt(idx);
-                Funcionario.setIdFuncionario(id);
-                Funcionario.setNomeFuncionario(rs.getString("NOME_Funcionario"));
-                Funcionario.setCpfFuncionario(rs.getString("CPF_Funcionario"));
-                Funcionario.setRgFuncionario(rs.getString("RG_Funcionario"));
-                Funcionario.setSexoFuncionario(rs.getString("SEXO_Funcionario"));
-                Funcionario.setEmailFuncionario(rs.getString("EMAIL_Funcionario"));
-                Funcionario.setNascimentoFuncionario(rs.getString("NASCIMENTO_Funcionario"));
-                Funcionario.setTelFixoFuncionario(rs.getString("TEL_FIXO_Funcionario"));
-                Funcionario.setTelCelFuncionario(rs.getString("TEL_CEL_Funcionario"));
-                Funcionario.setEndRuaFuncionario(rs.getString("END_RUA_Funcionario"));
-                Funcionario.setEndNumFuncionario(rs.getString("END_NUM_Funcionario"));
-                Funcionario.setEndCompFuncionario(rs.getString("END_COMP_Funcionario"));
-                Funcionario.setEndCepFuncionario(rs.getString("END_CEP_Funcionario"));
-                Funcionario.setEndBairroFuncionario(rs.getString("END_BAIRRO_Funcionario"));
-                Funcionario.setEndCidFuncionario(rs.getString("END_CID_Funcionario"));
-                Funcionario.setEndEstFuncionario(rs.getString("END_EST_Funcionario"));
-                Funcionario.setEstCivilFuncionario(rs.getString("EST_CIVIL_Funcionario"));
-                Funcionario.setSenhaFuncionario(rs.getString("SENHA_FUNCIONARIO"));
-                Funcionario.setCargoFuncionario(rs.getString("CARGO_FUNCIONARIO"));
-                Funcionario.setFilialFuncionario(Integer.parseInt(rs.getString("ID_FILIAL")));
+                Funcionario.setFuncionarioId(id);
+                Funcionario.setFuncionarioNome(rs.getString("FUNCIONARIO_NOME"));
+                Funcionario.setFuncionarioSobrenome(rs.getString("FUNCIONARIO_SOBRENOME"));
+                Funcionario.setFuncionarioCpf(rs.getString("FUNCIONARIO_CPF"));
+                Funcionario.setFuncionarioRg(rs.getString("FUNCIONARIO_RG"));
+                Funcionario.setFuncionarioSexo(rs.getString("FUNCIONARIO_SEXO"));
+                Funcionario.setFuncionarioNascimento(rs.getString("FUNCIONARIO_NASCIMENTO"));
+                Funcionario.setFuncionarioEmail(rs.getString("FUNCIONARIO_EMAIL"));
+                Funcionario.setFuncionarioSenha(rs.getString("FUNCIONARIO_SENHA"));
+                Funcionario.setFuncionarioPermissao(rs.getString("FUNCIONARIO_PERMISSAO"));
+                Funcionario.setFuncionarioFilial(rs.getString("FUNCIONARIO_FILIAL"));
+                Funcionario.setFuncionarioCargo(rs.getString("FUNCIONARIO_CARGO"));
             }
+             
             connection.close();
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Erro no banco de dados - SQLException - Classe: FuncionarioDAO.java - getFuncionarioById - Erro: " + e);
@@ -190,13 +152,12 @@ public class FuncionarioDAO {
         try {
             Connection connection = new ConnectionFactory().getConnection();
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Funcionario WHERE EMAIL_FUNCIONARIO = '" + usuario + "' AND SENHA_FUNCIONARIO = '" + senha + "'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Funcionario WHERE FUNCIONARIO_EMAIL = '" + usuario + "' AND FUNCIONARIO_SENHA = '" + senha + "'");
             while (rs.next()) {
-                Funcionario.setNomeFuncionario(rs.getString("NOME_Funcionario"));
-                Funcionario.setCargoFuncionario(rs.getString("CARGO_FUNCIONARIO"));
-                Funcionario.setFilialFuncionario(Integer.parseInt(rs.getString("ID_FILIAL")));
-                Funcionario.setEmailFuncionario(rs.getString("EMAIL_FUNCIONARIO"));
-                Funcionario.setEmailFuncionario(rs.getString("SENHA_FUNCIONARIO"));
+                Funcionario.setFuncionarioNome(rs.getString("FUNCIONARIO_NOME"));
+                Funcionario.setFuncionarioPermissao(rs.getString("FUNCIONARIO_PERMISSAO"));
+                Funcionario.setFuncionarioEmail(rs.getString("FUNCIONARIO_EMAIL"));
+                Funcionario.setFuncionarioSenha(rs.getString("FUNCIONARIO_SENHA"));
             }
             connection.close();
         } catch (SQLException | ClassNotFoundException e) {
@@ -208,7 +169,7 @@ public class FuncionarioDAO {
 
     public boolean excluirFuncionario(int idFuncionario) {
         try {
-            String sql = "DELETE FROM Funcionario WHERE ID_Funcionario = " + idFuncionario;
+            String sql = "DELETE FROM `Funcionario` WHERE FUNCIONARIO_ID = '" + idFuncionario+"'";
             Connection connection = new ConnectionFactory().getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.executeUpdate(sql);

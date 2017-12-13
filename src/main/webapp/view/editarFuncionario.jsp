@@ -1,19 +1,18 @@
- 
-<%@page import="Data.ClienteData"%>
+
+<%@page import="Data.FuncionarioData"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="DAO.ClienteDAO"%>
+<%@page import="DAO.FuncionarioDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-
     <head>
-        <jsp:include page="/getCliente" />
+        <jsp:include page="/getFuncionario" />
         <meta charset="utf-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
 
-        <title>Listagem de Clientes</title>
+        <title>Edição de Funcionario</title>
         <link href="${pageContext.request.contextPath}/all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/all/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css"/>
@@ -21,7 +20,8 @@
         <link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">	
     </head>
-    <body class="fixed-nav sticky-footer" id="page-top">
+    <body>
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/view/BoasVindas.jsp">Away - Sistema Imobiliário</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -143,50 +143,91 @@
         </nav>
 
         <div class="content-wrapper">
-            <div class="container-fluid">
 
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fa fa-table"></i> Cliente Cadastrados </div>
+            <div class="container">
+                <div class="card card-register mx-auto mt-5">
+                    <div class="card-header cardRegistro">Registar Novo Funcionário</div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>Cpf</th>
-                                        <th>E-mail</th>
-                                        <th>Telefone</th>
-                                        <th>Celular</th>
-                                        <th class="actions">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                        <form name="formFuncionario" id="formularioCadastro" action="${pageContext.request.contextPath}/insertFuncionario" method="post">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="form-group col-lg-6">
+                                        <h5>
+                                            Dados Básicos
+                                        </h5>
+                                        <hr/>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <label for="">Nome</label>
+                                                <input class="form-control" type="text" name="funcionarioNome" value="${lista.funcionarioNome}"/>
+                                                
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Sobrenome</label>
+                                                <input class="form-control" type="text" name="funcionarioSobrenome" value="${lista.funcionarioSobrenome}" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">CPF</label>
+                                                <input class="form-control" type="text" name="funcionarioCpf" value="${lista.funcionarioCpf}" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">RG</label>
+                                                <input class="form-control" type="text" name="funcionarioRg" value="${lista.funcionarioRg}" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Sexo</label>
+                                                <input class="form-control" type="text" name="funcionarioSexo" value="${lista.funcionarioSexo}" />
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Data de Nascimento</label>
+                                                <input class="form-control maskDataNascimento" name="funcionarioNascimento" id="funcionarioNascimento" type="text" aria-describedby="nameHelp" value="${lista.funcionarioNascimento}">
+                                            </div>
 
-
-                                    <c:forEach var="cliente" items="${lista}">
-                                        <tr>
-                                            <td>${cliente.clienteNome}</td>
-                                            <td>${cliente.clienteCpf}</td>
-                                            <td>${cliente.clienteEmail}</td>
-                                            <td>${cliente.clienteTelefone}</td>
-                                            <td>${cliente.clienteCelular}</td>
-
-                                            <td class="actions">
-                                                <a class="btn btn-success btn-xs" href="../view/readOnlyCliente.jsp?clienteId=${cliente.clienteId}">Visualizar</a>
-                                                <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
-                                                <a class="btn btn-warning btn-xs" href="../view/editarCliente.jsp?clienteId=${cliente.clienteId}">Editar</a>
-                                                <a class="btn btn-danger btn-xs"  href="../dropCliente?idCliente=${cliente.clienteId}">Excluir</a>
-                                                </c:if>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        <h5>
+                                            Dados Internos
+                                        </h5>
+                                        <hr/>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <label for=" ">Cargo</label>
+                                                <input class="form-control" type="text" name="funcionarioCargo" value="${lista.funcionarioCargo}"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Email</label>
+                                                <input class="form-control" name="funcionarioEmail" id="funcionarioEmail" type="text" value="${lista.funcionarioEmail}">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Senha</label>
+                                                <input class="form-control" name="funcionarioSenha" id="funcionarioSenha" type="password" value="${lista.funcionarioSenha}">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">ID</label>
+                                                <input class="form-control" type="text" name="FuncionarioId" value="${lista.funcionarioId}"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Filial</label>
+                                                <input class="form-control" type="text" name="FuncionarioFilial" value="${lista.funcionarioFilial}"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Permissão</label>
+                                                <input class="form-control" type="text" name="funcionarioPermissao" value="${lista.funcionarioPermissao}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        <a class="btn btn-warning limpar" href="">Limpar</a>
+                        <a href="#" class="btn btn-primary">Cancelar</a>
+                        </form>
+                        <hr/>
                     </div>
                 </div>
             </div>
+
         </div>
 
         <footer class="sticky-footer">
@@ -212,31 +253,24 @@
                     </div>
                     <div class="modal-body">Clique em "Sair" abaixo se você deseja realmente sair.</div>
                     <div class="modal-footer">
-
-                        <!--<a class="btn btn-primary" href="login.html">Sair</a>-->
-                        <form action="${pageContext.request.contextPath}/logout" method="post">
-                            <input class="btn btn-primary" type="submit" value="Logout" />
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                        </form>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                        <a class="btn btn-primary" href="login.html">Sair</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <script src="${pageContext.request.contextPath}/all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/all/vendor/popper/popper.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/all/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/all/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
-        <!--<script src="${pageContext.request.contextPath}/all/vendor/chart.js/Chart.min.js" type="text/javascript"></script>-->
-        <script src="${pageContext.request.contextPath}/all/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/js/sb-admin.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/js/sb-admin-datatables.min.js" type="text/javascript"></script>
-        <!--<script src="${pageContext.request.contextPath}/js/sb-admin-charts.min.js" type="text/javascript"></script>-->
-        <script src="${pageContext.request.contextPath}/js/jquery.mask.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath}/js/masks.js" type="text/javascript"></script>
-
+        <script src="../all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="../all/vendor/popper/popper.min.js" type="text/javascript"></script>
+        <script src="../all/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../all/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
+        <script src="../all/vendor/chart.js/Chart.min.js" type="text/javascript"></script>
+        <script src="../all/vendor/datatables/jquery.dataTables.js" type="text/javascript"></script>
+        <script src="../all/vendor/datatables/dataTables.bootstrap4.js" type="text/javascript"></script>
+        <script src="../js/sb-admin.min.js" type="text/javascript"></script>
+        <script src="../js/sb-admin-datatables.min.js" type="text/javascript"></script>
+        <script src="../js/sb-admin-charts.min.js" type="text/javascript"></script>
+        <script src="../js/jquery.mask.js" type="text/javascript"></script>
+        <script src="../js/masks.js" type="text/javascript"></script>
     </body>
-</html>
-
 </html>

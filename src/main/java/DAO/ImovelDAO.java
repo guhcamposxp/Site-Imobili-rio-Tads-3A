@@ -66,50 +66,42 @@ public class ImovelDAO {
         return retorno;
     }
 
-//    public boolean atualizaImovel(ImovelData imovel) {
-//        Boolean retorno = false;
-//        try {
-//
-//            String sql = "UPDATE Imovel SET "
-//                    + "(END_RUA_IMOVEL = '" + imovel.getEndRuaImovel() + "', \n"
-//                    + "END_NUM_IMOVEL= " + imovel.getEndNumImovel() + ", \n"
-//                    + "END_BAIRRO_IMOVEL= '" + imovel.getEndBairroImovel() + "', \n"
-//                    + "END_CEP_IMOVEL= '" + imovel.getEndCepImovel() + "', \n"
-//                    + "END_EST_IMOVEL= '" + imovel.getEndEstImovel() + "', \n"
-//                    + "END_CID_IMOVEL= '" + imovel.getEndCidImovel() + "', \n"
-//                    + "END_COMP_IMOVEL= '" + imovel.getEndCompImovel() + "', \n"
-//                    + "AREA_UTIL_IMOVEL= '" + imovel.getAreaUtilImovel() + "', \n"
-//                    + "QTD_QUARTO_IMOVEL= " + imovel.getQtdQuartoImovel() + ", \n"
-//                    + "QTD_SUITE_IMOVEL= " + imovel.getQtdSuiteImovel() + ", \n"
-//                    + "QTD_COZINHA_IMOVEL= " + imovel.getQtdCozinhaImovel() + ", \n"
-//                    + "QTD_SALA_COMUM_IMOVEL= " + imovel.getQtdSalaComumImovel() + ", \n"
-//                    + "QTD_SALA_JANTAR_IMOVEL= " + imovel.getQtdSalaJantarImovel() + ", \n"
-//                    + "QTD_BANHEIRO_IMOVEL= " + imovel.getQtdBanheiroImovel() + ", \n"
-//                    + "QTD_ VAGAS_IMOVEL= " + imovel.getQtdVagasImovel() + ", \n"
-//                    + "STATUS_IMOVEL= '" + imovel.getStatusImovel() + "', \n"
-//                    + "ID_PROPRIETARIO = " + imovel.getProprietarioImovel() + ", \n"
-//                    + "DESC_IMOVEL= '" + imovel.getDescImovel() + "', \n"
-//                    + "VALOR_VENDA_IMOVEL= '" + imovel.getValorVendaImovel() + "', \n"
-//                    + "VALOR_ALUGUEL_IMOVEL= '" + imovel.getValorAluguelmovel() + "', \n"
-//                    + "VALOR_DEPOSITO_IMOVEL= '" + imovel.getValorDepositoImovel() + "', \n"
-//                    + "ID_FUNCIONARIO= " + imovel.getCorretorResponsavelImovel() + ", \n"
-//                    + "ID_FILIAL= " + imovel.getFilialImovel() + ", \n"
-//                    + "TIPO_IMOVEL = '" + imovel.getTipoImovel() + "', \n"
-//                    + "WHERE ID_IMOVEL = " + imovel.getIdImovel();
-//
-//            //Cria conexão com banco de dados
-//            Connection connection = new ConnectionFactory().getConnection();
-//            //Prepara a query
-//            PreparedStatement pstmt = connection.prepareStatement(sql);
-//            //Captura campos e seta na query
-//            System.out.println(sql);
-//            pstmt.execute(sql);
-//            connection.close();
-//        } catch (SQLException | ClassNotFoundException e) {
-//            System.out.println("Erro no banco de dados - SQLException - Classe: ImovelDAO.java - atualizaImovel - Erro: " + e);
-//        }
-//        return retorno;
-//    }
+    public boolean atualizaImovel(ImovelData imovel) {
+        Boolean retorno = false;
+        try {
+
+            String sql = "UPDATE IMOVEL SET "
+                    + "FK_PROPRIETARIO_CPF = '" + imovel.getProprietarioCpf()+ "', \n"
+                    + "IMOVEL_RUA = '" + imovel.getImovelRua()+ "', \n"
+                    + "IMOVEL_NUMERO = '" + imovel.getImovelNumero()+ "', \n"
+                    + "IMOVEL_COMPLEMENTO = '" + imovel.getImovelComplemento()+ "', \n"
+                    + "IMOVEL_CEP = '" + imovel.getImovelCep()+ "', \n"
+                    + "IMOVEL_BAIRRO = '" + imovel.getImovelBairro()+ "', \n"
+                    + "IMOVEL_CIDADE = '" + imovel.getImovelCidade()+ "', \n"
+                    + "IMOVEL_ESTADO = '" + imovel.getImovelEstado()+ "', \n"
+                    + "IMOVEL_TIPOTRANSACAO = '" + imovel.getImovelTipoTransacao()+ "', \n"
+                    + "IMOVEL_VLRVENDA = '" + imovel.getImovelVlrVenda()+ "', \n"
+                    + "IMOVEL_VLRALUGUEL = '" + imovel.getImovelVlrAluguel()+ "', \n"
+                    + "IMOVEL_QTDVAGASGARAGEM = '" + imovel.getImovelQtdVagasGaragem()+ "', \n"
+                    + "IMOVEL_QTDDORMITORIOS = '" + imovel.getImovelQtdDormitorios()+ "', \n"
+                    + "IMOVEL_TIPO = '" + imovel.getImovelTipo()+ "', \n"
+                    + "IMOVEL_METROSQUADRADO = '" + imovel.getImovelMetrosQuadrado()+ "', \n"
+                    + "IMOVEL_DESCRICAO = '" + imovel.getImovelDescricao()+ "' \n"
+                    + "WHERE IMOVEL_ID = " + imovel.getImovelId()+ "";
+
+            //Cria conexão com banco de dados
+            Connection connection = new ConnectionFactory().getConnection();
+            //Prepara a query
+            PreparedStatement pstmt = connection.prepareStatement(sql);
+            //Captura campos e seta na query
+            System.out.println(sql);
+            pstmt.execute(sql);
+            connection.close();
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println("Erro no banco de dados - SQLException - Classe: ImovelDAO.java - atualizaImovel - Erro: " + e);
+        }
+        return retorno;
+    }
 
     public ArrayList<ImovelData> getTodosImoveis() {
         ArrayList<ImovelData> listaImovel = new ArrayList<>();
@@ -148,7 +140,8 @@ public class ImovelDAO {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM IMOVEL WHERE IMOVEL_ID = " + imovelId);
             while (rs.next()) {
-                imovel.setImovelId(Integer.parseInt(rs.getString(imovelId)));
+//                imovel.setImovelId(Integer.parseInt(rs.getString(imovelId)));
+                imovel.setImovelId(Integer.parseInt(rs.getString("IMOVEL_ID")));
                 imovel.setProprietarioCpf(rs.getString("FK_PROPRIETARIO_CPF"));
                 imovel.setImovelRua(rs.getString("IMOVEL_RUA"));
                 imovel.setImovelNumero(rs.getString("IMOVEL_NUMERO"));
@@ -176,7 +169,7 @@ public class ImovelDAO {
     }
     public boolean excluirImovel(int idImovel) {
         try {
-            String sql = "DELETE FROM Imovel WHERE ID_Imovel = " + idImovel;
+            String sql = "DELETE FROM Imovel WHERE IMOVEL_ID = " + idImovel;
             Connection connection = new ConnectionFactory().getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.executeUpdate(sql);

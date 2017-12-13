@@ -7,14 +7,14 @@ public class ContratoData {
     /**
      * @return the valorContrato
      */
-    public String getValorContrato() {
+    public float getValorContrato() {
         return valorContrato;
     }
 
     /**
      * @param valorContrato the valorContrato to set
      */
-    public void setValorContrato(String valorContrato) {
+    public void setValorContrato(float valorContrato) {
         this.valorContrato = valorContrato;
     }
 
@@ -25,7 +25,7 @@ public class ContratoData {
     private int idFilial;
     private int idCorretor;
     private String dataContrato;
-    private String valorContrato;
+    private float valorContrato;
     private String tipoTransacao;
 
     public String getTipoTransacao() {

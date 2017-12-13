@@ -17,13 +17,13 @@ public class dropImovel extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            String id = request.getParameter("idImovel");
+            String id = request.getParameter("imovelId");
             ImovelDAO getImovel = new ImovelDAO();
             getImovel.excluirImovel(Integer.parseInt(id));
-            response.sendRedirect("view/listagemImovel.jsp");
+            response.sendRedirect("view/listarImovel.jsp");
         } catch (Exception e) {
             System.out.println("Erro Servlet - Drop Imovel");
-            response.sendRedirect("view/listagemImovel.jsp");
+            response.sendRedirect("view/listarImovel.jsp");
         }
     }
 

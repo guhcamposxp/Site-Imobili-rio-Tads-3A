@@ -7,6 +7,7 @@
 <%@page import="Data.ClienteData"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="DAO.ClienteDAO"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,75 +29,85 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                    <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice' || sessionScope.permissaoFuncionario == 'Corretor'}" >
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#opcoesImoveis" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-home" aria-hidden="true"></i>
                             <span class="nav-link-text">Imóveis</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="opcoesImoveis">
+                            <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                             <li>
-                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarImovel.jsp"> Cadastrar</a>
+                                <a aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarImovel.jsp"> ↳ Cadastrar</a>
                             </li>
+                            </c:if>
+                            
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarImovel.jsp"> Consultar</a>
+                                <a aria-hidden="true" href="${pageContext.request.contextPath}/view/listarImovel.jsp"> ↳ Consultar</a>
                             </li>
+                            
                         </ul>
                     </li>
-
+                    </c:if>
+                    
+                    <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice' || sessionScope.permissaoFuncionario == 'Corretor'}">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropClientes" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-user" aria-hidden="true"></i>
                             <span class="nav-link-text">Clientes</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropClientes">
+                            <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                             <li>
-                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarCliente.jsp"> Cadastrar</a>
+                                <a aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarCliente.jsp"> ↳ Cadastrar</a>
                             </li>
+                            </c:if>
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarCliente.jsp"> Consultar</a>
-                            </li>
-                            <li>
-                                <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarCliente.jsp"> Gerenciar</a>
+                                <a aria-hidden="true" href="${pageContext.request.contextPath}/view/listarCliente.jsp"> ↳ Consultar</a>
                             </li>
                         </ul>
                     </li>
-
+                    </c:if>
+                    
+                    <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropFuncionario" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-users" aria-hidden="true"></i>
                             <span class="nav-link-text">Funcionários</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropFuncionario">
+                            <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                             <li>
-                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarFuncionario.jsp"> Cadastrar</a>
+                                <a aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarFuncionario.jsp"> ↳ Cadastrar</a>
                             </li>
+                            </c:if>
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/consultarFuncionario.jsp"> Consultar</a>
-                            </li>
-                            <li>
-                                <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarImovel.jsp"> Gerenciar</a>
+                                <a aria-hidden="true" href="${pageContext.request.contextPath}/view/listarFuncionario.jsp"> ↳ Consultar</a>
                             </li>
                         </ul>
                     </li>
+                    </c:if>
 
+                    <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropFiliais" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-building" aria-hidden="true"></i>
                             <span class="nav-link-text">Filiais</span>
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropFiliais">
+                            <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
                             <li>
-                                <a class="fa fa-plus" aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarFilial.jsp"> Cadastrar</a>
+                                <a aria-hidden="false" href="${pageContext.request.contextPath}/view/cadastrarFilial.jsp"> ↳ Cadastrar</a>
                             </li>
+                            </c:if>
                             <li>
-                                <a class="fa fa-search" aria-hidden="true" href="${pageContext.request.contextPath}/view/listarFilial.jsp"> Consultar</a>
-                            </li>
-                            <li>
-                                <a class="fa fa-wrench" aria-hidden="true" href="${pageContext.request.contextPath}/view/gerenciarFilial.jsp"> Gerenciar</a>
+                                <a aria-hidden="true" href="${pageContext.request.contextPath}/view/listarFilial.jsp"> ↳ Consultar</a>
                             </li>
                         </ul>
                     </li>
-
+                    </c:if>
+                    
+                    <!--
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropContratos" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-files-o" aria-hidden="true"></i>
@@ -104,14 +115,14 @@
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropContratos">
                             <li>
-                                <a class="fa fa-usd" aria-hidden="false" href=""> Contrato de Venda</a>
+                                <a aria-hidden="false" href=""> ↳ Contrato de Venda</a>
                             </li>
                             <li>
-                                <a class="fa fa-file-o" aria-hidden="true" href=""> Contrato de Aluguel</a>
+                                <a aria-hidden="true" href=""> ↳ Contrato de Aluguel</a>
                             </li>
                         </ul>
-                    </li>
-
+                    </li> !-->
+                    
 
 
                 </ul>
@@ -131,11 +142,43 @@
             </div>
         </nav>
 
+
         <div class="content-wrapper">
 
             <div class="container">
+
                 <div class="card card-register mx-auto mt-5">
                     <div class="card-header cardRegistro">Registar Novo Cliente</div>
+                    <c:if test = "${retorno == 'criacao'}">
+                        <div id="sucess" class="alert alert-success">
+                            O cliente foi cadastrado com sucesso!
+                        </div> 
+                        <script>
+                            var div = document.getElementById("#sucess");
+                            var x = '${retorno}';
+                            function explode() {
+                                $("#sucess").hide();
+
+                            }
+                            setTimeout(explode, 5000);
+                            x = "";
+                        </script>
+                    </c:if>
+                        <c:if test = "${retorno == 'alteracao'}">
+                        <div id="sucess" class="alert alert-success">
+                            O cliente foi alterado com sucesso!
+                        </div> 
+                        <script>
+                            var div = document.getElementById("#sucess");
+                            var x = '${retorno}';
+                            function explode() {
+                                $("#sucess").hide();
+
+                            }
+                            setTimeout(explode, 5000);
+                            x = "";
+                        </script>
+                    </c:if>
                     <div class="card-body">
                         <form name="formCliente" id="formularioCadastro" action="${pageContext.request.contextPath}/insertCliente" method="post">
                             <div class="col-lg-12">
@@ -149,7 +192,7 @@
                                             <div class="col-md-6">
                                                 <label for="">Nome</label>
                                                 <input class="form-control" name="clienteNome" id="clienteNome" type="text" aria-describedby="nameHelp">
-                                                
+
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="">Sobrenome</label>
@@ -268,8 +311,8 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Cadastrar</button>
                         </form>
-                        
-                        
+
+
                         <hr/>
                     </div>
                 </div>

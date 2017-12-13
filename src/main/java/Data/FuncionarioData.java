@@ -3,305 +3,114 @@ package Data;
 
 public class FuncionarioData {
 
-    private int idFuncionario;
-    private String nomeFuncionario;
-    private String cpfFuncionario;
-    private String rgFuncionario;
-    private String sexoFuncionario;
-    private String emailFuncionario;
-    private String nascimentoFuncionario;
-    private String telFixoFuncionario;
-    private String telCelFuncionario;
-    private String endRuaFuncionario;
-    private String endNumFuncionario;
-    private String endBairroFuncionario;
-    private String endCepFuncionario;
-    private String endEstFuncionario;
-    private String endCidFuncionario;
-    private String endCompFuncionario;
-    private String estCivilFuncionario;
-    private int filialFuncionario;
-    private String senhaFuncionario;
-    private String cargoFuncionario;
+    private int funcionarioId;
+    private String funcionarioNome;
+    private String funcionarioSobrenome;
+    private String funcionarioCpf;
+    private String funcionarioRg;
+    private String funcionarioSexo;
+    private String funcionarioEmail;
+    private String funcionarioNascimento;
+    private String funcionarioFilial;
+    private String funcionarioSenha;
+    private String funcionarioCargo;
+    private String funcionarioPermissao;
 
-    /**
-     * @return the idFuncionario
-     */
-    public int getIdFuncionario() {
-        return idFuncionario;
+    public String getFuncionarioPermissao() {
+        return funcionarioPermissao;
     }
 
-    /**
-     * @param idFuncionario the idFuncionario to set
-     */
-    public void setIdFuncionario(int idFuncionario) {
-        this.idFuncionario = idFuncionario;
+    public void setFuncionarioPermissao(String funcionarioPermissao) {
+        this.funcionarioPermissao = funcionarioPermissao;
+    }
+    
+    public int getFuncionarioId() {
+        return funcionarioId;
     }
 
-    /**
-     * @return the nomeFuncionario
-     */
-    public String getNomeFuncionario() {
-        return nomeFuncionario;
+    public void setFuncionarioId(int funcionarioId) {
+        this.funcionarioId = funcionarioId;
     }
 
-    /**
-     * @param nomeFuncionario the nomeFuncionario to set
-     */
-    public void setNomeFuncionario(String nomeFuncionario) {
-        this.nomeFuncionario = nomeFuncionario;
+    public String getFuncionarioNome() {
+        return funcionarioNome;
     }
 
-    /**
-     * @return the cpfFuncionario
-     */
-    public String getCpfFuncionario() {
-        return cpfFuncionario;
+    public void setFuncionarioNome(String funcionarioNome) {
+        this.funcionarioNome = funcionarioNome;
     }
 
-    /**
-     * @param cpfFuncionario the cpfFuncionario to set
-     */
-    public void setCpfFuncionario(String cpfFuncionario) {
-        this.cpfFuncionario = cpfFuncionario;
+    public String getFuncionarioSobrenome() {
+        return funcionarioSobrenome;
     }
 
-    /**
-     * @return the rgFuncionario
-     */
-    public String getRgFuncionario() {
-        return rgFuncionario;
+    public void setFuncionarioSobrenome(String funcionarioSorebnome) {
+        this.funcionarioSobrenome = funcionarioSorebnome;
     }
 
-    /**
-     * @param rgFuncionario the rgFuncionario to set
-     */
-    public void setRgFuncionario(String rgFuncionario) {
-        this.rgFuncionario = rgFuncionario;
+    public String getFuncionarioCpf() {
+        return funcionarioCpf;
     }
 
-    /**
-     * @return the sexoFuncionario
-     */
-    public String getSexoFuncionario() {
-        return sexoFuncionario;
+    public void setFuncionarioCpf(String funcionarioCpf) {
+        this.funcionarioCpf = funcionarioCpf;
     }
 
-    /**
-     * @param sexoFuncionario the sexoFuncionario to set
-     */
-    public void setSexoFuncionario(String sexoFuncionario) {
-        this.sexoFuncionario = sexoFuncionario;
+    public String getFuncionarioRg() {
+        return funcionarioRg;
     }
 
-    /**
-     * @return the emailFuncionario
-     */
-    public String getEmailFuncionario() {
-        return emailFuncionario;
+    public void setFuncionarioRg(String funcionarioRg) {
+        this.funcionarioRg = funcionarioRg;
     }
 
-    /**
-     * @param emailFuncionario the emailFuncionario to set
-     */
-    public void setEmailFuncionario(String emailFuncionario) {
-        this.emailFuncionario = emailFuncionario;
+    public String getFuncionarioSexo() {
+        return funcionarioSexo;
     }
 
-    /**
-     * @return the nascimentoFuncionario
-     */
-    public String getNascimentoFuncionario() {
-        return nascimentoFuncionario;
+    public void setFuncionarioSexo(String funcionarioSexo) {
+        this.funcionarioSexo = funcionarioSexo;
     }
 
-    /**
-     * @param nascimentoFuncionario the nascimentoFuncionario to set
-     */
-    public void setNascimentoFuncionario(String nascimentoFuncionario) {
-        this.nascimentoFuncionario = nascimentoFuncionario;
+    public String getFuncionarioEmail() {
+        return funcionarioEmail;
     }
 
-    /**
-     * @return the telFixoFuncionario
-     */
-    public String getTelFixoFuncionario() {
-        return telFixoFuncionario;
+    public void setFuncionarioEmail(String funcionarioEmail) {
+        this.funcionarioEmail = funcionarioEmail;
     }
 
-    /**
-     * @param telFixoFuncionario the telFixoFuncionario to set
-     */
-    public void setTelFixoFuncionario(String telFixoFuncionario) {
-        this.telFixoFuncionario = telFixoFuncionario;
+    public String getFuncionarioNascimento() {
+        return funcionarioNascimento;
     }
 
-    /**
-     * @return the telCelFuncionario
-     */
-    public String getTelCelFuncionario() {
-        return telCelFuncionario;
+    public void setFuncionarioNascimento(String funcionarioNascimento) {
+        this.funcionarioNascimento = funcionarioNascimento;
     }
 
-    /**
-     * @param telCelFuncionario the telCelFuncionario to set
-     */
-    public void setTelCelFuncionario(String telCelFuncionario) {
-        this.telCelFuncionario = telCelFuncionario;
+    public String getFuncionarioFilial() {
+        return funcionarioFilial;
     }
 
-    /**
-     * @return the endRuaFuncionario
-     */
-    public String getEndRuaFuncionario() {
-        return endRuaFuncionario;
+    public void setFuncionarioFilial(String funcionarioFilial) {
+        this.funcionarioFilial = funcionarioFilial;
     }
 
-    /**
-     * @param endRuaFuncionario the endRuaFuncionario to set
-     */
-    public void setEndRuaFuncionario(String endRuaFuncionario) {
-        this.endRuaFuncionario = endRuaFuncionario;
+    public String getFuncionarioSenha() {
+        return funcionarioSenha;
     }
 
-    /**
-     * @return the endNumFuncionario
-     */
-    public String getEndNumFuncionario() {
-        return endNumFuncionario;
+    public void setFuncionarioSenha(String funcionarioSenha) {
+        this.funcionarioSenha = funcionarioSenha;
     }
 
-    /**
-     * @param endNumFuncionario the endNumFuncionario to set
-     */
-    public void setEndNumFuncionario(String endNumFuncionario) {
-        this.endNumFuncionario = endNumFuncionario;
+    public String getFuncionarioCargo() {
+        return funcionarioCargo;
     }
 
-    /**
-     * @return the endBairroFuncionario
-     */
-    public String getEndBairroFuncionario() {
-        return endBairroFuncionario;
+    public void setFuncionarioCargo(String funcionarioCargo) {
+        this.funcionarioCargo = funcionarioCargo;
     }
-
-    /**
-     * @param endBairroFuncionario the endBairroFuncionario to set
-     */
-    public void setEndBairroFuncionario(String endBairroFuncionario) {
-        this.endBairroFuncionario = endBairroFuncionario;
-    }
-
-    /**
-     * @return the endCepFuncionario
-     */
-    public String getEndCepFuncionario() {
-        return endCepFuncionario;
-    }
-
-    /**
-     * @param endCepFuncionario the endCepFuncionario to set
-     */
-    public void setEndCepFuncionario(String endCepFuncionario) {
-        this.endCepFuncionario = endCepFuncionario;
-    }
-
-    /**
-     * @return the endEstFuncionario
-     */
-    public String getEndEstFuncionario() {
-        return endEstFuncionario;
-    }
-
-    /**
-     * @param endEstFuncionario the endEstFuncionario to set
-     */
-    public void setEndEstFuncionario(String endEstFuncionario) {
-        this.endEstFuncionario = endEstFuncionario;
-    }
-
-    /**
-     * @return the endCidFuncionario
-     */
-    public String getEndCidFuncionario() {
-        return endCidFuncionario;
-    }
-
-    /**
-     * @param endCidFuncionario the endCidFuncionario to set
-     */
-    public void setEndCidFuncionario(String endCidFuncionario) {
-        this.endCidFuncionario = endCidFuncionario;
-    }
-
-    /**
-     * @return the endCompFuncionario
-     */
-    public String getEndCompFuncionario() {
-        return endCompFuncionario;
-    }
-
-    /**
-     * @param endCompFuncionario the endCompFuncionario to set
-     */
-    public void setEndCompFuncionario(String endCompFuncionario) {
-        this.endCompFuncionario = endCompFuncionario;
-    }
-
-    /**
-     * @return the estCivilFuncionario
-     */
-    public String getEstCivilFuncionario() {
-        return estCivilFuncionario;
-    }
-
-    /**
-     * @param estCivilFuncionario the estCivilFuncionario to set
-     */
-    public void setEstCivilFuncionario(String estCivilFuncionario) {
-        this.estCivilFuncionario = estCivilFuncionario;
-    }
-
-    /**
-     * @return the filialFuncionario
-     */
-    public int getFilialFuncionario() {
-        return filialFuncionario;
-    }
-
-    /**
-     * @param filialFuncionario the filialFuncionario to set
-     */
-    public void setFilialFuncionario(int filialFuncionario) {
-        this.filialFuncionario = filialFuncionario;
-    }
-
-    /**
-     * @return the senhaFuncionario
-     */
-    public String getSenhaFuncionario() {
-        return senhaFuncionario;
-    }
-
-    /**
-     * @param senhaFuncionario the senhaFuncionario to set
-     */
-    public void setSenhaFuncionario(String senhaFuncionario) {
-        this.senhaFuncionario = senhaFuncionario;
-    }
-
-    /**
-     * @return the cargoFuncionario
-     */
-    public String getCargoFuncionario() {
-        return cargoFuncionario;
-    }
-
-    /**
-     * @param cargoFuncionario the cargoFuncionario to set
-     */
-    public void setCargoFuncionario(String cargoFuncionario) {
-        this.cargoFuncionario = cargoFuncionario;
-    }
+    
 
 }

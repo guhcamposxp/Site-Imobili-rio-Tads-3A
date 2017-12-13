@@ -28,7 +28,7 @@ public class getImovel extends HttpServlet {
         } else {
             ImovelData lista = new ImovelData();
             lista = getImoveis.getImovelById(Integer.parseInt(id));
-            request.setAttribute("lista", lista);
+            request.setAttribute("lista", lista); 
             response.sendRedirect("view/showImovel.jsp");
         }
             /*

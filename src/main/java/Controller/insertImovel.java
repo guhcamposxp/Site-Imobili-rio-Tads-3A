@@ -18,7 +18,7 @@ public class insertImovel extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try{
-            String retorno = "";
+        String retorno = "";
         String imovelId = request.getParameter("imovelId");
         String proprietarioCpf = request.getParameter("clienteCpf");
         String imovelRua = request.getParameter("imovelRua");
@@ -36,37 +36,34 @@ public class insertImovel extends HttpServlet {
         String imovelTipo = request.getParameter("imovelTipo");
         String imovelMetros = request.getParameter("imovelMetros");
         String imovelDescricao = request.getParameter("imovelDescricao");
-        
-        
-        
+
         boolean valida = validaCampos(proprietarioCpf, imovelRua, imovelNumero, imovelComplemento, imovelCep,
                 imovelBairro, imovelCidade, imovelEstado, imovelVlrVenda, imovelVlrAluguel, imovelTransacao,
                 imovelVagasGaragem, imovelDormitorios, imovelTipo, imovelMetros, imovelDescricao);
-        if (valida) {
-            
+
             ImovelDAO dao = new ImovelDAO();
             
             if (imovelId != null) {
-//                ImovelData alteraImovel = new ImovelData();
-//                alteraImovel = dao.getImovelById(Integer.parseInt(imovelId));
-//                alteraImovel.setIdImovel(Integer.parseInt(idImovel));
-//                alteraImovel.setEndRuaImovel(endRuaImovel);
-//                alteraImovel.setEndNumImovel(endNumImovel);
-//                alteraImovel.setEndBairroImovel(endBairroImovel);
-//                alteraImovel.setEndCepImovel(endCepImovel);
-//                alteraImovel.setEndEstImovel(endEstImovel);
-//                alteraImovel.setEndCidImovel(endCidImovel);
-//                alteraImovel.setEndCompImovel(endCompImovel);
-//                alteraImovel.setAreaUtilImovel(areaImovel);
-//                alteraImovel.setQtdQuartoImovel(Integer.parseInt(quartosImovel));
-//                alteraImovel.setQtdSuiteImovel(Integer.parseInt(suitesImovel));
-//                alteraImovel.setQtdCozinhaImovel(Integer.parseInt(cozinhasImovel));
-//                alteraImovel.setQtdSalaComumImovel(Integer.parseInt(salasComumImovel));
-//                alteraImovel.setQtdSalaJantarImovel(Integer.parseInt(salasJantarImovel));
-//                alteraImovel.setQtdBanheiroImovel(Integer.parseInt(banheirosImovel));
-//                alteraImovel.setQtdVagasImovel(Integer.parseInt(vagasImovel));
-//                alteraImovel.setValorVendaImovel(valorVendaImovel);
-//                dao.atualizaImovel(alteraImovel);
+                ImovelData alteraImovel = new ImovelData();
+                alteraImovel = dao.getImovelById(Integer.parseInt(imovelId));
+                alteraImovel.setImovelId(Integer.parseInt(imovelId));
+                alteraImovel.setProprietarioCpf(proprietarioCpf);
+                alteraImovel.setImovelRua(imovelRua);
+                alteraImovel.setImovelNumero(imovelNumero);
+                alteraImovel.setImovelComplemento(imovelComplemento);
+                alteraImovel.setImovelBairro(imovelBairro);
+                alteraImovel.setImovelCep(imovelCep);
+                alteraImovel.setImovelCidade(imovelCidade);
+                alteraImovel.setImovelEstado(imovelEstado);
+                alteraImovel.setImovelTipoTransacao(imovelTransacao);
+                alteraImovel.setImovelVlrVenda(imovelVlrVenda);
+                alteraImovel.setImovelVlrAluguel(imovelVlrAluguel);
+                alteraImovel.setImovelQtdVagasGaragem(imovelVagasGaragem);
+                alteraImovel.setImovelQtdDormitorios(imovelDormitorios);
+                alteraImovel.setImovelTipo(imovelTipo);
+                alteraImovel.setImovelMetrosQuadrado(imovelMetros);
+                alteraImovel.setImovelDescricao(imovelDescricao);
+                dao.atualizaImovel(alteraImovel);
                 retorno = "alteracao";
             } else {
                 ImovelData novoImovel = new ImovelData();
@@ -91,9 +88,7 @@ public class insertImovel extends HttpServlet {
                 dao.cadastraImovel(novoImovel);
                 retorno = "criacao";
             }
-        } else {
-            retorno = "erro";
-        }
+        
         request.setAttribute("retorno", retorno);
         request.getRequestDispatcher("view/cadastrarImovel.jsp").forward(request, response);
         } catch(IOException e){

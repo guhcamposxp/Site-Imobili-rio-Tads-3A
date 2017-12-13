@@ -1,7 +1,7 @@
  
-<%@page import="Data.ClienteData"%>
+<%@page import="Data.FuncionarioData"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="DAO.ClienteDAO"%>
+<%@page import="DAO.FuncionarioDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -9,11 +9,11 @@
 <html>
 
     <head>
-        <jsp:include page="/getCliente" />
+        <jsp:include page="/getFuncionario" />
         <meta charset="utf-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
 
-        <title>Listagem de Clientes</title>
+        <title>Listagem de Funcionarios</title>
         <link href="${pageContext.request.contextPath}/all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/all/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css"/>
@@ -147,37 +147,35 @@
 
                 <div class="card mb-3">
                     <div class="card-header">
-                        <i class="fa fa-table"></i> Cliente Cadastrados </div>
+                        <i class="fa fa-table"></i> Funcionarios Cadastrados </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>Nome</th>
+                                        <th>Sobrenome</th>
                                         <th>Cpf</th>
                                         <th>E-mail</th>
-                                        <th>Telefone</th>
-                                        <th>Celular</th>
+                                        <th>Cargo</th>
                                         <th class="actions">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
 
-                                    <c:forEach var="cliente" items="${lista}">
+                                    <c:forEach var="funcionario" items="${lista}">
                                         <tr>
-                                            <td>${cliente.clienteNome}</td>
-                                            <td>${cliente.clienteCpf}</td>
-                                            <td>${cliente.clienteEmail}</td>
-                                            <td>${cliente.clienteTelefone}</td>
-                                            <td>${cliente.clienteCelular}</td>
+                                            <td>${funcionario.funcionarioNome}</td>
+                                            <td>${funcionario.funcionarioSobrenome}</td>
+                                            <td>${funcionario.funcionarioCpf}</td>
+                                            <td>${funcionario.funcionarioEmail}</td>
+                                            <td>${funcionario.funcionarioCargo}</td>
 
                                             <td class="actions">
-                                                <a class="btn btn-success btn-xs" href="../view/readOnlyCliente.jsp?clienteId=${cliente.clienteId}">Visualizar</a>
-                                                <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
-                                                <a class="btn btn-warning btn-xs" href="../view/editarCliente.jsp?clienteId=${cliente.clienteId}">Editar</a>
-                                                <a class="btn btn-danger btn-xs"  href="../dropCliente?idCliente=${cliente.clienteId}">Excluir</a>
-                                                </c:if>
+                                                <a class="btn btn-success btn-xs" href="../view/showFuncionario.jsp?funcionarioId=${funcionario.funcionarioId}">Visualizar</a>
+                                                <a class="btn btn-warning btn-xs" href="../view/editarFuncionario.jsp?funcionarioId=${funcionario.funcionarioId}">Editar</a>
+                                                <a class="btn btn-danger btn-xs"  href="../dropFuncionario?funcionarioId=${funcionario.funcionarioId}">Excluir</a>
                                             </td>
                                         </tr>
                                     </c:forEach>

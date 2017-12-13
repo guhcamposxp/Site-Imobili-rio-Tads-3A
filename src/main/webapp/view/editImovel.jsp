@@ -1,27 +1,26 @@
- 
-<%@page import="Data.ClienteData"%>
+<%-- 
+    Document   : editImovel
+    Created on : 12/12/2017, 01:01:54
+    Author     : Felipe Oliveira
+--%>
+<%@page import="Data.ImovelData"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="DAO.ClienteDAO"%>
+<%@page import="DAO.ImovelDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
-
     <head>
-        <jsp:include page="/getCliente" />
-        <meta charset="utf-8"/>
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
-
-        <title>Listagem de Clientes</title>
+        <jsp:include page="/getImovel" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Editar Imóvel</title>
         <link href="${pageContext.request.contextPath}/all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link href="${pageContext.request.contextPath}/all/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/css/sb-admin.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet" type="text/css"/>
-        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">	
+        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
     </head>
-    <body class="fixed-nav sticky-footer" id="page-top">
+    <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
             <a class="navbar-brand" href="${pageContext.request.contextPath}/view/BoasVindas.jsp">Away - Sistema Imobiliário</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -143,50 +142,117 @@
         </nav>
 
         <div class="content-wrapper">
-            <div class="container-fluid">
 
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fa fa-table"></i> Cliente Cadastrados </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>Nome</th>
-                                        <th>Cpf</th>
-                                        <th>E-mail</th>
-                                        <th>Telefone</th>
-                                        <th>Celular</th>
-                                        <th class="actions">Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+            <div class="container">
+                <div class="card card-register mx-auto mt-5">
+                    <div class="card-header cardRegistro">Editar Imóvel</div>
+                    
+                    <div class="card-body campos">
+                        <form name="formImovel" id="formularioCadastro" action="${pageContext.request.contextPath}/insertImovel" method="post">
+                            <div class="form-group col-lg-12 divContato ">
+                                <h5>
+                                    Proprietário
+                                </h5>
+                                <hr/>
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <label for="">ID</label>
+                                        <input class="form-control campos" name="imovelId" value="${lista.imovelId}" id="imovelId" type="text" >
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <label for="">CPF</label>
+                                        <input class="form-control maskCPF campos" name="clienteCpf" value="${lista.proprietarioCpf}" id="clienteCpf" type="text" placeholder="000.000.000-00">
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="form-group col-lg-12 divContato" >
+                                <h5>
+                                    Endereço
+                                </h5>
+                                <hr/>
+                                <div class="form-row">
+                                    <div class="col-md-8">
+                                        <label for="">Rua</label>
+                                        <input class="form-control campos" name="imovelRua" value="${lista.imovelRua}" id="imovelRua" type="text">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="">Número</label>
+                                        <input class="form-control campos" name="imovelNumero" value="${lista.imovelNumero}" id="imovelNumero" type="text">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="">Complemento</label>
+                                        <input class="form-control campos" value="${lista.imovelComplemento}" name="imovelComplemento" id="imovelComplemento" type="text">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="">CEP</label>
+                                        <input class="form-control maskCEP campos" value="${lista.imovelCep}" name="imovelCep" id="imovelCep" type="text" placeholder="00000-000">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="">Bairro</label>
+                                        <input class="form-control campos" value="${lista.imovelBairro}" name="imovelBairro" id="imovelBairro" type="text">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="">Cidade</label>
+                                        <input class="form-control campos" value="${lista.imovelCidade}" name="imovelCidade" id="imovelCidade" type="text">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Estado</label>
+                                        <input class="form-control campos" value="${lista.imovelEstado}" name="imovelEstado" id="imovelEstado" type="text">
+                                    </div>
+                                </div>
+                            </div>
 
-                                    <c:forEach var="cliente" items="${lista}">
-                                        <tr>
-                                            <td>${cliente.clienteNome}</td>
-                                            <td>${cliente.clienteCpf}</td>
-                                            <td>${cliente.clienteEmail}</td>
-                                            <td>${cliente.clienteTelefone}</td>
-                                            <td>${cliente.clienteCelular}</td>
+                            <div class="form-group col-lg-12 divContato" >
+                                <h5>
+                                    Dados do Imóvel
+                                </h5>
+                                <hr/>
+                                <div class="form-row">
+                                    <div class="col-md-5">
+                                        <label for="">Tipo de transação</label></br>
+                                        <input class="form-control campos" value="${lista.imovelTipoTransacao}" name="imovelTransacao" id="imovelTransacao" type="text">
+                                    </div>
 
-                                            <td class="actions">
-                                                <a class="btn btn-success btn-xs" href="../view/readOnlyCliente.jsp?clienteId=${cliente.clienteId}">Visualizar</a>
-                                                <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
-                                                <a class="btn btn-warning btn-xs" href="../view/editarCliente.jsp?clienteId=${cliente.clienteId}">Editar</a>
-                                                <a class="btn btn-danger btn-xs"  href="../dropCliente?idCliente=${cliente.clienteId}">Excluir</a>
-                                                </c:if>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
+                                    <div class="col-md-3">
+                                        <label>Qtd. Vagas na Garagem</label>
+                                        <input class="form-control campos" id="imovelVagasGaragem" value="${lista.imovelQtdVagasGaragem}" name="imovelVagasGaragem" type="number" aria-describedby="emailHelp" >
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>Qtd. Dormitórios</label>
+                                        <input class="form-control maskCEP campos" value="${lista.imovelQtdDormitorios}" name="imovelDormitorios" id="imovelDormitorios" type="number">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Tipo</label>
+                                        <input class="form-control campos" value="${lista.imovelTipo}" name="imovelTipo" id="imovelTipo" type="text">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Metros²</label>
+                                        <input class="form-control campos" value="${lista.imovelMetrosQuadrado}" name="imovelMetros" id="imovelMetros" type="number">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Valor Venda</label>
+                                        <input class="form-control campos" name="imovelVlrVenda" value="${lista.imovelVlrVenda}" id="imovelVlrVenda" type="number">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label>Valor Aluguel</label>
+                                        <input class="form-control campos" name="imovelVlrAluguel" value="${lista.imovelVlrAluguel}" id="imovelVlrAluguel" type="number">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <label>Descrição</label>
+                                        <input class="form-control campos" name="imovelDescricao" value="${lista.imovelDescricao}" id="imovelDescricao" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        </form>
+                        <hr/>
                     </div>
                 </div>
             </div>
+
         </div>
 
         <footer class="sticky-footer">
@@ -212,12 +278,8 @@
                     </div>
                     <div class="modal-body">Clique em "Sair" abaixo se você deseja realmente sair.</div>
                     <div class="modal-footer">
-
-                        <!--<a class="btn btn-primary" href="login.html">Sair</a>-->
-                        <form action="${pageContext.request.contextPath}/logout" method="post">
-                            <input class="btn btn-primary" type="submit" value="Logout" />
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                        </form>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                        <a class="btn btn-primary" href="login.html">Sair</a>
                     </div>
                 </div>
             </div>
@@ -237,6 +299,4 @@
         <script src="${pageContext.request.contextPath}/js/masks.js" type="text/javascript"></script>
 
     </body>
-</html>
-
 </html>

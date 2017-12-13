@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "validLogin", urlPatterns = {"/validLogin"})
 public class validLogin extends HttpServlet {
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String retorno = "/view/BoasVindas.jsp";
@@ -26,7 +27,7 @@ public class validLogin extends HttpServlet {
         FuncionarioData funcionario = new FuncionarioData();
         FuncionarioDAO dao = new FuncionarioDAO();
         funcionario = dao.loginFuncionario(usuario, senha);
-        if (funcionario.getEmailFuncionario() == null) {
+        if (funcionario.getFuncionarioEmail()== null) {
             retorno = "/view/index.jsp";
         } else {
 
@@ -40,8 +41,8 @@ public class validLogin extends HttpServlet {
 
         HttpSession session = request.getSession();
         session.setAttribute("dataatual", formatador.format(data));
-        session.setAttribute("nomeFuncionario", funcionario.getNomeFuncionario());
-        session.setAttribute("cargoFuncionario", funcionario.getCargoFuncionario());
+        session.setAttribute("nomeFuncionario", funcionario.getFuncionarioNome());
+        session.setAttribute("permissaoFuncionario", funcionario.getFuncionarioPermissao());
         //session.setAttribute("filialFuncionario", filial.getNomeFantasiaFilial());
         request.getServletContext().getRequestDispatcher(retorno).forward(request, response);
     }

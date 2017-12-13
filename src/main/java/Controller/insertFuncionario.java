@@ -16,121 +16,90 @@ public class insertFuncionario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
-             String retorno = "";
-            String idFuncionario = request.getParameter("idFuncionario");
-            String nomeFuncionario = request.getParameter("nomeFuncionario");
-            String cpfFuncionario = request.getParameter("cpfFuncionario");
-            String rgFuncionario = request.getParameter("rgFuncionario");
-            String sexoFuncionario = request.getParameter("sexoFuncionario");
-            String emailFuncionario = request.getParameter("emailFuncionario");
-            String nascimentoFuncionario = request.getParameter("nascimentoFuncionario");
-            String telFixoFuncionario = request.getParameter("telFixoFuncionario");
-            String telCelFuncionario = request.getParameter("telCelFuncionario");
-            String endRuaFuncionario = request.getParameter("endRuaFuncionario");
-            String endNumFuncionario = request.getParameter("endNumFuncionario");
-            String endBairroFuncionario = request.getParameter("endBairroFuncionario");
-            String endCepFuncionario = request.getParameter("endCepFuncionario");
-            String endEstFuncionario = request.getParameter("endEstFuncionario");
-            String endCidFuncionario = request.getParameter("endCidFuncionario");
-            String endCompFuncionario = request.getParameter("endCompFuncionario");
-            String estCivilFuncionario = request.getParameter("estCivilFuncionario");
-            String cargoFuncionario = request.getParameter("cargoFuncionario");
-            String senhaFuncionario = request.getParameter("senhaFuncionario");
-            String idFilial = request.getParameter("idFilial");
+            String retorno = "";
+            String funcionarioId = request.getParameter("FuncionarioId");
+            String funcionarioNome = request.getParameter("funcionarioNome");
+            String funcionarioSobrenome = request.getParameter("funcionarioSobrenome");
+            String funcionarioCpf = request.getParameter("funcionarioCpf");
+            String funcionarioRg = request.getParameter("funcionarioRg");
+            String funcionarioSexo = request.getParameter("funcionarioSexo");
+            String funcionarioNascimento = request.getParameter("funcionarioNascimento");
+            String funcionarioEmail = request.getParameter("funcionarioEmail");
+            String funcionarioSenha = request.getParameter("funcionarioSenha");
+            String funcionarioFilial = request.getParameter("FuncionarioFilial");
+            String funcionarioCargo = request.getParameter("funcionarioCargo");
+            String funcionarioPermissao = request.getParameter("funcionarioPermissao");
+                    
+            boolean valida = validaCampos(funcionarioNome, funcionarioSobrenome, funcionarioCpf, funcionarioRg, funcionarioSexo,
+                    funcionarioNascimento, funcionarioEmail, funcionarioCargo, funcionarioSenha, funcionarioFilial);
+
+            System.out.println(valida);
             
             
-
-            boolean valida = validaCampos(nomeFuncionario, cpfFuncionario, rgFuncionario, sexoFuncionario, emailFuncionario,
-                    nascimentoFuncionario, telFixoFuncionario, telCelFuncionario, endRuaFuncionario, endNumFuncionario, endBairroFuncionario,
-                    endCepFuncionario, endEstFuncionario, endCidFuncionario, endCompFuncionario, estCivilFuncionario, cargoFuncionario,
-                    senhaFuncionario, idFilial);
-
-            if (valida) {
 
                 FuncionarioDAO dao = new FuncionarioDAO();
-
-                if (idFuncionario != null) {
+                System.out.println(funcionarioId + " id da ousadia aquatica");
+                if (funcionarioId != null) {
                     FuncionarioData alteraFuncionario = new FuncionarioData();
-                    alteraFuncionario = dao.getFuncionarioById(Integer.parseInt(idFuncionario));
-                    alteraFuncionario.setIdFuncionario(Integer.parseInt(idFuncionario));
-                    alteraFuncionario.setNomeFuncionario(nomeFuncionario);
-                    alteraFuncionario.setCpfFuncionario(cpfFuncionario);
-                    alteraFuncionario.setRgFuncionario(rgFuncionario);
-                    alteraFuncionario.setSexoFuncionario(sexoFuncionario);
-                    alteraFuncionario.setEmailFuncionario(emailFuncionario);
-                    alteraFuncionario.setNascimentoFuncionario(nascimentoFuncionario);
-                    alteraFuncionario.setTelFixoFuncionario(telFixoFuncionario);
-                    alteraFuncionario.setTelCelFuncionario(telCelFuncionario);
-                    alteraFuncionario.setEndRuaFuncionario(endRuaFuncionario);
-                    alteraFuncionario.setEndNumFuncionario(endNumFuncionario);
-                    alteraFuncionario.setEndBairroFuncionario(endBairroFuncionario);
-                    alteraFuncionario.setEndCepFuncionario(endCepFuncionario);
-                    alteraFuncionario.setEndEstFuncionario(endEstFuncionario);
-                    alteraFuncionario.setEndCidFuncionario(endCidFuncionario);
-                    alteraFuncionario.setEndCompFuncionario(endCompFuncionario);
-                    alteraFuncionario.setEstCivilFuncionario(estCivilFuncionario);
-                    alteraFuncionario.setCargoFuncionario(cargoFuncionario);
-                    alteraFuncionario.setSenhaFuncionario(senhaFuncionario);
-                    alteraFuncionario.setFilialFuncionario(Integer.parseInt(idFilial));
+                    alteraFuncionario = dao.getFuncionarioById(Integer.parseInt(funcionarioId));
+                    alteraFuncionario.setFuncionarioNome(funcionarioNome);
+                    alteraFuncionario.setFuncionarioSobrenome(funcionarioSobrenome);
+                    alteraFuncionario.setFuncionarioCpf(funcionarioCpf);
+                    alteraFuncionario.setFuncionarioRg(funcionarioRg);
+                    alteraFuncionario.setFuncionarioSexo(funcionarioSexo);
+                    alteraFuncionario.setFuncionarioNascimento(funcionarioNascimento);
+                    alteraFuncionario.setFuncionarioEmail(funcionarioEmail);
+                    alteraFuncionario.setFuncionarioSenha(funcionarioSenha);
+                    alteraFuncionario.setFuncionarioFilial(funcionarioFilial);
+                    alteraFuncionario.setFuncionarioCargo(funcionarioCargo);
+                    alteraFuncionario.setFuncionarioPermissao(funcionarioPermissao);
                     dao.atualizaFuncionario(alteraFuncionario);
-                     retorno = "alteracao";
+                    System.out.println("aqui foi");
+                    retorno = "alteracao";
                 } else {
                     FuncionarioData novoFuncionario = new FuncionarioData();
-                    novoFuncionario.setNomeFuncionario(nomeFuncionario);
-                    novoFuncionario.setCpfFuncionario(cpfFuncionario);
-                    novoFuncionario.setRgFuncionario(rgFuncionario);
-                    novoFuncionario.setSexoFuncionario(sexoFuncionario);
-                    novoFuncionario.setEmailFuncionario(emailFuncionario);
-                    novoFuncionario.setNascimentoFuncionario(nascimentoFuncionario);
-                    novoFuncionario.setTelFixoFuncionario(telFixoFuncionario);
-                    novoFuncionario.setTelCelFuncionario(telCelFuncionario);
-                    novoFuncionario.setEndRuaFuncionario(endRuaFuncionario);
-                    novoFuncionario.setEndNumFuncionario(endNumFuncionario);
-                    novoFuncionario.setEndBairroFuncionario(endBairroFuncionario);
-                    novoFuncionario.setEndCepFuncionario(endCepFuncionario);
-                    novoFuncionario.setEndEstFuncionario(endEstFuncionario);
-                    novoFuncionario.setEndCidFuncionario(endCidFuncionario);
-                    novoFuncionario.setEndCompFuncionario(endCompFuncionario);
-                    novoFuncionario.setEstCivilFuncionario(estCivilFuncionario);
-                    novoFuncionario.setCargoFuncionario(cargoFuncionario);
-                    novoFuncionario.setSenhaFuncionario(senhaFuncionario);
-                    novoFuncionario.setFilialFuncionario(Integer.parseInt(idFilial));
+                    novoFuncionario.setFuncionarioNome(funcionarioNome);
+                    novoFuncionario.setFuncionarioSobrenome(funcionarioSobrenome);
+                    novoFuncionario.setFuncionarioCpf(funcionarioCpf);
+                    novoFuncionario.setFuncionarioRg(funcionarioRg);
+                    novoFuncionario.setFuncionarioSexo(funcionarioSexo);
+                    novoFuncionario.setFuncionarioNascimento(funcionarioNascimento);
+                    novoFuncionario.setFuncionarioEmail(funcionarioEmail);
+                    novoFuncionario.setFuncionarioSenha(funcionarioSenha);
+                    novoFuncionario.setFuncionarioFilial(funcionarioFilial);
+                    novoFuncionario.setFuncionarioCargo(funcionarioCargo);
+                    novoFuncionario.setFuncionarioPermissao(funcionarioPermissao);
                     dao.cadastraFuncionario(novoFuncionario);
-                     retorno = "criacao";
+                    retorno = "criacao";
                 }
-            } else {
-                 retorno = "erro";
 
-            }
-            request.setAttribute("retorno", retorno);
-            request.getRequestDispatcher("view/cadastrarFuncionario.jsp").forward(request, response);
+                request.setAttribute("retorno", retorno);
+                request.getRequestDispatcher("view/cadastrarFuncionario.jsp").forward(request, response);
+            
         } catch (IOException e) {
             System.out.println("Erro no servlet - ServletException - Classe: Funcionario.java - Erro: " + e);
         }
 
     }
 
-    private boolean validaCampos(String nomeFuncionario, String cpfFuncionario, String rgFuncionario, String sexoFuncionario, String emailFuncionario,
-            String nascimentoFuncionario, String telFixoFuncionario, String telCelFuncionario, String endRuaFuncionario, String endNumFuncionario, String endBairroFuncionario,
-            String endCepFuncionario, String endEstFuncionario, String endCidFuncionario, String endCompFuncionario, String estCivilFuncionario,
-            String cargoFuncionario, String senhaFuncionario, String idFilial) {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-        if ((nomeFuncionario == null) || (cpfFuncionario == null) || (rgFuncionario == null)
-                || (sexoFuncionario == null) || (emailFuncionario == null) || (nascimentoFuncionario == null)
-                || (telFixoFuncionario == null) || (telCelFuncionario == null) || (endRuaFuncionario == null)
-                || (endNumFuncionario == null) || (endBairroFuncionario == null) || (endCepFuncionario == null)
-                || (endEstFuncionario == null) || (endCidFuncionario == null) || (endCompFuncionario == null)
-                || (estCivilFuncionario == null) || (cargoFuncionario == null) || (senhaFuncionario == null) || (idFilial == null)) {
+    }
+
+    private boolean validaCampos(String funcionarioNome, String funcionarioSobrenome, String funcionarioCpf,
+            String funcionarioRg, String funcionarioSexo, String funcionarioNascimento, String funcionarioEmail,
+            String funcionarioCargo, String funcionarioSenha, String funcionarioFilial) {
+
+        if ((funcionarioNome == null) || (funcionarioSobrenome == null) || (funcionarioCpf == null)
+                || (funcionarioRg == null) || (funcionarioSexo == null) || (funcionarioEmail == null)
+                || (funcionarioNascimento == null) || (funcionarioCargo == null)
+                || (funcionarioSenha == null) || (funcionarioFilial == null)) {
             return false;
         } else {
 
             return true;
         }
-
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
 
     }
 }

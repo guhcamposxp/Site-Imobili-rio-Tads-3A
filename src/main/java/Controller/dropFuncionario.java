@@ -15,14 +15,15 @@ public class dropFuncionario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println(request.getParameter("funcionarioId"));
         try {
-            String id = request.getParameter("idFuncionario");
+            String id = request.getParameter("funcionarioId");
             FuncionarioDAO getFuncionario = new FuncionarioDAO();
             getFuncionario.excluirFuncionario(Integer.parseInt(id));
-            response.sendRedirect("view/listagemFuncionario.jsp");
+            response.sendRedirect("view/listarFuncionario.jsp");
         } catch (Exception e) {
             System.out.println("Erro Servlet - Drop Funcionario");
-            response.sendRedirect("view/listagemFuncionario.jsp");
+            response.sendRedirect("view/listarFuncionario.jsp");
         }
     }
 

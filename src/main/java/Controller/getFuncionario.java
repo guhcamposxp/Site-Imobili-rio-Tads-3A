@@ -18,7 +18,7 @@ public class getFuncionario extends HttpServlet {
             throws ServletException, IOException {
 
         FuncionarioDAO getFuncionario = new FuncionarioDAO();
-        String id = request.getParameter("idFuncionario");
+        String id = request.getParameter("funcionarioId");
         if (id == null) {
             List<FuncionarioData> lista = getFuncionario.getTodosFuncionario();
             request.setAttribute("lista", lista);
@@ -29,11 +29,6 @@ public class getFuncionario extends HttpServlet {
             request.setAttribute("lista", lista);
             response.sendRedirect("view/showFuncionario.jsp");
         }
-            /*
-         List<FilialData> imoveis = getImovel.getTodosImovel();
-         request.setAttribute("imoveis", imoveis);   
-            */
-        
         
     }
 }
