@@ -28,6 +28,7 @@ public class insertContrato extends HttpServlet {
             int clienteProprietarioId = Integer.parseInt(request.getParameter("proprietarioId"));
             int clienteInteressadoId = Integer.parseInt(request.getParameter("interessadoId"));
             int funcionarioId = Integer.parseInt(request.getParameter("funcionarioId"));
+            int imovelId = Integer.parseInt(request.getParameter("imovelId"));
         
             //PEGA OS DADOS DO CLIENTE PROPRIETARIO
             ClienteData dadosClienteProprietario = new ClienteData();
@@ -55,6 +56,7 @@ public class insertContrato extends HttpServlet {
             
             
             //DADOS DO IMOVEL
+            
             String dataContrato = request.getParameter("dataContrato");
             String imovelRua = request.getParameter("imovelRua");
             String imovelNumero = request.getParameter("imovelNumero");
@@ -74,19 +76,25 @@ public class insertContrato extends HttpServlet {
             //DADOS DO IMOVEL
             
             //DADOS DO PROPRIETARIO
+            int idClienteProprietario = dadosClienteProprietario.getClienteId();
             String nomeClienteProprietario = dadosClienteProprietario.getClienteNome();
             String sobrenomeClienteProprietario = dadosClienteProprietario.getClienteSobrenome();
             String cpfClienteProprietario = dadosClienteProprietario.getClienteCpf();
             String rgClienteProprietario = dadosClienteProprietario.getClienteRg();
             String emailClienteProprietario = dadosClienteProprietario.getClienteEmail();
+            String celularClienteProprietario = dadosClienteProprietario.getClienteCelular();
+            String telefoneClienteProprietario = dadosClienteProprietario.getClienteTelefone();
             //DADOS DO PROPRIETARIO
             
             //DADOS DO INTERESSADO
+            int idClienteInteressado = dadosClienteInteressado.getClienteId();
             String nomeClienteInteressado = dadosClienteInteressado.getClienteNome();
             String sobrenomeClienteInteressado = dadosClienteInteressado.getClienteSobrenome();
             String cpfClienteInteressado = dadosClienteInteressado.getClienteCpf();
             String rgClienteInteressado = dadosClienteInteressado.getClienteRg();
             String emailClienteInteressado = dadosClienteInteressado.getClienteEmail();
+            String celularClienteInteressado = dadosClienteInteressado.getClienteCelular();
+            String telefoneClienteInteressado = dadosClienteInteressado.getClienteTelefone();
             //DADOS DO INTERESSADO
             
             
@@ -102,18 +110,27 @@ public class insertContrato extends HttpServlet {
             novoContrato.setContratoFuncionarioEmail(emailFuncionario);
             novoContrato.setContratoFuncionarioFilial(emailFuncionario);
             
+                    
+            novoContrato.setContratoClienteProprietarioId(idClienteProprietario);
             novoContrato.setContratoClienteProprietarioNome(nomeClienteProprietario);
             novoContrato.setContratoClienteProprietarioSobrenome(sobrenomeClienteProprietario);
             novoContrato.setContratoClienteProprietarioCpf(cpfClienteProprietario);
             novoContrato.setContratoClienteProprietarioRg(rgClienteProprietario);
             novoContrato.setContratoClienteProprietarioEmail(emailClienteProprietario);
+            novoContrato.setContratoClienteProprietarioCelular(celularClienteProprietario);
+            novoContrato.setContratoClienteProprietarioTelefone(telefoneClienteProprietario);
+            
 
+            novoContrato.setContratoClienteInteressadoId(idClienteInteressado);
             novoContrato.setContratoClienteInteressadoNome(nomeClienteInteressado);
             novoContrato.setContratoClienteInteressadoSobrenome(sobrenomeClienteInteressado);
             novoContrato.setContratoClienteInteressadoCpf(cpfClienteInteressado);
             novoContrato.setContratoClienteInteressadoRg(rgClienteInteressado);
             novoContrato.setContratoClienteInteressadoEmail(emailClienteInteressado);
+            novoContrato.setContratoClienteInteressadoCelular(celularClienteInteressado);
+            novoContrato.setContratoClienteInteressadoTelefone(telefoneClienteInteressado);
             
+            novoContrato.setContratoImovelId(imovelId);
             novoContrato.setContratoIMovelRua(imovelRua);
             novoContrato.setContratoIMovelNumero(imovelNumero);
             novoContrato.setContratoIMovelComplemento(imovelComplemento);

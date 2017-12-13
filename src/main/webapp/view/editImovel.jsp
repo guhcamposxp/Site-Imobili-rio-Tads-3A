@@ -105,8 +105,7 @@
                         </ul>
                     </li>
                     </c:if>
-                    
-                    <!--
+
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropContratos" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-files-o" aria-hidden="true"></i>
@@ -114,13 +113,11 @@
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropContratos">
                             <li>
-                                <a aria-hidden="false" href=""> ↳ Contrato de Venda</a>
+                                <a aria-hidden="false" href="${pageContext.request.contextPath}/view/listarContratos.jsp"> ↳ Contratos Realizados</a>
                             </li>
-                            <li>
-                                <a aria-hidden="true" href=""> ↳ Contrato de Aluguel</a>
-                            </li>
+
                         </ul>
-                    </li> !-->
+                    </li> 
                     
 
 

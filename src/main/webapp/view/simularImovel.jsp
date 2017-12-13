@@ -3,6 +3,9 @@
     Created on : 02/11/2017, 20:37:42
     Author     : Felipe
 --%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.DateFormat"%>
 <%@page import="Data.ImovelData"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="DAO.ImovelDAO"%>
@@ -105,8 +108,7 @@
                         </ul>
                     </li>
                     </c:if>
-                    
-                    <!--
+
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropContratos" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-files-o" aria-hidden="true"></i>
@@ -114,13 +116,11 @@
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropContratos">
                             <li>
-                                <a aria-hidden="false" href=""> ↳ Contrato de Venda</a>
+                                <a aria-hidden="false" href="${pageContext.request.contextPath}/view/listarContratos.jsp"> ↳ Contratos Realizados</a>
                             </li>
-                            <li>
-                                <a aria-hidden="true" href=""> ↳ Contrato de Aluguel</a>
-                            </li>
+
                         </ul>
-                    </li> !-->
+                    </li> 
                     
 
 
@@ -140,7 +140,7 @@
                 </ul>
             </div>
         </nav>
-                            
+
         <div class="content-wrapper">
 
             <div class="container">
@@ -150,42 +150,59 @@
                         <form name="formImovel" id="formularioCadastro" action="${pageContext.request.contextPath}/insertContrato" method="post">
                             <div class="form-row form-group col-lg-12 divContato ">
                                 <div class="form-group col-lg-6 divContato ">
-                                <h5>
-                                     Cliente Proprietário
-                                </h5>
-                                <hr/>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <label for="">ID</label>
-                                        <input class="form-control campos" name="proprietarioId" id="proprietarioId" type="text">
+                                    <h5>
+                                        Cliente Proprietário
+                                    </h5>
+                                    <hr/>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <label for="">Matrícula:</label>
+                                            <input class="form-control campos" name="proprietarioId" id="proprietarioId" type="text">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                                    <div class="form-group col-lg-6 divContato ">
-                                <h5>
-                                     Cliente Interessado
-                                </h5>
-                                <hr/>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <label for="">ID</label>
-                                        <input class="form-control campos" name="interessadoId" id="interessadoId" type="text">
-                                    </div>
-                                </div>
-                            </div>
-                                
                                 <div class="form-group col-lg-6 divContato ">
-                                <h5>
-                                     Corretor Responsável
-                                </h5>
-                                <hr/>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <label for="">ID</label>
-                                        <input class="form-control campos" name="funcionarioId" id="funcionarioId" type="text">
+                                    <h5>
+                                        Cliente Interessado
+                                    </h5>
+                                    <hr/>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <label for="">Matrícula:</label>
+                                            <input class="form-control campos" name="interessadoId" id="interessadoId" type="text">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+
+                                <div class="form-group col-lg-6 divContato ">
+                                    <h5>
+                                        Corretor Responsável
+                                    </h5>
+                                    <hr/>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <label for="">Matrícula:</label>
+                                            <input class="form-control campos" name="funcionarioId" id="funcionarioId" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-lg-6 divContato ">
+                                    <h5>
+                                        Data do Contrato
+                                    </h5>
+                                    <hr/>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <%
+                                                DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                                                String hoje = formato.format(new Date());
+                                            %>
+                                            <label for="">Hoje</label>
+                                            <input class="form-control campos" value="<%=hoje%>" readonly="true" name="dataContrato" id="dataContrato" type="text">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group col-lg-12 divContato" >
@@ -194,6 +211,10 @@
                                 </h5>
                                 <hr/>
                                 <div class="form-row">
+                                    <div class="col-md-2">
+                                        <label for="">Matrícula do imóvel</label>
+                                        <input class="form-control campos" name="imovelId" readonly="true" id="imovelId" type="text" value="${lista.imovelId}">
+                                    </div>
                                     <div class="col-md-8">
                                         <label for="">Rua</label>
                                         <input class="form-control campos" name="imovelRua" id="imovelRua" type="text" value="${lista.imovelRua}">
@@ -268,8 +289,8 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Gerar</button>
                         </form>
-                        
-                        
+
+
                         <hr/>
                     </div>
                 </div>

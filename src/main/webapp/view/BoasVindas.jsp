@@ -4,6 +4,9 @@
     Author     : felipe.joliveira
 --%>
 
+<%@page import="java.util.Date"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -108,8 +111,7 @@
                         </ul>
                     </li>
                     </c:if>
-                    
-                    <!--
+
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                         <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#dropContratos" data-parent="#exampleAccordion">
                             <i class="fa fa-fw fa-files-o" aria-hidden="true"></i>
@@ -117,13 +119,11 @@
                         </a>
                         <ul class="sidenav-second-level collapse" id="dropContratos">
                             <li>
-                                <a aria-hidden="false" href=""> ↳ Contrato de Venda</a>
+                                <a aria-hidden="false" href="${pageContext.request.contextPath}/view/listarContratos.jsp"> ↳ Contratos Realizados</a>
                             </li>
-                            <li>
-                                <a aria-hidden="true" href=""> ↳ Contrato de Aluguel</a>
-                            </li>
+
                         </ul>
-                    </li> !-->
+                    </li> 
                     
 
 
@@ -151,7 +151,7 @@
 
                     <p>Seja bem vindo(a), <strong><c:out value="${sessionScope.nomeFuncionario}"></c:out></strong></p>
 
-
+                    
                 </div>
             </div>
         </div>

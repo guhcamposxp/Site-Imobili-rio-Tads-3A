@@ -1,20 +1,21 @@
 <%-- 
-    Document   : readOnlyImovel
-    Created on : 12/12/2017, 02:05:55
+    Document   : readOnlyContrato
+    Created on : 13/12/2017, 21:19:43
     Author     : Felipe Oliveira
 --%>
 
-<%@page import="Data.ImovelData"%>
+
+<%@page import="Data.ContratoData"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="DAO.ImovelDAO"%>
+<%@page import="DAO.ContratoDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <jsp:include page="/getImovel" />
+        <jsp:include page="/getContrato" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Visualizar Imóvel</title>
+        <title>Visualizar Contrato</title>
         <link href="${pageContext.request.contextPath}/all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/css/sb-admin.css" rel="stylesheet" type="text/css"/>
@@ -138,67 +139,113 @@
                 </ul>
             </div>
         </nav>
-
+                            
         <div class="content-wrapper">
 
-            <div class="container">
-                <div class="card card-register mx-auto mt-5">
-                    <div class="card-header cardRegistro">Visualizar Imóvel</div>
-                    
-                    <div class="card-body campos">
-                        <form name="formImovel" id="formularioCadastro" action="" method="">
-                            <div class="form-group col-lg-12 divContato ">
-                                <h5>
-                                    Proprietário
-                                </h5>
-                                <hr/>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <label for="">ID</label>
-                                        <input class="form-control campos" name="imovelId" readonly="true" value="${lista.imovelId}" id="imovelId" type="text" >
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <label for="">CPF</label>
-                                        <input class="form-control maskCPF campos" readonly="true" name="clienteCpf" value="${lista.proprietarioCpf}" id="clienteCpf" type="text" placeholder="000.000.000-00">
-                                    </div>
-                                </div>
-                            </div>
+        <div class="container">
 
-                            <div class="form-group col-lg-12 divContato" >
-                                <h5>
-                                    Endereço
-                                </h5>
-                                <hr/>
-                                <div class="form-row">
-                                    <div class="col-md-8">
-                                        <label for="">Rua</label>
-                                        <input class="form-control campos" readonly="true" name="imovelRua" value="${lista.imovelRua}" id="imovelRua" type="text">
+                <div class="card card-register mx-auto mt-5">
+                    <div class="card-header cardRegistro">Visualizar Contrato</div>
+                    <div class="card-body">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="form-group col-lg-6">
+                                        <h5>
+                                            Dados do Cliente Interessado
+                                        </h5>
+                                        <hr/>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <label for="">Nome</label>
+                                                <input class="form-control" name="clienteNome" id="clienteNome" readonly="true" type="text" value="${lista.contratoClienteInteressadoNome}">
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Sobrenome</label>
+                                                <input class="form-control" name="clienteSobrenome" id="clienteSobrenome" readonly="true" type="text" value="${lista.contratoClienteInteressadoSobrenome}">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">CPF</label>
+                                                <input class="form-control" name="clienteCpf" id="clienteCpf" readonly="true" type="text" value="${lista.contratoClienteInteressadoCpf}" placeholder="000.000.000-00">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">RG</label>
+                                                <input class="form-control" name="clienteRg" id="clienteRg" readonly="true" type="text" value="${lista.contratoClienteInteressadoRg}" placeholder="00.000.000-0">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Email</label>
+                                                <input class="form-control" name="clienteSexo" id="clienteSexo" readonly="true" type="text" value="${lista.contratoClienteInteressadoEmail}">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Celular</label>
+                                                <input class="form-control" name="clienteNascimento" readonly="true" id="clienteNascimento" type="text" value="${lista.contratoClienteInteressadoCelular}">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Telefone</label>
+                                                <input class="form-control" name="clienteNascimento" readonly="true" id="clienteNascimento" type="text" value="${lista.contratoClienteInteressadoTelefone}">
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <label for="">Número</label>
-                                        <input class="form-control campos" readonly="true" name="imovelNumero" value="${lista.imovelNumero}" id="imovelNumero" type="text">
+                                    <div class="form-group col-lg-6">
+                                        <h5>
+                                            Dados do Cliente Negociador
+                                        </h5>
+                                        <hr/>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <label for="">Nome</label>
+                                                <input class="form-control" name="clienteNome" id="clienteNome" readonly="true" type="text" value="${lista.contratoClienteProprietarioNome}">
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Sobrenome</label>
+                                                <input class="form-control" name="clienteSobrenome" id="clienteSobrenome" readonly="true" type="text" value="${lista.contratoClienteProprietarioSobrenome}">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">CPF</label>
+                                                <input class="form-control" name="clienteCpf" id="clienteCpf" readonly="true" type="text" value="${lista.contratoClienteProprietarioCpf}" placeholder="000.000.000-00">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">RG</label>
+                                                <input class="form-control" name="clienteRg" id="clienteRg" readonly="true" type="text" value="${lista.contratoClienteProprietarioRg}" placeholder="00.000.000-0">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Email</label>
+                                                <input class="form-control" name="clienteSexo" id="clienteSexo" readonly="true" type="text" value="${lista.contratoClienteProprietarioEmail}">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Celular</label>
+                                                <input class="form-control" name="clienteNascimento" readonly="true" id="clienteNascimento" type="text" value="${lista.contratoClienteProprietarioCelular}">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Telefone</label>
+                                                <input class="form-control" name="clienteNascimento" readonly="true" id="clienteNascimento" type="text" value="${lista.contratoClienteProprietarioTelefone}">
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <label for="">Complemento</label>
-                                        <input class="form-control campos" readonly="true" value="${lista.imovelComplemento}" name="imovelComplemento" id="imovelComplemento" type="text">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="">CEP</label>
-                                        <input class="form-control maskCEP campos" readonly="true" value="${lista.imovelCep}" name="imovelCep" id="imovelCep" type="text" placeholder="00000-000">
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="">Bairro</label>
-                                        <input class="form-control campos" readonly="true" value="${lista.imovelBairro}" name="imovelBairro" id="imovelBairro" type="text">
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="">Cidade</label>
-                                        <input class="form-control campos" readonly="true" value="${lista.imovelCidade}" name="imovelCidade" id="imovelCidade" type="text">
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label>Estado</label>
-                                        <input class="form-control campos" readonly="true" value="${lista.imovelEstado}" name="imovelEstado" id="imovelEstado" type="text">
+                                            
+                                            <div class="form-group col-lg-6">
+                                        <h5>
+                                            Dados do Corretor
+                                        </h5>
+                                        <hr/>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <label for="">Nome</label>
+                                                <input class="form-control" name="clienteNome" id="clienteNome" readonly="true" type="text" value="${lista.contratoFuncionarioNome}">
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Sobrenome</label>
+                                                <input class="form-control" name="clienteSobrenome" id="clienteSobrenome" readonly="true" type="text" value="${lista.contratoFuncionarioSobrenome}">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="">Email</label>
+                                                <input class="form-control" name="clienteCpf" id="clienteCpf" readonly="true" type="text" value="${lista.contratoFuncionarioEmail}" placeholder="000.000.000-00">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -209,84 +256,74 @@
                                 </h5>
                                 <hr/>
                                 <div class="form-row">
-                                    <div class="col-md-5">
-                                        <label for="">Tipo de transação</label></br>
-                                        <input class="form-control campos" readonly="true" value="${lista.imovelTipoTransacao}" name="imovelTipoTransacao" id="imovelTipoTransacao" type="text">
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <label>Qtd. Vagas na Garagem</label>
-                                        <input class="form-control campos" readonly="true" id="imovelVagasGaragem" value="${lista.imovelQtdVagasGaragem}" name="imovelVagasGaragem" type="number" aria-describedby="emailHelp" >
+                                    <div class="col-md-8">
+                                        <label for="">Rua</label>
+                                        <input class="form-control" name="clienteRua" readonly="true" value="${lista.contratoIMovelRua}" id="clienteRua" type="text">
                                     </div>
                                     <div class="col-md-2">
-                                        <label>Qtd. Dormitórios</label>
-                                        <input class="form-control maskCEP campos" readonly="true" value="${lista.imovelQtdDormitorios}" name="imovelDormitorios" id="imovelDormitorios" type="number">
+                                        <label for="">Número</label>
+                                        <input class="form-control" name="clienteNumero" readonly="true" value="${lista.contratoIMovelNumero}" id="clienteNumero" type="text">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="">Complemento</label>
+                                        <input class="form-control" name="clienteComplemento" readonly="true" value="${lista.contratoIMovelComplemento}" id="clienteComplemento" type="text" >
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="">CEP</label>
+                                        <input class="form-control maskCEP" name="clienteCep" readonly="true" id="clienteCep" value="${lista.contratoIMovelCep}" type="text" placeholder="00000-000">
                                     </div>
                                     <div class="col-md-5">
-                                        <label>Tipo</label>
-                                        <input class="form-control campos" readonly="true" value="${lista.imovelTipo}" name="imovelTipo" id="imovelTipo" type="text">
+                                        <label for="">Bairro</label>
+                                        <input class="form-control" name="clienteBairro" readonly="true" id="clienteBairro" value="${lista.contratoIMovelBairro}" type="text"  >
                                     </div>
                                     <div class="col-md-5">
-                                        <label>Metros²</label>
-                                        <input class="form-control campos" readonly="true" value="${lista.imovelMetrosQuadrado}" name="imovelMetros" id="imovelMetros" type="number">
+                                        <label for="">Cidade</label>
+                                        <input class="form-control" name="clienteCidade" readonly="true" id="clienteCidade" value="${lista.contratoIMovelCidade}" type="text" >
                                     </div>
                                     <div class="col-md-5">
-                                        <label>Valor Venda</label>
-                                        <input class="form-control campos" readonly="true" name="imovelVlrVenda" value="${lista.imovelVlrVenda}" id="imovelVlrVenda" type="number">
+                                        <label for="">Estado</label>
+                                        <input class="form-control" name="clienteCidade" readonly="true" id="clienteCidade" value="${lista.contratoIMovelEstado}" type="text" >
                                     </div>
                                     <div class="col-md-5">
-                                        <label>Valor Aluguel</label>
-                                        <input class="form-control campos" readonly="true" name="imovelVlrAluguel" value="${lista.imovelVlrAluguel}" id="imovelVlrAluguel" type="number">
+                                        <label for="">Tipo Transação</label>
+                                        <input class="form-control" name="clienteCidade" readonly="true" id="clienteCidade" value="${lista.contratoIMovelTipoTransacao}" type="text" >
                                     </div>
-                                    <div class="col-md-10">
-                                        <label>Descrição</label>
-                                        <input class="form-control campos"readonly="true"  name="imovelDescricao" value="${lista.imovelDescricao}" id="imovelDescricao" type="text">
+                                    <div class="col-md-5">
+                                        <label for="">Valor Venda</label>
+                                        <input class="form-control" name="clienteCidade" readonly="true" id="clienteCidade" value="${lista.contratoIMovelVlrVenda}" type="text" >
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="">Valor Aluguel</label>
+                                        <input class="form-control" name="clienteCidade" readonly="true" id="clienteCidade" value="${lista.contratoIMovelVlrAluguel}" type="text" >
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="">Vagas Garagem</label>
+                                        <input class="form-control" name="clienteCidade" readonly="true" id="clienteCidade" value="${lista.contratoIMovelQtdVagasGaragem}" type="text" >
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="">Quartos</label>
+                                        <input class="form-control" name="clienteCidade" readonly="true" id="clienteCidade" value="${lista.contratoIMovelQtdQuartos}" type="text" >
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="">Tipo de imóvel</label>
+                                        <input class="form-control" name="clienteCidade" readonly="true" id="clienteCidade" value="${lista.contratoIMovelTipo}" type="text" >
+                                    </div>
+                                    <div class="col-md-5">
+                                        <label for="">Metros Quadrado</label>
+                                        <input class="form-control" name="clienteCidade" readonly="true" id="clienteCidade" value="${lista.contratoIMovelMetrosQuadrado}" type="text" >
+                                    </div>
+                                    <div class="col-md-8">
+                                        <label for="">Descrição</label>
+                                        <input class="form-control" name="clienteCidade" readonly="true" id="clienteCidade" value="${lista.contratoIMovelDescricao}" type="text" >
                                     </div>
                                 </div>
                             </div>
-                            
-                        </form>
-                                    <br>
-                                    <br>
-                                    <br>
                         <hr/>
                     </div>
                 </div>
             </div>
-
-        </div>
-
-        <footer class="sticky-footer">
-            <div class="container">
-                <div class="text-center">
-                    <small>© Copyright 2017 Away</small>
-                </div>
-            </div>
-        </footer>
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fa fa-angle-up"></i>
-        </a>
-        <!-- Logout Modal-->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja sair?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Clique em "Sair" abaixo se você deseja realmente sair.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                        <a class="btn btn-primary" href="login.html">Sair</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script src="${pageContext.request.contextPath}/all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+        </div>     
+                                    <script src="${pageContext.request.contextPath}/all/vendor/jquery/jquery.min.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/all/vendor/popper/popper.min.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/all/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/all/vendor/jquery-easing/jquery.easing.min.js" type="text/javascript"></script>
@@ -298,6 +335,6 @@
         <!--<script src="${pageContext.request.contextPath}/js/sb-admin-charts.min.js" type="text/javascript"></script>-->
         <script src="${pageContext.request.contextPath}/js/jquery.mask.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/js/masks.js" type="text/javascript"></script>
-
     </body>
 </html>
+

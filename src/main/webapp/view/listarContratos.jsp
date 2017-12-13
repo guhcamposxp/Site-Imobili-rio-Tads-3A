@@ -1,7 +1,13 @@
+<%-- 
+    Document   : listarContratos
+    Created on : 13/12/2017, 21:08:45
+    Author     : Felipe Oliveira
+--%>
+
  
-<%@page import="Data.FuncionarioData"%>
+<%@page import="Data.ContratoData"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="DAO.FuncionarioDAO"%>
+<%@page import="DAO.ContratoDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -9,11 +15,11 @@
 <html>
 
     <head>
-        <jsp:include page="/getFuncionario" />
+        <jsp:include page="/getContrato" />
         <meta charset="utf-8"/>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
 
-        <title>Listagem de Funcionarios</title>
+        <title>Listagem de Contratos</title>
         <link href="${pageContext.request.contextPath}/all/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/all/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link href="${pageContext.request.contextPath}/all/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css"/>
@@ -144,35 +150,34 @@
 
                 <div class="card mb-3">
                     <div class="card-header">
-                        <i class="fa fa-table"></i> Funcionarios Cadastrados </div>
+                        <i class="fa fa-table"></i> Contratos Cadastrados </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>Nome</th>
-                                        <th>Sobrenome</th>
-                                        <th>Cpf</th>
-                                        <th>E-mail</th>
-                                        <th>Cargo</th>
+                                        <th>Id</th>
+                                        <th>Data</th>
+                                        <th>Corretor</th>
+                                        <th>Cliente</th>
                                         <th class="actions">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
 
-                                    <c:forEach var="funcionario" items="${lista}">
+                                    <c:forEach var="contrato" items="${lista}">
                                         <tr>
-                                            <td>${funcionario.funcionarioNome}</td>
-                                            <td>${funcionario.funcionarioSobrenome}</td>
-                                            <td>${funcionario.funcionarioCpf}</td>
-                                            <td>${funcionario.funcionarioEmail}</td>
-                                            <td>${funcionario.funcionarioCargo}</td>
+                                            <td>${contrato.contratoId}</td>
+                                            <td>${contrato.contratoData}</td>
+                                            <td>${contrato.contratoFuncionarioNome}</td>
+                                            <td>${contrato.contratoClienteInteressadoNome}</td>
 
                                             <td class="actions">
-                                                <a class="btn btn-success btn-xs" href="../view/showFuncionario.jsp?funcionarioId=${funcionario.funcionarioId}">Visualizar</a>
-                                                <a class="btn btn-warning btn-xs" href="../view/editarFuncionario.jsp?funcionarioId=${funcionario.funcionarioId}">Editar</a>
-                                                <a class="btn btn-danger btn-xs"  href="../dropFuncionario?funcionarioId=${funcionario.funcionarioId}">Excluir</a>
+                                                <c:if test="${sessionScope.permissaoFuncionario == 'Admin' || sessionScope.permissaoFuncionario == 'BackOffice'}">
+                                                <a class="btn btn-success btn-xs" href="../view/readOnlyContrato.jsp?contratoId=${contrato.contratoId}">Visualizar</a>
+                                                <a class="btn btn-danger btn-xs"  href="../dropContrato?contratoId=${contrato.contratoId}">Excluir</a>
+                                                </c:if>
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -235,3 +240,4 @@
 </html>
 
 </html>
+
